@@ -1,0 +1,28 @@
+.main_PCHeader_div {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 50px;
+  align-items: center;
+  padding: 10px 0px;
+  font-weight: 450;
+  font-size: 20px;
+  color: var(--golden-color);
+}
+
+.Pc_Header_logo {
+  width: 70%;
+}
+.pcHeader_options {
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+.pcHeader_options:hover {
+  scale: 1.1;
+}
+.header_icons {
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+.header_icons:hover {
+  scale: 1.1;
+}

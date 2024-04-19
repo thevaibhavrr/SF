@@ -1,0 +1,42 @@
+.uptodate_main_div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+.uptodate_sub_div{
+    display: flex;
+    border: 2px solid var(--navy-blue-color);
+    padding: 10px 20px;
+    width: 65%;
+    border-radius: 50px;
+    gap: 30px;
+    align-items: center;
+    justify-content: space-between;
+}
+.uptodate_input_div{
+    /* width: 100%; */
+    padding-left: 20px;
+}
+.uptodate_input{
+    width: 650px;
+    border: none;
+    border-bottom: 2px solid var(--black-color);
+    font-family: var(--sura-font);
+    
+}
+.uptodate_Subscribe_buttons{
+    background: var(--navy-blue-color);
+    padding: 7px 30px;
+    color: var(--white-color);
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 28px;
+    font-weight: 500;
+    font-family: var(--sura-font);
+}
+
+.uptodate_input:focus {
+    outline: none; 
+}
