@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react'
 import "swiper/css";
 import "swiper/css/navigation";
@@ -10,6 +10,28 @@ import Mockup from "../../../Images/Home/Our collection/Bottle Mockup 1.png"
 import "../../../styles/Home/besatSaller.css"
 
 function BesatSaller() {
+    const [slidesPerView, setSlidesPerView] = useState(3);
+    const [sliderGap, setSliderGap] = useState(20);
+
+    useEffect(() => {
+        const handleResize = () => {
+            const screenWidth = window.innerWidth;
+            if (screenWidth <= 900) {
+                setSlidesPerView(2.5);
+            } else if (screenWidth <= 1024) {
+                setSlidesPerView(3);
+                setSliderGap(15)
+            } else if (screenWidth <= 500) {
+                setSlidesPerView(2);
+            }
+        };
+
+        handleResize();
+        window.addEventListener("resize", handleResize);
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, [])
     
     const OurCollectionImages = [
         {
@@ -68,8 +90,8 @@ function BesatSaller() {
         {/* Swiper */}
         <div>
             <Swiper
-                slidesPerView={3}
-                spaceBetween={100}
+                slidesPerView={slidesPerView}
+                spaceBetween={sliderGap}
                 slidesPerGroup={1}
                 loop={true}
                 loopFillGroupWithBlank={true}

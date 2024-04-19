@@ -72,3 +72,19 @@
     z-index: 1;
 }
 
+
+@media (max-width: 1024px) {
+    .bestSaller_main{
+        padding: 30px 100px;
+    }
+}
+@media (max-width: 900px) {
+    .bestSaller_main{
+        padding: 30px 80px;
+    }
+}
+@media (max-width: 800px) {
+    .bestSaller_main{
+        padding: 30px 30px;
+    }
+}

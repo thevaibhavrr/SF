@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react'
 import "swiper/css";
 import "swiper/css/navigation";
@@ -9,8 +9,26 @@ import WhiteOcean from "../../../Images/Home/Our collection/White Ocean.png"
 import Mockup from "../../../Images/Home/Our collection/Bottle Mockup 1.png"
 import "../../../styles/Home/OurCollection.css"
 function Ourcollection() {
+    const [slidesPerView, setSlidesPerView] = useState(6);
 
+    useEffect(() => {
+        const handleResize = () => {
+            const screenWidth = window.innerWidth;
+            if (screenWidth <= 900) {
+                setSlidesPerView(3);
+            } else if (screenWidth <= 1039) {
+                setSlidesPerView(4);
+            } else if (screenWidth <= 500) {
+                setSlidesPerView(2);
+            }
+        };
 
+        handleResize();
+        window.addEventListener("resize", handleResize);
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, [])
     const OurCollectionImages = [
         {
             image: ASDN,
@@ -59,7 +77,7 @@ function Ourcollection() {
                 {/* Swiper */}
                 <div>
                     <Swiper
-                        slidesPerView={6}
+                        slidesPerView={slidesPerView}
                         spaceBetween={20}
                         slidesPerGroup={1}
                         loop={true}
@@ -83,9 +101,9 @@ function Ourcollection() {
                         <div className="swiper-button-next"></div>
                     </div>
                 </div>
-<div className='view_more_button_div' >
-                <div className='click_buttons view_more_button_home_page' >VIEW MORE </div>
-</div>
+                <div className='view_more_button_div' >
+                    <div className='click_buttons view_more_button_home_page' >VIEW MORE </div>
+                </div>
             </div>
         </>
     );

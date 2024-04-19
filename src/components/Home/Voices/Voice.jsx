@@ -1,47 +1,4 @@
-// import React from 'react'
-// import "../../../styles/Home/Voice.css"
-// function Voice() {
-//   return (
-//     <div>Voice</div>
-//   )
-// }
-
-// export default Voice
-
-// import React, { useRef, useState } from 'react';
-// // Import Swiper React components
-// import { Swiper, SwiperSlide } from 'swiper/react';
-
-// // Import Swiper styles
-// import 'swiper/css';
-// import 'swiper/css/navigation';
-
-// // import './styles.css';
-// import "../../../styles/Home/Voice.css"
-
-
-// // import required modules
-// import { Navigation } from 'swiper/modules';
-
-// export default function Voice() {
-//   return (
-//     <>
-//       <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
-//         <SwiperSlide>Slide 1</SwiperSlide>
-//         <SwiperSlide>Slide 2</SwiperSlide>
-//         <SwiperSlide>Slide 3</SwiperSlide>
-//         <SwiperSlide>Slide 4</SwiperSlide>
-//         <SwiperSlide>Slide 5</SwiperSlide>
-//         <SwiperSlide>Slide 6</SwiperSlide>
-//         <SwiperSlide>Slide 7</SwiperSlide>
-//         <SwiperSlide>Slide 8</SwiperSlide>
-//         <SwiperSlide>Slide 9</SwiperSlide>
-//       </Swiper>
-//     </>
-//   );
-// }
-
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react'
 import "swiper/css";
 import "swiper/css/navigation";
@@ -50,6 +7,33 @@ import "../../../styles/Home/Voice.css"
 import User from "../../../Images/Home/Voice/ReviewUser.png"
 
 function Voices() {
+
+    const [slidesPerView, setSlidesPerView] = useState(2.7);
+    const [sliderGap, setSliderGap] = useState(100);
+
+    useEffect(() => {
+        const handleResize = () => {
+            const screenWidth = window.innerWidth;
+            if (screenWidth <= 900) {
+                setSlidesPerView(1.8);
+                setSliderGap(50)
+
+            } else if (screenWidth <= 1039) {
+                setSlidesPerView(2.3);
+                setSliderGap(80)
+            } else if (screenWidth <= 500) {
+                setSlidesPerView(1.3);
+                setSliderGap(20)
+
+            }
+        };
+
+        handleResize();
+        window.addEventListener("resize", handleResize);
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, [])
 
     const OurCollectionImages = [
         {
@@ -80,9 +64,10 @@ function Voices() {
                 {/* Swiper */}
                 <div>
                     <Swiper
-                        slidesPerView={2.7}
-                        spaceBetween={100}
+                        slidesPerView={slidesPerView}
+                        spaceBetween={sliderGap}
                         slidesPerGroup={1}
+                        defaultValue={1.7}
                         loop={true}
                         loopFillGroupWithBlank={true}
                         className="mySwiper voices_Swiper_main_div "
@@ -102,7 +87,7 @@ function Voices() {
                             </SwiperSlide>
                         ))}
                     </Swiper>
-
+ 
                 </div>
 
             </div>
