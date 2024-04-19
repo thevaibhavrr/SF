@@ -41,3 +41,23 @@
   padding: 100px;
 }
 }
+@media (max-width: 800px) {
+    .main_flavor_div {
+  display: flex;
+  padding: 70px 0px;
+  align-items: center;
+}
+.our_story_shape_image {
+  width: 100%;
+}
+
+.our_story_shape_image {
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  */
+  width: 100%;
+}
+.our_story_flavor_text {
+  font-size: 40px;
+  width: 70%;
+  padding: 50px;
+}
+}

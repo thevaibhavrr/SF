@@ -70,7 +70,7 @@
   .our_story_text_div {
     width: 100%;
     padding: 30px 40px;
-    font-size: 26px;
+    font-size: 24px;
   }
   /* image */
   .our_story_image_div {
@@ -79,6 +79,6 @@
   .our_story_image {
     width: 40%;
     right: -20px;
-    top: -50px;
+    top: -40px;
   }
 }

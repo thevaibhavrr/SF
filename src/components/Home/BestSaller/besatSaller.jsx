@@ -113,10 +113,10 @@ function BesatSaller() {
                 ))}
             </Swiper>
             {/* Navigation Buttons */}
-            <div className="navigation-buttons">
+            {/* <div className="navigation-buttons">
                 <div className="swiper-button-prev"></div>
                 <div className="swiper-button-next"></div>
-            </div>
+            </div> */}
         </div>
 <div className='view_more_button_div' >
         <div className='click_buttons view_more_button_home_page' >VIEW MORE </div>
