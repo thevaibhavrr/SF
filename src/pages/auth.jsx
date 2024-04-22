@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router"
 import Login from '../components/Auth/login'
 import Signup from '../components/Auth/singup'
 
+
 function Auth() {
     return (
         <div>
@@ -15,6 +16,7 @@ function Auth() {
                     path="/signup"
                     element={<Signup />}
                 />
+               
 
 
             </Routes>

@@ -7,11 +7,25 @@ function CartItem() {
     const [cartItem, setCartItem] = useState([])
     const [loading, setLoading] = useState(false);
     const [cartPoductList, setCartProductList] = useState([])
-    console.log(cartItem)
+    const [IscartEmpty, setIsCartEmpty] = useState(false)
     const fetchCartItem = async () => {
-        const response = await makeApi("/api/my-cart", "GET")
-        setCartItem(response.data)
-        setCartProductList(response.data.orderItems)
+        try{
+
+            setLoading(true)
+            const response = await makeApi("/api/my-cart", "GET")
+            console.log("resposne ------------",response.data)
+            setCartItem(response.data)
+            setCartProductList(response.data.orderItems)
+        }catch(error){
+            console.log(error)
+            console.log("error ------------",error.response.data)
+            if(error.response.data.message === "Cart not found"){
+                setIsCartEmpty(true)
+            }
+
+        }finally{
+            setLoading(false)
+        }
     }
 
     const removeFromCart = async (productId) => {
@@ -52,6 +66,9 @@ function CartItem() {
     }, [])
     return (
         <>
+        {IscartEmpty && <div className='empty_cart_div'>Cart is empty</div>}
+        {!IscartEmpty && 
+        <div>
             <div>
                 <Orderbar activeOptionName="CART" />
             </div>
@@ -91,6 +108,8 @@ function CartItem() {
                 <CartCalculation tax={cartItem.taxPrice} shipping={cartItem.shippingPrice} total={cartItem.totalPrice} CoupanApplied={cartItem.Iscoupanapplied} Final={cartItem.TotalProductPrice} ButtonName="PROCEED TO CHECKOUT" />
             </div>
 
+        </div>
+        }
         </>
     )
 }

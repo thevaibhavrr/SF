@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import "../../styles/product/allproduct.css";
 import { IoIosHeart } from "react-icons/io";
 import { makeApi } from '../../api/callApi.tsx';
+import AddIcon from "../../Images/order/add_icon_green.png"
+import RemoveIcon from "../../Images/order/remove_icon_red.png"
 
 function Allproduct({ search, category, minPrice, maxPrice }) {
     const [products, setProducts] = useState([]);
@@ -11,24 +13,26 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
     const [ResultPerPage, setResultPerPage] = useState(20);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
-  const [toalProduct, setToalProduct] = useState(0);
-    const [page, setPage] = useState(1);
+    const [toalProduct, setToalProduct] = useState(0);
 
 
     const fetchProduct = async () => {
         try {
+            setLoading(true);
             const response = await makeApi(`/api/get-all-products?name=${search}&category=${category}&minPrice=${minPrice}&maxPrice=${maxPrice}&page=${currentPage}&IsOutOfStock=false`, "GET");
             setProducts(response.data.products);
-        setToalProduct(response.data.totalProducts);
+            setToalProduct(response.data.totalProducts);
 
         } catch (error) {
             console.log(error);
+        } finally {
+            setLoading(false);
         }
     };
     useEffect(() => {
         const a = Math.ceil(toalProduct / ResultPerPage);
         setTotalPages(a);
-      }, [products, ResultPerPage]);
+    }, [products, ResultPerPage]);
     const fetchCart = async () => {
         try {
             const response = await makeApi("/api/my-cart", "GET");
@@ -136,7 +140,7 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
     };
     const handlePageClick = (pageNumber) => {
         setCurrentPage(pageNumber);
-      };
+    };
 
     return (
         <div className="">
@@ -153,17 +157,19 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
                             </div>
                             <div className="Add_to_cart_and_watchlist_button">
                                 {isInCart(product._id) ? (
-                                    <>
+                                    <div className='Add_to_cart_and_watchlist_child'>
                                         <div className="cart-quantity">
-                                            <button onClick={() => removeFromCart(product._id)}>-</button>
+                                            <img src={RemoveIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => removeFromCart(product._id)} />
+                                            {/* <button onClick={() => removeFromCart(product._id)}>-</button> */}
                                             <span>{getProductQuantity(product._id)}</span>
-                                            <button onClick={() => addToCart(product._id)}>+</button>
+                                            {/* <button onClick={() => addToCart(product._id)}>+</button> */}
+                                            <img src={AddIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => addToCart(product._id)} />
                                         </div>
-                                    </>
+                                    </div>
                                 ) : (
                                     <div className="Add_to_cart_button" onClick={() => addToCart(product._id)}>Add to Cart</div>
                                 )}
-                                <div>
+                                <div className='Add_to_cart_and_watchlist_child'>
                                     <IoIosHeart
                                         className={`watchlist-icon pointer-event ${wishlistItems.includes(product._id) ? "wishlist-active" : ""}`}
                                         onClick={() => toggleWishlist(product._id)}
@@ -175,18 +181,18 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
                 ))}
             </div>
             <div className="pagination">
-          {Array.from({ length: totalPages }, (_, index) => index + 1).map(
-            (pageNumber) => (
-              <button
-                key={pageNumber}
-                className={pageNumber === currentPage ? "active" : ""}
-                onClick={() => handlePageClick(pageNumber)}
-              >
-                {pageNumber}
-              </button>
-            )
-          )}
-        </div>
+                {Array.from({ length: totalPages }, (_, index) => index + 1).map(
+                    (pageNumber) => (
+                        <button
+                            key={pageNumber}
+                            className={pageNumber === currentPage ? "active" : ""}
+                            onClick={() => handlePageClick(pageNumber)}
+                        >
+                            {pageNumber}
+                        </button>
+                    )
+                )}
+            </div>
         </div>
     );
 }
