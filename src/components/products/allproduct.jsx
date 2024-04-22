@@ -17,7 +17,7 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
 
     const fetchProduct = async () => {
         try {
-            const response = await makeApi(`/api/get-all-products?name=${search}&category=${category}&minPrice=${minPrice}&maxPrice=${maxPrice}&page=${currentPage}`, "GET");
+            const response = await makeApi(`/api/get-all-products?name=${search}&category=${category}&minPrice=${minPrice}&maxPrice=${maxPrice}&page=${currentPage}&IsOutOfStock=false`, "GET");
             setProducts(response.data.products);
         setToalProduct(response.data.totalProducts);
 
