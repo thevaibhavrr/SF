@@ -10,3 +10,9 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
     border-radius: 30px;
 }
+@media (max-width:500px) {
+    .upper_images_main_div{
+        gap: 5px;
+        padding: 5px;
+    }
+}

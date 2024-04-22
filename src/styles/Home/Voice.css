@@ -54,6 +54,24 @@
   color: yellow;
 }
 
+@media (max-width: 500px) {
+  .Voice_slider_Name {
+    font-family: var(--Dynalight-font);
+    color: var(--golden-color);
+    font-size: 32px;
+  }
+  .Voice_slider_Heading {
+    font-size: 34px;
+    text-align: center;
+  }
+  
+  .Voice_slider_Message {
+    text-align: center;
+    font-size: 18px;
+  }
+  
+}
+
 @media (max-width: 1024px) {
   .main_Voice_parent_div {
     gap: 15px;

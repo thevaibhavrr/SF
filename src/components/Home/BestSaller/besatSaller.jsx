@@ -16,14 +16,14 @@ function BesatSaller() {
     useEffect(() => {
         const handleResize = () => {
             const screenWidth = window.innerWidth;
-            if (screenWidth <= 900) {
+            if (screenWidth <= 500) {
+                setSlidesPerView(1.3);
+            }else if (screenWidth <= 900) {
                 setSlidesPerView(2.5);
             } else if (screenWidth <= 1024) {
                 setSlidesPerView(3);
                 setSliderGap(15)
-            } else if (screenWidth <= 500) {
-                setSlidesPerView(2);
-            }
+            } 
         };
 
         handleResize();

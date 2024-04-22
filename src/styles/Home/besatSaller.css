@@ -88,3 +88,8 @@
         padding: 30px 30px;
     }
 }
+@media (max-width: 500px) {
+    .bestSaller_main{
+    padding: 30px 10px;
+    }
+}

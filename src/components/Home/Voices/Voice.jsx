@@ -14,18 +14,18 @@ function Voices() {
     useEffect(() => {
         const handleResize = () => {
             const screenWidth = window.innerWidth;
-            if (screenWidth <= 900) {
+            if (screenWidth <= 500) {
+                setSlidesPerView(1.1);
+                setSliderGap(20)
+
+            }else if (screenWidth <= 900) {
                 setSlidesPerView(1.8);
                 setSliderGap(50)
 
             } else if (screenWidth <= 1039) {
                 setSlidesPerView(2.3);
                 setSliderGap(80)
-            } else if (screenWidth <= 500) {
-                setSlidesPerView(1.3);
-                setSliderGap(20)
-
-            }
+            } 
         };
 
         handleResize();

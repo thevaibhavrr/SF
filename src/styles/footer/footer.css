@@ -63,9 +63,6 @@
 
 @media (max-width: 1024px) {
   .footer_main_div {
-    display: flex;
-    justify-content: space-between;
-    border: dashed 2px var(--navy-blue-color);
     border-radius: 50px 0px 0px 50px;
     margin-top: 50px;
     margin-left: 25px;
@@ -75,11 +72,8 @@
   }
   .media_links_div {
     display: flex;
-    gap: 18px;
   }
   .footer_icon_image_div {
-    display: flex;
-    align-items: center;
     height: 100%;
   }
   /* footer_quick_links */
@@ -94,30 +88,76 @@
   }
 
   .footer_quick_links_data {
-    display: flex;
-    flex-direction: column;
     gap: 5px;
-    color: var(--golden-color);
     font-weight: 500;
   }
 
   .Contact_us_div_footer {
-    background: var(--navy-blue-color);
     width: 30%;
     border-radius: 40px 0px 0px 40px;
   }
-  .contact_us_heading {
-    color: var(--white-color);
+
+  /* last footer */
+  .lastfooter_div {
+    margin-bottom: 40px;
+    padding: 20px 20px;
+    font-size: 18px;
+    font-weight: 500;
+  }
+}
+@media (max-width: 500px) {
+  .footer_main_div {
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 50px;
+    margin-left: 30px;
+    text-align: center;
+    border-right: none;
+    border-bottom: none;
+  }
+  .footer_icon_image_div {
+    display: flex;
+    justify-content: center;
+  }
+  .Main_SK_logo {
+    width: 60%;
+  }
+  .media_links_div {
+    display: flex;
+    gap: 0px;
+    justify-content: space-around;
+  }
+
+  /* footer_quick_links */
+  .footer_quick_links {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 10px;
+  }
+  .footer_quick_links_heading {
+    font-size: 23px;
+  }
+
+  .footer_quick_links_data {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .Contact_us_div_footer {
+    width: 100%;
+    border-radius: 40px 0px 0px 40px;
   }
 
   /* last footer */
   .lastfooter_div {
     display: flex;
     justify-content: space-between;
-    color: var(--navy-blue-color);
     margin-bottom: 40px;
-    padding: 20px 20px;
-    font-size: 18px;
+    padding: 20px 10px;
+    font-size: 15px;
+    gap: 40px;
     font-weight: 500;
   }
 }

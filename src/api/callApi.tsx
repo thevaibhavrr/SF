@@ -4,7 +4,7 @@ export const makeApi = async (
 	endpoint: string,
 	method: "GET" | "POST" | "PUT" | "DELETE" = "GET",
 	data?: any
-): Promise<AxiosResponse> => {
+): Promise<AxiosResponse> => { 
 	try {
 		const token = localStorage.getItem("token")
 

@@ -26,6 +26,7 @@ code {
   --navy-blue-color: #232f6d;
   --black-color: black;
   --white-color: white;
+  --bg-white-color: #F8F8FF;
 }
 
 /* common button */
@@ -59,6 +60,14 @@ code {
   font-size: 80px;
   text-transform: uppercase;
   font-family: var(--sura-font);
+}
+.golden-color-text{
+  color: var(--golden-color);
+}
+
+/* link tag */
+.css-for-link-tag{
+  text-decoration: none;
 }
 
 /* media query */

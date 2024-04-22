@@ -14,13 +14,13 @@ function Ourcollection() {
     useEffect(() => {
         const handleResize = () => {
             const screenWidth = window.innerWidth;
-            if (screenWidth <= 900) {
+            if (screenWidth <= 500) {
+                setSlidesPerView(1.5);
+            }else if (screenWidth <= 900) {
                 setSlidesPerView(3);
             } else if (screenWidth <= 1039) {
                 setSlidesPerView(4);
-            } else if (screenWidth <= 500) {
-                setSlidesPerView(2);
-            }
+            } 
         };
 
         handleResize();
@@ -80,6 +80,7 @@ function Ourcollection() {
                         slidesPerView={slidesPerView}
                         spaceBetween={20}
                         slidesPerGroup={1}
+                        defaultValue={2}
                         loop={true}
                         loopFillGroupWithBlank={true}
                         navigation={true}
