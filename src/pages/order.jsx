@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router"
 import ProductSidebar from '../components/products/slidebar/sidebar'
 import Allproduct from '../components/products/allproduct'
 import MainCart from '../components/order/cart/mainCart'
+import Checkout from '../components/order/checkout/checkout'
 
 
 function Order() {
@@ -12,6 +13,10 @@ function Order() {
                 <Route
                     path="/my-cart"
                     element={<MainCart />}
+                />
+                <Route
+                    path="/checkout"
+                    element={<Checkout />}
                 />
             
             </Routes>

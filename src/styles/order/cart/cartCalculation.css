@@ -1,0 +1,33 @@
+.cart_calculation_main_div{
+    width: 400px;
+    background: var(--navy-blue-color);
+    height: 100%;
+    padding: 50px;
+    border-radius: 30px;
+    color: var(--white-color);
+    font-family: var(--Rhodium--Libre-font);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cart_calculation_div{
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart_calculation_name_value{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* button */
+.cart_calculation_button{
+    background: var(--white-color);
+    color: var(--black-color);
+    border-radius: 10px;
+    padding: 14px 20px;
+    text-align: center;
+    cursor: pointer;
+}

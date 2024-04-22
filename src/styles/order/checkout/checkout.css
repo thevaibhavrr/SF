@@ -1,0 +1,38 @@
+.main_checkout_div{
+    display: flex;
+    padding: 30px 100px;
+}
+.Order_page_display_none{
+    /* display: none; */
+}
+
+/* address */
+.shipping-address-container {
+width: 100%;
+}
+.shipping-address-title {
+  font-size: 30px;
+  color: var(--golden-color);
+  font-weight: 600;
+}
+
+.address-item {
+  display: flex;
+  padding: 20px;
+  border: 1px solid var(--navy-blue-color);
+  border-radius: 10px;
+  width: 60%;
+  margin-top: 20px;
+  font-family: var(--Rhodium--Libre-font);
+  font-weight: 600;
+  cursor: pointer;
+}
+.address-radio {
+  width: 20px;
+}
+.address-label {
+  margin-left: 20px;
+}
+
+
+/* payment */
