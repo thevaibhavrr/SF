@@ -2,10 +2,19 @@ import React, { useEffect, useState } from 'react'
 import Logo from "../../Images/Header/SK Foods Logo 3.png"
 import "../../styles/header/PCHeader.css"
 import { Link , useNavigate } from 'react-router-dom'
-
+import LoginPopup from "../Auth/LoginPopup"
 function PCHeaer() {
     const navigation = useNavigate()
     const [IsLogin, setIsLogin] = useState(false)
+    const [showPopup, setShowPopup] = useState(false);
+
+    const openPopup = () => {
+        setShowPopup(true);
+      };
+    
+      const closePopup = () => {
+        setShowPopup(false);
+      };
     useEffect(() => {
         const token = localStorage.getItem("token")
 
@@ -21,11 +30,15 @@ function PCHeaer() {
         if(IsLogin){
             navigation('/order/my-cart')
         }else{
-            window.location.href = "/auth/login"
+            setShowPopup(true);
+            // window.location.href = "/auth/login"
+
         }
     }
     return (
         <>
+      {/* {showPopup && <LoginPopup onClose={closePopup} />} */}
+      <LoginPopup/>
             <div className='main_PCHeader_div' >
                 <div>
                     {IsLogin ? <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-person-circleheader_icons" viewBox="0 0 16 16">
