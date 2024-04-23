@@ -7,7 +7,7 @@ import RemoveIcon from "../../Images/order/remove_icon_red.png"
 import Primaryloader from '../loaders/primaryloader.jsx';
 import Heartloader from '../loaders/hearloader.jsx';
 import HorizotalLoader from '../loaders/horizotalLoader.jsx';
-import {Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 function Allproduct({ search, category, minPrice, maxPrice }) {
     const [products, setProducts] = useState([]);
@@ -168,9 +168,9 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
                                 <div className="product_div_all_product_parent" key={index}>
                                     <div className="product_div_all_product">
                                         <Link to={`/product/product-details/${product._id}`} >
-                                        <div>
-                                            <img src={product.thumbnail} alt="product" className="all_product_product_thumbnail" />
-                                        </div>
+                                            <div>
+                                                <img src={product.thumbnail} alt="product" className="all_product_product_thumbnail" />
+                                            </div>
                                         </Link>
                                         <div className="product_name_and_price">
                                             <div>{product.name}</div>
@@ -183,15 +183,15 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
                                                         {AddTocartLoader ? <div> <HorizotalLoader /> </div> :
                                                             <div className="cart-quantity">
                                                                 <img src={RemoveIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => removeFromCart(product._id)} />
-                                                                {/* <button onClick={() => removeFromCart(product._id)}>-</button> */}
                                                                 <span>{getProductQuantity(product._id)}</span>
-                                                                {/* <button onClick={() => addToCart(product._id)}>+</button> */}
                                                                 <img src={AddIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => addToCart(product._id)} />
                                                             </div>
                                                         }
                                                     </div>
                                                 ) : (
-                                                    <div className="Add_to_cart_button" onClick={() => addToCart(product._id)}>Add to Cart</div>
+                                                    <div>
+                                                        {AddTocartLoader ? <div> <HorizotalLoader /> </div> : <div className="Add_to_cart_button" onClick={() => addToCart(product._id)}>Add to Cart</div>}
+                                                    </div>
                                                 )}
                                             </>
 
