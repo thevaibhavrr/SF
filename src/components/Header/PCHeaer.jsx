@@ -8,10 +8,7 @@ function PCHeaer() {
     const [IsLogin, setIsLogin] = useState(false)
     const [showPopup, setShowPopup] = useState(false);
 
-    const openPopup = () => {
-        setShowPopup(true);
-      };
-    
+  
       const closePopup = () => {
         setShowPopup(false);
       };
@@ -31,14 +28,11 @@ function PCHeaer() {
             navigation('/order/my-cart')
         }else{
             setShowPopup(true);
-            // window.location.href = "/auth/login"
-
         }
     }
     return (
         <>
-      {/* {showPopup && <LoginPopup onClose={closePopup} />} */}
-      <LoginPopup/>
+      {showPopup && <LoginPopup onClose={closePopup} />}
             <div className='main_PCHeader_div' >
                 <div>
                     {IsLogin ? <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-person-circleheader_icons" viewBox="0 0 16 16">

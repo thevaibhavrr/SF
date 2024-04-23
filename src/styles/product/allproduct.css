@@ -1,3 +1,7 @@
+.top_parent_div_all_product{
+  width: 100%;
+  height: 100%;
+}
 .main_all_product_div {
   display: flex;
   flex-wrap: wrap;
@@ -95,3 +99,20 @@
   .watchlist-icon.wishlist-active {
     color: red;
   }  
+
+
+  /* loading */
+
+  /* all product loader */
+.All_Product_loader{
+  width: 100% ;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* whitelist */
+.heart_loader_all_product{
+  /* width: 10px; */
+}

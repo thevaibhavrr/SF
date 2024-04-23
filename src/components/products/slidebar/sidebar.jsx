@@ -88,7 +88,7 @@ const ProductSidebar = () => {
 						</div>
 					</div>
 				</div>
-				<div>
+				<div className='w-100' >
 					<Allproduct search={search} category={category} minPrice={minPrice} maxPrice={maxPrice} />
 				</div>
 			</div>

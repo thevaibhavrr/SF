@@ -1,7 +1,7 @@
 import React from 'react'
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 import "../../../styles/order/cart/cartCalculation.css"
-function CartCalculation({ tax, shipping, CoupanApplied, total, Final,ButtonName }) {
+function CartCalculation({ tax, shipping, CoupanApplied, total, Final, ButtonName }) {
     const formatNumber = (number) => {
         return Math.round(number).toString();
     };
@@ -28,10 +28,10 @@ function CartCalculation({ tax, shipping, CoupanApplied, total, Final,ButtonName
                     </div>
                 </div>
                 <Link to="/order/checkout" >
-                <div className='cart_calculation_button'>
-                    
-                    {ButtonName}
-                </div>
+                    <div className='cart_calculation_button'>
+
+                        {ButtonName}
+                    </div>
                 </Link>
 
             </div>

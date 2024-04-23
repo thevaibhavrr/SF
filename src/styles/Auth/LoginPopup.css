@@ -56,3 +56,9 @@
     background-color: var(--golden-color);
   }
   
+
+  .close_icon_login_popup{
+    cursor: pointer;
+    text-align: end;
+    padding-right: 5px;
+  }

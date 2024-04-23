@@ -20,7 +20,6 @@ function Home() {
         <MainAllproductImages/>
         <Voice/>
         <Uptodate/>
-        <Footer/>
     </div>
   )
 }

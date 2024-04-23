@@ -41,6 +41,13 @@
 .cart_item_image{
     width: 100px;
 }
+.cart_add_remmove_section_cart_page{
+    display: flex;
+    justify-content: center;
+}
+.Icon_add_to_cart_main_cart_page{
+    cursor: pointer;
+}
 
 /* calculation */
 .cart_calculation_main_div_cartItem{
