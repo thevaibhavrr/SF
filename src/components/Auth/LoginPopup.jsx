@@ -33,6 +33,9 @@ const LoginPopup = ({ onClose }) => {
       localStorage.setItem("token", response.data.token);
       toast.success(response.data.message);
       onClose();
+      // refresh the page
+      navigate(0, 0);
+        
     } catch (error) {
       toast.error(error.response.data.message);
       console.error("Error sending data:", error.response.data.message);

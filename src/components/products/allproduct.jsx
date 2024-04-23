@@ -8,6 +8,7 @@ import Primaryloader from '../loaders/primaryloader.jsx';
 import Heartloader from '../loaders/hearloader.jsx';
 import HorizotalLoader from '../loaders/horizotalLoader.jsx';
 import { Link } from "react-router-dom"
+import LoginPopup from '../Auth/LoginPopup.jsx';
 
 function Allproduct({ search, category, minPrice, maxPrice }) {
     const [products, setProducts] = useState([]);
@@ -21,7 +22,19 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
     const [AllProductLoader, setAllProductLoader] = useState(false);
     const [AddTocartLoader, setAddTocartLoader] = useState(false);
     const [AddToWishlistLoader, setAddToWishlistLoader] = useState(false);
+    const [IsLogin, setIsLogin] = useState(false)
+    const [showPopup, setShowPopup] = useState(false);
 
+    useEffect(() => {
+        const token = localStorage.getItem("token")
+
+        if (token) {
+            setIsLogin(true)
+        } else {
+            setIsLogin(false)
+        }
+
+    }, [localStorage.getItem("token")])
 
     const fetchProduct = async () => {
         try {
@@ -77,26 +90,35 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
     const isInCart = (productId) => {
         return cartItems.some(item => item.productId === productId);
     };
+    const closePopup = () => {
+        setShowPopup(false);
+    };
+
+    console.log("IsLogin",IsLogin)
 
     const toggleWishlist = async (id) => {
-        try {
-            setAddToWishlistLoader(true);
-
-            const method = "POST";
-            const endpoint = `/api/create-wishlist/${id}`;
-            const data = await makeApi(endpoint, method);
-            setWishlistItems(prevState => {
-                if (prevState.includes(id)) {
-                    return prevState.filter(itemId => itemId !== id);
-                } else {
-                    return [...prevState, id];
-                }
-            });
-        } catch (error) {
-            console.log(error);
-        } finally {
-            setAddToWishlistLoader(false);
+        if (!IsLogin) {
+            setShowPopup(true);
+        }else{
+            try {
+                setAddToWishlistLoader(true);
+                const method = "POST";
+                const endpoint = `/api/create-wishlist/${id}`;
+                const data = await makeApi(endpoint, method);
+                setWishlistItems(prevState => {
+                    if (prevState.includes(id)) {
+                        return prevState.filter(itemId => itemId !== id);
+                    } else {
+                        return [...prevState, id];
+                    }
+                });
+            } catch (error) {
+                console.log(error);
+            } finally {
+                setAddToWishlistLoader(false);
+            }
         }
+       
     };
 
     const addToCart = async (productId) => {
@@ -155,6 +177,8 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
 
     return (
         <>
+            {showPopup && <LoginPopup onClose={closePopup} />}
+
             <div className='top_parent_div_all_product' >
                 {AllProductLoader ? <div className="All_Product_loader">
                     <div className='' >
