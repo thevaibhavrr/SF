@@ -4,16 +4,16 @@ import "../../styles/Home/banner.css"
 function AboutBanner() {
   const data = [
     {
-      message: "Hello World! 03:48:53  sec ",
-      time: 1713867533,
+      message: "Hello World! 04:11:53  sec ",
+      time: 1713868913,
     },
     {
-      message: "Hello World! 2 03:49:53 ",
-      time: 1713867593,
+      message: "Hello World! 2 04:12:53 ",
+      time: 1713868973,
     },
     {
-      message: "Hello World! 3 03:50:53 ",
-      time: 1713867653,
+      message: "Hello World! 3 04:13:53 ",
+      time: 1713869033,
     },
   ];
   
