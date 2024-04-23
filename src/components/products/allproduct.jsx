@@ -7,6 +7,7 @@ import RemoveIcon from "../../Images/order/remove_icon_red.png"
 import Primaryloader from '../loaders/primaryloader.jsx';
 import Heartloader from '../loaders/hearloader.jsx';
 import HorizotalLoader from '../loaders/horizotalLoader.jsx';
+import {Link } from "react-router-dom"
 
 function Allproduct({ search, category, minPrice, maxPrice }) {
     const [products, setProducts] = useState([]);
@@ -166,9 +167,11 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
                             {products.map((product, index) => (
                                 <div className="product_div_all_product_parent" key={index}>
                                     <div className="product_div_all_product">
+                                        <Link to={`/product/product-details/${product._id}`} >
                                         <div>
                                             <img src={product.thumbnail} alt="product" className="all_product_product_thumbnail" />
                                         </div>
+                                        </Link>
                                         <div className="product_name_and_price">
                                             <div>{product.name}</div>
                                             <div>₹{product.PriceAfterDiscount}</div>
