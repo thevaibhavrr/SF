@@ -75,10 +75,13 @@ const ProductSidebar = () => {
 						<div className='main_price_range_product_sidebar' >
 							{/* range for min price */}
 							<div>
+								<span>Min Price</span>
 								<input type="range" min={minValueforminPrice} max={maxValueforminPrice} className='input-ranges input_for_min_price' onChange={(e) => setMinPrice(e.target.value)} />
 								<div>₹{minPrice}</div>
 							</div>
 							<div>
+							<span>Max Price</span>
+
 								{/* for max price */}
 								<input type="range" min={minPrice} max={maxValueformaxPrice} className='input-ranges input_for_max_price' onChange={(e) => setMaxPrice(e.target.value)} />
 								<div className='text-end' >₹{maxPrice}</div>

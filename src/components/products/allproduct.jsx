@@ -122,7 +122,7 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
                 }
             });
         } catch (error) {
-            console.log(error);
+            console.log(error.response.data);
         } finally {
             fetchCart();
             setAddTocartLoader(false);
