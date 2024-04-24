@@ -122,6 +122,9 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
     };
 
     const addToCart = async (productId) => {
+        if (!IsLogin) {
+            setShowPopup(true);
+        }else{
         try {
             setAddTocartLoader(true);
             const method = "POST";
@@ -149,6 +152,7 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
             fetchCart();
             setAddTocartLoader(false);
         }
+    }
     };
 
     const removeFromCart = async (productId) => {

@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react"
 import "../../styles/User/profile.css"
 import { useNavigate } from "react-router"
+import UserProfileSidebar from "./sidebar"
 // import { makeApi } from "../../api/callApi"
 
 const MyAccount = () => {
@@ -25,7 +26,11 @@ const MyAccount = () => {
     console.log("user details", userDatails)
 
     return (
-        <div className="myaccount">
+        <div className="d-flex">
+        <div className="" >
+            <UserProfileSidebar/>
+        </div>
+        <div className="myaccount w-100">
             <div className="userprofile-heading">
                 <h1>PERSONAL INFORMATION</h1>
             </div>
@@ -75,7 +80,7 @@ const MyAccount = () => {
                             />
                             <p>change profile information</p>
                         </div>{" "}
-                        <div
+                        {/* <div
                             className="change-profilepwd"
                             onClick={() => navigate("/edit-userprofile")}
                         >
@@ -85,10 +90,12 @@ const MyAccount = () => {
                                 alt="password"
                             />
                             <p>change password</p>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             {/* )} */}
+        </div>
+
         </div>
     )
 }

@@ -6,7 +6,7 @@
   }
   
   .userprofile-heading {
-    background: #F2D6CC;
+    /* background: #F2D6CC; */
     margin-top: 85px;
     width: 100%;
     border-radius: 20px;
@@ -28,7 +28,7 @@
   
   .userprofile-info-css {
     min-height: 55vh;
-    background: #F2D6CC;
+    /* background: #F2D6CC; */
     border-radius: 20px;
   
   }

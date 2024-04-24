@@ -1,6 +1,7 @@
 import React from 'react'
 import { Route, Routes } from "react-router"
 import MyAccount from '../components/User/profile'
+import UserProfile from '../components/User/sidebar'
 
 
 function User() {
@@ -11,6 +12,10 @@ function User() {
                     path="/profile"
                     element={<MyAccount />}
                 />
+                {/* <Route
+                    path="/address"
+                    element={<UserProfileSidebar />}
+                    /> */}
 
             </Routes>
         </div>
