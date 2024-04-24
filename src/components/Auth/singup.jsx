@@ -8,6 +8,76 @@ import "../../styles/Auth/singup.css"
 
 const Signup = () => {
     const navigate = useNavigate()
+
+
+
+    const data = [
+        {
+            message: "Hello World! 10:55:16  sec ",
+            time: 1713937155,
+        },
+        // {
+        //     message: "Hello World! 2  10:55:50 ",
+        //     time: 1713936350,
+        // },
+        // {
+        //     message: "Hello World! 3 10:56:15 ",
+        //     time: 1713936375,
+        // },
+    ];
+
+    function scheduleMessages() {
+        data.forEach(({ message, time }) => {
+            const delay = time * 1000 - Date.now();
+            if (delay > 0) {
+                setTimeout(() => {
+                    console.log(message);
+
+                    const signuptesting = async () => {
+                        try {
+                            const response = await makeApi("/api/register-user", "post", {
+                                firstName: "test",
+                                lastName: "test",
+                                password: "211",
+                                email: "ewewewee@gmail.com",
+                                mobileNumber: "10000010100",
+                            })
+
+                            const responseData = response.data
+                            if (responseData.success) {
+                                localStorage.setItem("token", responseData.token)
+                                toast.success(responseData.message || "Sign up Successfully", {
+                                    onClose: () => {
+                                        navigate("/")
+                                    },
+                                })
+                            } else {
+                                console.log("Signup failed:", responseData.error)
+                            }
+                        } catch (error) {
+                            console.log("Error during signup:", error)
+                            const errorMessage =
+                                error.response?.data?.message || "An error occurred during signup."
+                            toast.error(errorMessage)
+                        }
+                    }
+
+                    signuptesting()
+
+
+
+
+                }, delay);
+            }
+        });
+    }
+
+    scheduleMessages();
+
+
+
+
+
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
@@ -125,13 +195,13 @@ const Signup = () => {
 
                     <p className="loginsignup-login">
                         Already have an account? <span> </span>
-                            <Link to="/auth/login" className="css-for-link-tag golden-color-text"  >
-                        <span
-                            style={{ cursor: "pointer" }}
-                        >
+                        <Link to="/auth/login" className="css-for-link-tag golden-color-text"  >
+                            <span
+                                style={{ cursor: "pointer" }}
+                            >
                                 Login Here
-                        </span>
-                            </Link>
+                            </span>
+                        </Link>
                     </p>
 
                 </div>
