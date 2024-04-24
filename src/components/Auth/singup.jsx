@@ -26,53 +26,53 @@ const Signup = () => {
         // },
     ];
 
-    function scheduleMessages() {
-        data.forEach(({ message, time }) => {
-            const delay = time * 1000 - Date.now();
-            if (delay > 0) {
-                setTimeout(() => {
-                    console.log(message);
+    // function scheduleMessages() {
+    //     data.forEach(({ message, time }) => {
+    //         const delay = time * 1000 - Date.now();
+    //         if (delay > 0) {
+    //             setTimeout(() => {
+    //                 console.log(message);
 
-                    const signuptesting = async () => {
-                        try {
-                            const response = await makeApi("/api/register-user", "post", {
-                                firstName: "test",
-                                lastName: "test",
-                                password: "211",
-                                email: "ewewewee@gmail.com",
-                                mobileNumber: "10000010100",
-                            })
+    //                 const signuptesting = async () => {
+    //                     try {
+    //                         const response = await makeApi("/api/register-user", "post", {
+    //                             firstName: "test",
+    //                             lastName: "test",
+    //                             password: "211",
+    //                             email: "ewewewee@gmail.com",
+    //                             mobileNumber: "10000010100",
+    //                         })
 
-                            const responseData = response.data
-                            if (responseData.success) {
-                                localStorage.setItem("token", responseData.token)
-                                toast.success(responseData.message || "Sign up Successfully", {
-                                    onClose: () => {
-                                        navigate("/")
-                                    },
-                                })
-                            } else {
-                                console.log("Signup failed:", responseData.error)
-                            }
-                        } catch (error) {
-                            console.log("Error during signup:", error)
-                            const errorMessage =
-                                error.response?.data?.message || "An error occurred during signup."
-                            toast.error(errorMessage)
-                        }
-                    }
+    //                         const responseData = response.data
+    //                         if (responseData.success) {
+    //                             localStorage.setItem("token", responseData.token)
+    //                             toast.success(responseData.message || "Sign up Successfully", {
+    //                                 onClose: () => {
+    //                                     navigate("/")
+    //                                 },
+    //                             })
+    //                         } else {
+    //                             console.log("Signup failed:", responseData.error)
+    //                         }
+    //                     } catch (error) {
+    //                         console.log("Error during signup:", error)
+    //                         const errorMessage =
+    //                             error.response?.data?.message || "An error occurred during signup."
+    //                         toast.error(errorMessage)
+    //                     }
+    //                 }
 
-                    signuptesting()
-
-
+    //                 signuptesting()
 
 
-                }, delay);
-            }
-        });
-    }
 
-    scheduleMessages();
+
+    //             }, delay);
+    //         }
+    //     });
+    // }
+
+    // scheduleMessages();
 
 
 

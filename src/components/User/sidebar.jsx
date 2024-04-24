@@ -65,7 +65,7 @@ const UserProfileSidebar = () => {
 					</div>
 					<div
 						className="user-account user-flexcol"
-						onClick={() => navigate("/userprofile")}
+						onClick={() => navigate("/user/userprofile")}
 					>
 						<img
 							// src={assets.user_account}
@@ -75,7 +75,7 @@ const UserProfileSidebar = () => {
 					</div>
 					<div
 						className="user-orders user-flexcol"
-						onClick={() => navigate("/userprofile/myorders")}
+						onClick={() => navigate("/user/my-orders")}
 					>
 						<img
 							// src={assets.user_orders}
@@ -85,7 +85,7 @@ const UserProfileSidebar = () => {
 					</div>
 					<div
 						className="user-address user-flexcol"
-						onClick={() => navigate("/userprofile/myaddress")}
+						onClick={() => navigate("/user/my-address")}
 					>
 						<img
 							// src={assets.user_address}
@@ -95,7 +95,7 @@ const UserProfileSidebar = () => {
 					</div>
 					<div
 						className="user-watchlist user-flexcol"
-						onClick={() => navigate("/userprofile/mywatchlist")}
+						onClick={() => navigate("/user/my-wishlist")}
 					>
 						<img
 							// src={assets.user_watchlist}

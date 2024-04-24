@@ -13,10 +13,8 @@ function Checkout() {
     const [selectPaymentMethod, setSelectPaymentMethod] = useState(null);
     const [loading, setLoading] = useState(false);
     const [cartItem, setCartItem] = useState([])
+    console.log(cartItem._id)
     const [currentPage, setCurrentPage] = useState("CHECKOUT")
-
-
-
 
     const fetchShippingAddresses = async () => {
         try {
@@ -60,7 +58,7 @@ function Checkout() {
             setLoading(true);
             const response = await makeApi("/api/create-second-order", "POST", data);
             console.log("response", response)
-            navigation("/product/all-products")
+            // navigation("/product/all-products")
         } catch (error) {
             console.error("Error fetching shipping addresses: ", error);
             setLoading(false);

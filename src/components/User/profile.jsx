@@ -3,16 +3,16 @@ import React, { useEffect, useState } from "react"
 import "../../styles/User/profile.css"
 import { useNavigate } from "react-router"
 import UserProfileSidebar from "./sidebar"
-// import { makeApi } from "../../api/callApi"
+import { makeApi } from "../../api/callApi.tsx"
 
 const MyAccount = () => {
     const navigate = useNavigate()
     const [userDatails, setUserDetails] = useState()
 
+    console.log("user details", userDatails)
     const fetchUserDetail = async () => {
         try {
-            // const responce = await makeApi("/api/my-profile", "GET")
-            const responce =null
+            const responce = await makeApi("/api/my-profile", "GET")
             setUserDetails(responce.data.user)
         } catch (error) {
             console.log(error)
@@ -38,38 +38,36 @@ const MyAccount = () => {
                 <div className="myaccount-info userprofile-info-css">
                     <div className="left-myaccount-info">
                         <img
-                            // src={userDatails.userImage}
-                            src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                            src={userDatails?.userImage}
+                            // src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
                             alt=""
                         />
                         <div className="userprofilename">
                             <span>NAME</span>
                             {/* <p>{userDatails.firstName + " " + userDatails.lastName}</p> */}
-                            <p>Vaibhav Kumar</p>
+                            <p>{userDatails?.firstName} {userDatails?.lastName}</p>
                         </div>
-                        <div className="userprofile-birthdate">
+                        {/* <div className="userprofile-birthdate">
                             <span>DATE OF BIRTH</span>
-                            {/* <p>{userDatails?.dateofbirth?.substr(0, 10)}</p> */}
                             <p> 01/01/2000 </p>
-                        </div>
-                        <div className="userprofile-gender">
+                        </div> */}
+                        {/* <div className="userprofile-gender">
                             <span>GENDER</span>
-                            {/* <p>{userDatails.gender}</p> */}
                             <p>Male</p>
-                        </div>
+                        </div> */}
                         <div className="userprofile-no">
                             <span>CONTACT NUMBER</span>
                             {/* <p>{userDatails.mobileNumber}</p> */}
-                            <p>1234567890</p>
+                            <p>{userDatails?.mobileNumber}</p>
                         </div>
                         <div className="userprofile-email">
                             <span>EMAIL ADDRESS</span>
                             {/* <p>{userDatails.email}</p> */}
-                            <p>zv5XU@example.com</p>
+                            <p>{userDatails?.email}</p>
                         </div>
                     </div>
                     <div className="right-myaccount-info">
-                        <div
+                        {/* <div
                             className="change-profileinfo"
                             onClick={() => navigate("/edit-userprofile")}
                         >
@@ -79,7 +77,7 @@ const MyAccount = () => {
                                 alt="image"
                             />
                             <p>change profile information</p>
-                        </div>{" "}
+                        </div>{" "} */}
                         {/* <div
                             className="change-profilepwd"
                             onClick={() => navigate("/edit-userprofile")}
