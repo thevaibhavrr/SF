@@ -48,7 +48,7 @@
 //                                 <div key={index} className="address-item">
 //                                     <label htmlFor={`address-${index}`} className="address-label" >
 //                                         {`${address.firstname} ${address.lastname}, ${address.address}, ${address.city}, ${address.state}, ${address.country}`}
-                                        
+
 //                                     </label>
 //                                 </div>
 //                                 {/* select button */}
@@ -91,6 +91,7 @@ import { makeApi } from '../../api/callApi.tsx';
 import UserProfileSidebar from './sidebar.jsx';
 import { Link } from 'react-router-dom';
 import "../../styles/User/myaddress.css";
+import Primaryloader from '../loaders/primaryloader.jsx';
 
 function Myaddress() {
     const [shippingAddresses, setShippingAddresses] = useState([]);
@@ -141,7 +142,8 @@ function Myaddress() {
                 <div className="shipping-address-container mt-5 pt-5">
                     <div className="shipping-address-title">Shipping Address</div>
                     <div className="shipping-address-list">
-                        {loading && <div>Loading...</div>}
+                        {loading && <div className='w-100 d-flex justify-content-center' >
+                            <Primaryloader /></div>}
                         {!loading && shippingAddresses.map((address, index) => (
                             <div className='my_billing_address_details_main_input_div'>
                                 <div key={index} className="address-item">

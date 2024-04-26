@@ -36,15 +36,7 @@ const UserProfileSidebar = () => {
 			<hr className="userprofile-hr" />
 			<div className="user-sidebar-info">
 				<div className="userProfile-sidebar">
-					<div className="userprofile-h1">
-						{/* <img
-							// src={assets.userprofile_menu}
-							alt="re"
-							className="userprofiele-menu"
-							onClick={() => setExtended((prev) => !prev)}
-						/> */}
-						<h1>PROFILE</h1>
-					</div>
+					
 					<div
 						className="userprofile-name user-flexcol"
 						onClick={() => navigate("/userprofile")}

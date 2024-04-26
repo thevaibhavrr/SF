@@ -33,7 +33,7 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
         } else {
             setIsLogin(false)
         }
-
+ 
     }, [localStorage.getItem("token")])
 
     const fetchProduct = async () => {
