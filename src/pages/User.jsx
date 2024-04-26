@@ -5,6 +5,9 @@ import UserProfile from '../components/User/sidebar'
 import MyOrders from '../components/User/Myorder'
 import Mywhislist from '../components/User/mywhislist'
 import Myaddress from '../components/User/myaddress'
+import OrderDetailsPage from '../components/User/orderdetails'
+import ShippingAddress from '../components/Information/shippingAddress'
+import EditAddress from '../components/User/editAddress'
 
 
 function User() {
@@ -18,20 +21,33 @@ function User() {
                 <Route
                     path="/userprofile"
                     element={<MyAccount />}
-                    />
-                    <Route 
+                />
+                <Route
                     path='/my-orders'
-                    element={<MyOrders/>}
-                    />
-                    <Route
+                    element={<MyOrders />}
+                />
+                <Route
                     path='/my-wishlist'
                     element={<Mywhislist />}
-                    />
-                    <Route
+                />
+                <Route
                     path='/my-address'
                     element={<Myaddress />}
-                    />
+                />
+                <Route
+                    path='/my-orders/order-details/:orderId'
+                    element={<OrderDetailsPage />}
+                />
 
+                {/* address */}
+                <Route
+                    path='/address/add-address'
+                    element={<ShippingAddress />}
+                />
+                <Route
+                    path='/address/edit-address/:addressId'
+                    element={<EditAddress />}
+                />
             </Routes>
         </div>
     )

@@ -27,7 +27,7 @@ code {
   --navy-blue-color: #232f6d;
   --black-color: black;
   --white-color: white;
-  --bg-white-color: #F8F8FF;
+  --bg-white-color: #f8f8ff;
 }
 
 /* common button */
@@ -39,6 +39,21 @@ code {
   cursor: pointer;
   font-family: var(--Rhodium--Libre-font);
   transition: all 0.5s ease;
+}
+.click_buttons_second {
+  background-color: var(--navy-blue-color);
+  border: 2px solid var(--golden-color);
+  padding: 12px 30px;
+  border-radius: 50px;
+  color: var(--white-color);
+  cursor: pointer;
+  font-family: var(--Rhodium--Libre-font);
+  transition: all 0.5s ease;
+}
+.click_buttons_second:hover {
+  background-color: var(--white-color);
+  color: var(--navy-blue-color);
+  border: 2px solid var(--golden-color);
 }
 .click_buttons:hover {
   background-color: var(--navy-blue-color);
@@ -62,12 +77,12 @@ code {
   text-transform: uppercase;
   font-family: var(--sura-font);
 }
-.golden-color-text{
+.golden-color-text {
   color: var(--golden-color);
 }
 
 /* link tag */
-.css-for-link-tag{
+.css-for-link-tag {
   text-decoration: none;
 }
 

@@ -36,3 +36,13 @@ width: 100%;
 
 
 /* payment */
+.success-gif-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  width: 100%;
+
+}
+.success-gif{
+  width: 20%;
+}

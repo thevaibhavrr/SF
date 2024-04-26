@@ -17,6 +17,18 @@
     width: 100%;
 }
 
+/* empty cart */
+.empty_cart_div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+}
+.NO_cart_image{
+    width: 50%;
+}
+
 /* details */
 .cart_item_details_parent_div{
     width: 100%;

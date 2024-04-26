@@ -1,3 +1,4 @@
+
 .order-summary {
     margin-top: 30px;
     display: grid;
@@ -11,12 +12,12 @@
     font-weight: 500;
     line-height: 20.65px;
     text-align: left;
-    color: #E5087E;
+    color: var(--navy-blue-color);
   }
   
   .order-summary2 {
     margin: 10px 0;
-    color: #AE7B37;
+    color: var(--navy-blue-color);
     font-size: 22px;
     font-weight: 600;
     background: #fff;
@@ -30,9 +31,9 @@
   }
   
   .order-summary2 button {
-    background: #E5087E;
+    background: var(--golden-color);
     border: 0;
-    padding: 5px;
+    padding: 10px 20px ;
     border-radius: 20px;
     font-size: 18px;
   }

@@ -79,7 +79,9 @@ function CartItem() {
             </div>
                 :
                 <div>
-                    {IscartEmpty && <div className='empty_cart_div'>Cart is empty</div>}
+                    {IscartEmpty && <div className='empty_cart_div'>
+                        <img src='https://assets.materialup.com/uploads/16e7d0ed-140b-4f86-9b7e-d9d1c04edb2b/preview.png' className='NO_cart_image' />
+                    </div>}
                     {!IscartEmpty &&
                         <div>
                             <div>

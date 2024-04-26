@@ -1,32 +1,31 @@
-import React, { useContext, useEffect, useState } from "react"
-import "../../styles/User/myorder.css"
-import { useNavigate } from "react-router"
-import { makeApi } from "../../api/callApi.tsx"
 
-import { Link } from "react-router-dom"
-import UserProfileSidebar from "./sidebar.jsx"
-// api / get - my - order
+
+import React, { useEffect, useState } from "react";
+import "../../styles/User/myorder.css";
+import { useNavigate } from "react-router";
+import { makeApi } from "../../api/callApi.tsx";
+import { Link } from "react-router-dom";
+import UserProfileSidebar from "./sidebar.jsx";
+
 const MyOrders = () => {
-    const navigate = useNavigate()
-    const [orderStatus, setOrderStatus] = useState([])
+    const navigate = useNavigate();
+    const [orderStatus, setOrderStatus] = useState([]);
 
     useEffect(() => {
-        const fetchWishlist = async () => {
+        const fetchOrders = async () => {
             try {
-                const response = await makeApi(`/api/get-my-second-order`, "GET")
-                setOrderStatus(response.data.secondorder)
+                const response = await makeApi("/api/get-my-second-order", "GET");
+                setOrderStatus(response.data.secondorders);
             } catch (error) {
-                console.log(error)
+                console.log(error);
             }
-        }
-        fetchWishlist()
-    }, [])
-    console.log(orderStatus) // Check if orderStatus is populated correctly
+        };
+        fetchOrders();
+    }, []);
 
-    console.log("Order status", orderStatus)
     return (
         <div className="d-flex">
-            <div className="" >
+            <div>
                 <UserProfileSidebar />
             </div>
             <div className="myorders w-100">
@@ -47,36 +46,27 @@ const MyOrders = () => {
                     {/* <br /> */}
                 </div>
                 {orderStatus.map((order) => {
-                    return order.orderItems.map((item) => {
-                        if (item.productId) {
-                            return (
-                                <div
-                                    className="order-summary order-summary2"
-                                    key={item._id}
-                                >
-                                    <div>
-                                        <img
-                                            src={item.productId.thumbnail}
-                                            alt=""
-                                        />
-                                        <p className="myproduct-name">{item.productId.name}</p>
-                                    </div>
-                                    <p>₹{item.totalPrice}</p>
-                                    <p>{order.status}</p>
-
-                                    <Link to={`/userprofile/myorders/${order._id}`}>
-                                        <button>View</button>
-                                    </Link>
+                    return order.CartId.orderItems.map((item) => {
+                        return (
+                            <div className="order-summary order-summary2" key={item._id}>
+                                <div>
+                                    <img src={item.productId.thumbnail} alt={item.productId.name} />
+                                    <p className="myproduct-name">{item.productId.name}</p>
                                 </div>
-                            )
-                        } else {
-                            return null
-                        }
-                    })
+                                <p>₹{item.totalPrice}</p>
+
+                                <p>{order.status}</p>
+                                <Link to={`/user/my-orders/order-details/${order._id}`}>
+                                    <button>View</button>
+                                </Link>
+                            </div>
+                        );
+                    });
                 })}
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default MyOrders
+export default MyOrders;
+
