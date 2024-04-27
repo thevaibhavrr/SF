@@ -70,7 +70,7 @@ const ProductSidebar = () => {
 						</div>
 					</div >
 					{/* filter by price */}
-					<div className='product_sliderbar_options'>
+					<div className='product_sliderbar_options price_filter_sidebar_pc_sidebar'>
 						<div className='proudct_sidebar_heading'>Filter By Price:</div>
 						<div className='main_price_range_product_sidebar' >
 							{/* range for min price */}

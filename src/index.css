@@ -111,4 +111,7 @@ code {
     padding: 10px 20px;
     border-radius: 50px;
   }
+  .Add_to_cart_button {
+    padding: 10px 10px;
+  }
 }
