@@ -27,7 +27,7 @@ function ForgotPasswordForm() {
         toast.success(response.data.message, {
 
           onClose: () => {
-            navigate("/otp-verified")
+            navigate("/user-password/otp-verified")
             setMailSend(false)
           }
         })

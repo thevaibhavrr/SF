@@ -13,7 +13,7 @@ function OtpVerifiedForm() {
   const [otp, setOtp] = useState(Array(6).fill(''));
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
-  const [IsOTPvalid, setIsOTPvalid] = useState(true);
+  const [IsOTPvalid, setIsOTPvalid] = useState(false);
   const [OTPverified, setOTPverified] = useState(false);
   const [passwordUpdated, setPasswordUpdated] = useState(false);
   const inputRefs = useRef([]);
