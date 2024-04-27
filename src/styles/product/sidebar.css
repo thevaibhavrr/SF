@@ -80,3 +80,16 @@
     cursor: pointer;
   }
   
+@media (max-width:800px) {
+  
+    .main_product_sidebar_div{
+        max-width: 200px;
+        min-width: 200px;
+        padding: 20px;
+    }
+   
+    .proudct_sidebar_heading{
+        font-size: 22px;
+    }
+ 
+}
