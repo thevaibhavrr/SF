@@ -5,7 +5,7 @@ import Orderbar from '../orderbar/orderbar'
 
 function MainCart() {
   return (
-    <div>
+    <div style={{minHeight:"100vh" }}  >
         <CartItem/>
         
     </div>
