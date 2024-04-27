@@ -28,10 +28,10 @@
 .header_icons:hover {
   scale: 1.1;
 }
-.last_pcHeader_options{
+/* .last_pcHeader_options{
   display: flex;
   gap:40px
-}
+} */
 
 @media (max-width: 1024px) {
   .main_PCHeader_div {
@@ -41,28 +41,27 @@
     padding: 10px 0px;
     font-size: 18px;
   }
-
   .Pc_Header_logo {
     width: 62%;
   }
+  .Pc_Header_logo_div{
+    text-align: center;
+    width: 25%;
+  }
 }
-@media (max-width: 790px) {
+@media (max-width: 800px) {
   .main_PCHeader_div {
     display: flex;
+    justify-content: space-around;
     gap: 10px;
     padding: 10px 0px;
-    font-size: 16px;
+    font-size: 15px;
   }
-  .main_PCHeader_div div{
-    margin: 0px 6px;
-    width: 100%;
-  }
-
   .Pc_Header_logo {
-    width: 100%;
+    width: 60%;
   }
-  .last_pcHeader_options{
-    display: flex;
-    gap:20px
+  .Pc_Header_logo_div{
+    text-align: center;
+    width: 25%;
   }
 }
