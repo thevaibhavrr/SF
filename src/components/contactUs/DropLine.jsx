@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { ToastContainer, toast } from "react-toastify";
 import "../../styles/contactUs/DropLine.css"
+import { makeApi } from "../../api/callApi.tsx";
 function DropLine() {
 
     const [Data, setData] = useState({
@@ -46,19 +47,18 @@ function DropLine() {
             return;
         }
         try {
-            // const response = await makeApi("/api/create-message", "POST", Data)
-            // console.log(response)
-            // toast.success(response.data.message,{
-            // 	onClose: () => {
-            // 		setData({
-            // 			"firstname": "",
-            // 			"lastname": "",
-            // 			"email": "",
-            // 			"message": "",
-            // 			"phonennumber": ""
-            // 		})
-            // 	}
-            // })
+            const response = await makeApi("/api/create-message", "POST", Data)
+            toast.success(response.data.message,{
+            	onClose: () => {
+            		setData({
+            			"firstname": "",
+            			"lastname": "",
+            			"email": "",
+            			"message": "",
+            			"phonennumber": ""
+            		})
+            	}
+            })
             toast.info("Thank you for sharing your thoughts with us")
 
         } catch (error) {

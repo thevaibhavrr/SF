@@ -94,7 +94,6 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
         setShowPopup(false);
     };
 
-    console.log("IsLogin", IsLogin)
 
     const toggleWishlist = async (id) => {
         if (!IsLogin) {

@@ -9,7 +9,6 @@ const MyAccount = () => {
     const navigate = useNavigate()
     const [userDatails, setUserDetails] = useState()
 
-    console.log("user details", userDatails)
     const fetchUserDetail = async () => {
         try {
             const responce = await makeApi("/api/my-profile", "GET")
@@ -23,7 +22,6 @@ const MyAccount = () => {
         fetchUserDetail()
     }, [])
 
-    console.log("user details", userDatails)
 
     return (
         <div className="d-flex">

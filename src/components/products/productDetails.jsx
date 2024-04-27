@@ -11,7 +11,6 @@ import HorizotalLoader from '../loaders/horizotalLoader.jsx';
 function ProductDetails() {
     const { productId } = useParams();
     const [product, setProduct] = useState();
-    console.log(product)
     const [selectedImage, setSelectedImage] = useState('');
     const [loading, setLoading] = useState(false);
     const [AddTocartLoader, setAddTocartLoader] = useState(false);
@@ -19,7 +18,6 @@ function ProductDetails() {
     const [wishlistItems, setWishlistItems] = useState([]);
     const [cartItems, setCartItems] = useState([]);
     const [isInCart, setIsInCart] = useState(false);
-    console.log("productId", isInCart)
     // fetch data
     // product details
     const fetchProduct = async () => {

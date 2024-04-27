@@ -67,7 +67,6 @@ const ShippingAddress = () => {
 
     try {
       const response = await makeApi("/api/create-shiped-address", "POST", formData);
-      console.log("Address created successfully:", response.data);
       if (response.data.success === true) {
         toast.success(response.data.message, {
           onClose: () => {

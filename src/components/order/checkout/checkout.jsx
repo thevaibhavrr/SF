@@ -58,7 +58,6 @@ function Checkout() {
         try {
             setLoading(true);
             const response = await makeApi("/api/create-second-order", "POST", data);
-            console.log("response", response);
             setOrderPlaced(true); 
             setTimeout(() => {
                 setOrderPlaced(false);

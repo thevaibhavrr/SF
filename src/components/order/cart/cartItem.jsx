@@ -99,8 +99,8 @@ function CartItem() {
                                     <div>Total</div>
                                 </div>
                                 {/* details */}
-                                {cartPoductList && cartPoductList.map((item) => (
-                                    <div className='cart_item_details_parent_div' >
+                                {cartPoductList && cartPoductList.map((item,index) => (
+                                    <div className='cart_item_details_parent_div' key={index} >
                                         <div className='cart_item_details' >
                                             <div>
                                                 <img src={item.productId.thumbnail} alt=' product ' className='cart_item_image' />

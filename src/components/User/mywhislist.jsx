@@ -16,7 +16,6 @@ function Mywhislist({ search, category, minPrice, maxPrice }) {
     const [loading, setLoading] = useState(false);
     const [wishlistItems, setWishlistItems] = useState([]);
     const [watchlistProducts, setWatchlistProducts] = useState([]);
-    console.log("watchlistProducts---------------", watchlistProducts)
     const [cartItems, setCartItems] = useState([]);
     const [ResultPerPage, setResultPerPage] = useState(20);
     const [currentPage, setCurrentPage] = useState(1);
@@ -176,7 +175,6 @@ function Mywhislist({ search, category, minPrice, maxPrice }) {
     };
 
     const getProductQuantity = (productId) => {
-        console.log("productId------------", productId)
         const cartItem = cartItems.find(item => item.productId === productId);
         return cartItem ? cartItem.quantity : 0;
     };
@@ -200,7 +198,6 @@ function Mywhislist({ search, category, minPrice, maxPrice }) {
                     <div className="">
                         <div className="main_all_product_div">
                             {watchlistProducts.map((product, index) => {
-                                console.log("----------", product.products)
                                 return <div className="product_div_all_product_parent" key={index}>
                                     <div className="product_div_all_product">
                                         <Link to={`/product/product-details/${product.products._id}`} >

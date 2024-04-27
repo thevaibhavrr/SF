@@ -41,7 +41,6 @@ function EditAddress() {
         try {
             setSubmitting(true);
             const response = await makeApi(`/api/update-shiped-address/${addressId}`, "PUT", formData);
-            console.log("Address updated successfully:", response.data);
             if (response.data.success === true) {
                 toast.success("Address updated successfully", {
                     onClose: () => {

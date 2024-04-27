@@ -4,6 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from 'react-router-dom';
 
 import "../../styles/Information/billingAdress.css";
+import { makeApi } from "../../api/callApi.tsx";
 
 const BillingAddress = () => {
 	const navigate = useNavigate();
@@ -63,9 +64,7 @@ const BillingAddress = () => {
 	
   
 	try {
-	//   const response = await makeApi("/api/create-billing-address", "POST", formData);
-    const response ="a"
-	  console.log("Address created successfully:", response.data);
+	  const response = await makeApi("/api/create-billing-address", "POST", formData);
 	  if (response.data.success === true) {
 		  toast.success(response.data.message, {
 			  onClose: () => {

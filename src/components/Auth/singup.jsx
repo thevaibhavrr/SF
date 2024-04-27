@@ -10,74 +10,6 @@ const Signup = () => {
     const navigate = useNavigate()
 
 
-
-    const data = [
-        {
-            message: "Hello World! 11:13:16  sec ",
-            time: 1713937335,
-        },
-        // {
-        //     message: "Hello World! 2  10:55:50 ",
-        //     time: 1713936350,
-        // },
-        // {
-        //     message: "Hello World! 3 10:56:15 ",
-        //     time: 1713936375,
-        // },
-    ];
-
-    // function scheduleMessages() {
-    //     data.forEach(({ message, time }) => {
-    //         const delay = time * 1000 - Date.now();
-    //         if (delay > 0) {
-    //             setTimeout(() => {
-    //                 console.log(message);
-
-    //                 const signuptesting = async () => {
-    //                     try {
-    //                         const response = await makeApi("/api/register-user", "post", {
-    //                             firstName: "test",
-    //                             lastName: "test",
-    //                             password: "211",
-    //                             email: "ewewewee@gmail.com",
-    //                             mobileNumber: "10000010100",
-    //                         })
-
-    //                         const responseData = response.data
-    //                         if (responseData.success) {
-    //                             localStorage.setItem("token", responseData.token)
-    //                             toast.success(responseData.message || "Sign up Successfully", {
-    //                                 onClose: () => {
-    //                                     navigate("/")
-    //                                 },
-    //                             })
-    //                         } else {
-    //                             console.log("Signup failed:", responseData.error)
-    //                         }
-    //                     } catch (error) {
-    //                         console.log("Error during signup:", error)
-    //                         const errorMessage =
-    //                             error.response?.data?.message || "An error occurred during signup."
-    //                         toast.error(errorMessage)
-    //                     }
-    //                 }
-
-    //                 signuptesting()
-
-
-
-
-    //             }, delay);
-    //         }
-    //     });
-    // }
-
-    // scheduleMessages();
-
-
-
-
-
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
@@ -126,13 +58,10 @@ const Signup = () => {
                 })
             } else {
                 console.log("Signup failed:", responseData.error)
-                // Handle signup failure
             }
         } catch (error) {
             // console.log("Error during signup:", error)
             // toast.error(error.response.data.message)
-
-            // Handle error
             console.log("Error during signup:", error)
             const errorMessage =
                 error.response?.data?.message || "An error occurred during signup."
