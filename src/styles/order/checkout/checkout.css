@@ -1,6 +1,8 @@
 .main_checkout_div {
   display: flex;
   padding: 30px 100px;
+  min-height: 100vh;
+
 }
 .Order_page_display_none {
   /* display: none; */

@@ -85,6 +85,10 @@ code {
 .css-for-link-tag {
   text-decoration: none;
 }
+.css-for-link-tag-color{
+  text-decoration: none;
+color:var(--white-color);
+}
 
 /* media query */
 @media (max-width: 1026px) {

@@ -7,6 +7,7 @@ function MainCart() {
   return (
     <div>
         <CartItem/>
+        
     </div>
   )
 }

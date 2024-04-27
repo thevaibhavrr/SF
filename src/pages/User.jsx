@@ -8,6 +8,7 @@ import Myaddress from '../components/User/myaddress'
 import OrderDetailsPage from '../components/User/orderdetails'
 import ShippingAddress from '../components/Information/shippingAddress'
 import EditAddress from '../components/User/editAddress'
+import Ecombar from '../components/Header/ecombar'
 
 
 function User() {
@@ -49,6 +50,8 @@ function User() {
                     element={<EditAddress />}
                 />
             </Routes>
+            <Ecombar/>
+
         </div>
     )
 }

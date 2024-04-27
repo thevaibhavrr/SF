@@ -2,6 +2,7 @@ import React from 'react'
 import { Route, Routes } from "react-router"
 import ProductSidebar from '../components/products/slidebar/sidebar'
 import ProductDetails from '../components/products/productDetails'
+import Ecombar from '../components/Header/ecombar'
 
 
 function Product() {
@@ -24,6 +25,8 @@ function Product() {
                     />
 
             </Routes>
+            <Ecombar/>
+
         </div>
     )
 }

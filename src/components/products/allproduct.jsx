@@ -33,7 +33,7 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
         } else {
             setIsLogin(false)
         }
- 
+
     }, [localStorage.getItem("token")])
 
     const fetchProduct = async () => {
@@ -94,12 +94,12 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
         setShowPopup(false);
     };
 
-    console.log("IsLogin",IsLogin)
+    console.log("IsLogin", IsLogin)
 
     const toggleWishlist = async (id) => {
         if (!IsLogin) {
             setShowPopup(true);
-        }else{
+        } else {
             try {
                 setAddToWishlistLoader(true);
                 const method = "POST";
@@ -118,41 +118,41 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
                 setAddToWishlistLoader(false);
             }
         }
-       
+
     };
 
     const addToCart = async (productId) => {
         if (!IsLogin) {
             setShowPopup(true);
-        }else{
-        try {
-            setAddTocartLoader(true);
-            const method = "POST";
-            const endpoint = "/api/add-to-cart";
-            const data = await makeApi(endpoint, method, {
-                productId, "quantity": 1,
-                "shippingPrice": 0
-            });
-            setCartItems(prevState => {
-                const existingItem = prevState.find(item => item.productId === productId);
-                if (existingItem) {
-                    return prevState.map(item => {
-                        if (item.productId === productId) {
-                            return { ...item, quantity: item.quantity + 1 };
-                        }
-                        return item;
-                    });
-                } else {
-                    return [...prevState, { productId, quantity: 1 }];
-                }
-            });
-        } catch (error) {
-            console.log(error.response.data);
-        } finally {
-            fetchCart();
-            setAddTocartLoader(false);
+        } else {
+            try {
+                setAddTocartLoader(true);
+                const method = "POST";
+                const endpoint = "/api/add-to-cart";
+                const data = await makeApi(endpoint, method, {
+                    productId, "quantity": 1,
+                    "shippingPrice": 0
+                });
+                setCartItems(prevState => {
+                    const existingItem = prevState.find(item => item.productId === productId);
+                    if (existingItem) {
+                        return prevState.map(item => {
+                            if (item.productId === productId) {
+                                return { ...item, quantity: item.quantity + 1 };
+                            }
+                            return item;
+                        });
+                    } else {
+                        return [...prevState, { productId, quantity: 1 }];
+                    }
+                });
+            } catch (error) {
+                console.log(error.response.data);
+            } finally {
+                fetchCart();
+                setAddTocartLoader(false);
+            }
         }
-    }
     };
 
     const removeFromCart = async (productId) => {

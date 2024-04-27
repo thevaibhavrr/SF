@@ -2,9 +2,8 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-  
     padding: 100px 80px 80px 80px;
-  
+    min-height: 100vh;
   }
   
   .product-display-left {
