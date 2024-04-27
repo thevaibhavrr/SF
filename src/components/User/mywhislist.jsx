@@ -8,7 +8,6 @@ import Primaryloader from '../loaders/primaryloader.jsx';
 import Heartloader from '../loaders/hearloader.jsx';
 import HorizotalLoader from '../loaders/horizotalLoader.jsx';
 import { Link } from "react-router-dom"
-import LoginPopup from '../Auth/LoginPopup.jsx';
 import UserProfileSidebar from './sidebar.jsx';
 
 function Mywhislist({ search, category, minPrice, maxPrice }) {
@@ -185,7 +184,7 @@ function Mywhislist({ search, category, minPrice, maxPrice }) {
     return (
         <>
         <div className="d-flex">
-            <div className="" >
+            <div className="my_wishlist_mobile_view" >
                 <UserProfileSidebar />
             </div>
             <div className='top_parent_div_all_product' >

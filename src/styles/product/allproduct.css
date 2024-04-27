@@ -236,6 +236,10 @@
 
 @media (max-width:500px) {
   
+  .my_wishlist_mobile_view{
+    display: none;
+  }
+
   .main_all_product_div {
     padding: 20px 0px;
     gap: 1px;
@@ -289,3 +293,5 @@
     font-size: 30px;
   }
 }
+
+
