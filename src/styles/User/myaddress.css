@@ -58,3 +58,20 @@
     background-color: #f2f2f2;
   }
   
+  @media (max-width:500px) {
+    .my_billing_address_details_main_input_div{
+      display: flex;
+      padding: 10px 20px;
+    }
+    .select_button_my_address_div{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      padding: 0px 20px;
+  }
+  .select_button_my_address_div div{
+      cursor: pointer;
+  }
+  
+  }

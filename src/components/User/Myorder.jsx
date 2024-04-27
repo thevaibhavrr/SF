@@ -5,6 +5,7 @@ import { makeApi } from "../../api/callApi.tsx";
 import { Link } from "react-router-dom";
 import UserProfileSidebar from "./sidebar.jsx";
 import Primaryloader from "../loaders/primaryloader.jsx";
+import BackButton from "../backButton.jsx";
 
 const MyOrders = () => {
     const navigate = useNavigate();
@@ -28,12 +29,17 @@ const MyOrders = () => {
     }, []);
 
     return (
+        <>
+         <div className="hide_for_pc_screen" >
+                <BackButton pageLocation="/user/user-profile" />
+            </div>
         <div className="d-flex">
-            <div>
+            <div  className="my_wishlist_mobile_view">
                 <UserProfileSidebar />
             </div>
+           
             <div className="myorders w-100">
-                <div className="userprofile-heading">
+                <div className="userprofile-heading my_wishlist_mobile_view">
                     <h1>MY ORDERS</h1>
                 </div>
                 <div className="order-history">
@@ -83,6 +89,7 @@ const MyOrders = () => {
                 </div>
             </div>
         </div>
+        </>
     );
 }
 

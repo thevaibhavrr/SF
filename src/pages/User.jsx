@@ -9,6 +9,7 @@ import OrderDetailsPage from '../components/User/orderdetails'
 import ShippingAddress from '../components/Information/shippingAddress'
 import EditAddress from '../components/User/editAddress'
 import Ecombar from '../components/Header/ecombar'
+import UserProfileForMobile from '../components/User/mainMobilepageuserPofile'
 
 
 function User() {
@@ -49,6 +50,7 @@ function User() {
                     path='/address/edit-address/:addressId'
                     element={<EditAddress />}
                 />
+                <Route path='/user-profile' element={<UserProfileForMobile />} />
             </Routes>
             <Ecombar/>
 

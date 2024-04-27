@@ -4,17 +4,25 @@ import "../../styles/User/profile.css"
 import { useNavigate } from "react-router"
 import UserProfileSidebar from "./sidebar"
 import { makeApi } from "../../api/callApi.tsx"
+import BackButton from "../backButton.jsx"
+import Primaryloader from "../loaders/primaryloader.jsx"
 
 const MyAccount = () => {
     const navigate = useNavigate()
     const [userDatails, setUserDetails] = useState()
+    const [AllProductLoader, setAllProductLoader] = useState(false);
+
 
     const fetchUserDetail = async () => {
         try {
+            setAllProductLoader(true);
+
             const responce = await makeApi("/api/my-profile", "GET")
             setUserDetails(responce.data.user)
         } catch (error) {
             console.log(error)
+        }finally {
+            setAllProductLoader(false);
         }
     }
 
@@ -24,16 +32,31 @@ const MyAccount = () => {
 
 
     return (
+        <>
+        
+        <div className='top_parent_div_all_product' >
+                {AllProductLoader ? <div className="All_Product_loader">
+                    <div className='' >
+                        <Primaryloader />
+                    </div>
+                </div>:
+
         <div className="d-flex">
-        <div className="" >
-            <UserProfileSidebar/>
-        </div>
-        <div className="myaccount w-100">
-            <div className="userprofile-heading">
-                <h1>PERSONAL INFORMATION</h1>
+            <div className="my_wishlist_mobile_view" >
+                <UserProfileSidebar />
             </div>
-            {/* {userDatails && ( */}
+            <div className="hide_for_pc_screen" >
+                <BackButton pageLocation="/user/user-profile" />
+            </div>
+            <div className="myaccount w-100">
+                {/* <div className="userprofile-heading my_wishlist_mobile_view">
+                    <h1>PERSONAL INFORMATION</h1>
+                </div> */}
+                {/* {userDatails && ( */}
                 <div className="myaccount-info userprofile-info-css">
+                    {/* <div>
+
+                    </div> */}
                     <div className="left-myaccount-info">
                         <img
                             src={userDatails?.userImage}
@@ -89,10 +112,13 @@ const MyAccount = () => {
                         </div> */}
                     </div>
                 </div>
-            {/* )} */}
-        </div>
+                {/* )} */}
+            </div>
 
         </div>
+}
+</div>
+        </>
     )
 }
 

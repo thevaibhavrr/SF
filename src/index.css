@@ -30,6 +30,11 @@ code {
   --bg-white-color: #f8f8ff;
 }
 
+/* my query */
+.hide_for_pc_screen{
+  display: none;
+}
+
 /* common button */
 .click_buttons {
   border: 2px solid var(--navy-blue-color);
@@ -117,5 +122,8 @@ color:var(--white-color);
   }
   .Add_to_cart_button {
     padding: 10px 10px;
+  }
+  .hide_for_pc_screen{
+    display: block;
   }
 }

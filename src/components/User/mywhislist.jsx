@@ -187,6 +187,7 @@ function Mywhislist({ search, category, minPrice, maxPrice }) {
             <div className="my_wishlist_mobile_view" >
                 <UserProfileSidebar />
             </div>
+            
             <div className='top_parent_div_all_product' >
                 {AllProductLoader ? <div className="All_Product_loader">
                     <div className='' >

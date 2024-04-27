@@ -26,7 +26,7 @@ function Ecombar() {
         if (IsLogin && PageName == "Cart") {
             navigation('/order/my-cart')
         } else if (IsLogin && PageName == "Profile") {
-            navigation('/user/profile')
+            navigation('/user/user-profile')
         } else if (IsLogin && PageName == "Wishlist") {
             navigation('/user/my-wishlist')
         }

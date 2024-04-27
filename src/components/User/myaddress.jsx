@@ -5,6 +5,7 @@ import UserProfileSidebar from './sidebar.jsx';
 import { Link } from 'react-router-dom';
 import "../../styles/User/myaddress.css";
 import Primaryloader from '../loaders/primaryloader.jsx';
+import BackButton from '../backButton.jsx';
 
 function Myaddress() {
     const [shippingAddresses, setShippingAddresses] = useState([]);
@@ -48,10 +49,19 @@ function Myaddress() {
 
     return (
         <div>
+            <div className='top_parent_div_all_product' >
+                {loading ? <div className="All_Product_loader">
+                    <div className='' >
+                        <Primaryloader />
+                    </div>
+                </div>:
             <div className="d-flex">
-                <div className="">
+                <div className="my_wishlist_mobile_view">
                     <UserProfileSidebar />
                 </div>
+                <div className="hide_for_pc_screen" >
+                <BackButton pageLocation="/user/user-profile" />
+            </div>
                 <div className="shipping-address-container mt-5 pt-5">
                     <div className="shipping-address-title">Shipping Address</div>
                     <div className="shipping-address-list">
@@ -91,6 +101,8 @@ function Myaddress() {
                     </div>
                 </div>
             </div>
+}
+</div>
 
             {showDeletePopup && (
                 <div className="delete-popup">

@@ -16,9 +16,8 @@ import OtpVerifiedForm from "./components/Auth/otp";
 function App() {
   return (
     <div>
-			{!useLocation().pathname.includes("/user-password") && <MainHeader />}
+      {!useLocation().pathname.includes("/user-password") && <MainHeader />}
 
-      
       <Routes>
         <Route path="/" element={<Home />} />
         {/* about */}
@@ -36,8 +35,16 @@ function App() {
         {/* order */}
         <Route path="/order/*" element={<Order />} />
         {/* auth */}
-        <Route path="/user-password/Forgot-Password" element={<ForgotPasswordForm />} />
-        <Route path="/user-password/otp-verified" element={<OtpVerifiedForm />} />
+        <Route
+          path="/user-password/Forgot-Password"
+          element={<ForgotPasswordForm />}
+        />
+        <Route
+          path="/user-password/otp-verified"
+          element={<OtpVerifiedForm />}
+        />
+        {/*  unknown page */}
+        <Route path="*" element={<Home />} />
       </Routes>
       <Footer />
     </div>
