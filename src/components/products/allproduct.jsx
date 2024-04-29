@@ -15,7 +15,7 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
     const [loading, setLoading] = useState(false);
     const [wishlistItems, setWishlistItems] = useState([]);
     const [cartItems, setCartItems] = useState([]);
-    const [ResultPerPage, setResultPerPage] = useState(20);
+    const [ResultPerPage, setResultPerPage] = useState(24);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const [toalProduct, setToalProduct] = useState(0);
@@ -50,7 +50,7 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
         }
     };
     useEffect(() => {
-        const a = Math.ceil(toalProduct / ResultPerPage);
+        const a = Math.ceil(products.length / ResultPerPage);
         setTotalPages(a);
     }, [products, ResultPerPage]);
     const fetchCart = async () => {
