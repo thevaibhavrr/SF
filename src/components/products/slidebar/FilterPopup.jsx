@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import "../../../styles/product/filterpopup.css";
 import { makeApi } from '../../../api/callApi.tsx';
-
+ 
 const FilterPopup = ({ onClose, onSubmit }) => {
     const [showPriceRange, setShowPriceRange] = useState(true);
     const [showCategoryMenu, setShowCategoryMenu] = useState(false);
