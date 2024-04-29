@@ -89,7 +89,9 @@
     font-size: 22px;
   }
 }
-
+.more_icon_sidebar {
+  display: none;
+}
 @media (max-width: 500px) {
   .main_product_sidebar_top_parent_div {
     flex-direction: column;
@@ -101,10 +103,11 @@
     display: flex;
     flex-direction: row;
     gap: 0px;
-    padding: 10px;
+    padding: 10px 5px;
+    justify-content: center;
   }
   .proudct_sidebar_heading {
-    font-size: 17px;
+    font-size: 16px;
   }
 
   /* price range */
@@ -112,32 +115,39 @@
     display: none;
   }
 
+  /* search */
+  .input_for_search_sidebar {
+    width: 90%;
+    padding: 10px 10px;
+    border-radius: 50px;
+    border: 1px solid var(--navy-blue-color);
+  }
 
-  
-/* search */
-.input_for_search_sidebar {
-  width: 70%;
-  padding: 10px 20px;
-  border-radius: 50px;
-  border: 1px solid var(--navy-blue-color);
+  /* drop down */
+  .input_for_category_sidebar {
+    width: 90%;
+    text-align: center;
+    transition: all 0.5s ease;
+    border: 1px solid var(--navy-blue-color);
+    padding: 10px;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+  .input_category_options {
+    text-align: center;
+    color: var(--golden-color);
+    width: 100%;
+  }
+
+  .more_icon_sidebar {
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .more_icon_sidebar_div {
+    padding: 10px 0px;
+  }
 }
 
-/* drop down */
-.input_for_category_sidebar {
-  width: 70%;
-  text-align: center;
-  transition: all 0.5s ease;
-  border: 1px solid var(--navy-blue-color);
-  padding: 10px;
-  border-radius: 50px;
-  cursor: pointer;
-}
-.input_category_options {
-  text-align: center;
-  color: var(--golden-color);
-}
-
-.input_for_category_sidebar option :hover {
-  background-color: var(--navy-blue-color);
-}
-}
+/* big screeens e icon remmove krna h */
