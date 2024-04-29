@@ -15,7 +15,7 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
     const [loading, setLoading] = useState(false);
     const [wishlistItems, setWishlistItems] = useState([]);
     const [cartItems, setCartItems] = useState([]);
-    const [ResultPerPage, setResultPerPage] = useState(24);
+    const [ResultPerPage, setResultPerPage] = useState(26);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const [toalProduct, setToalProduct] = useState(0);
@@ -39,7 +39,7 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
     const fetchProduct = async () => {
         try {
             setAllProductLoader(true);
-            const response = await makeApi(`/api/get-all-products?name=${search}&category=${category}&minPrice=${minPrice}&maxPrice=${maxPrice}&page=${currentPage}&IsOutOfStock=false`, "GET");
+            const response = await makeApi(`/api/get-all-products?name=${search}&category=${category}&minPrice=${minPrice}&maxPrice=${maxPrice}&page=${currentPage}&perPage=${ResultPerPage}&IsOutOfStock=false`, "GET");
             setProducts(response.data.products);
             setToalProduct(response.data.totalProducts);
 
@@ -50,7 +50,7 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
         }
     };
     useEffect(() => {
-        const a = Math.ceil(products.length / ResultPerPage);
+        const a = Math.ceil(toalProduct / ResultPerPage);
         setTotalPages(a);
     }, [products, ResultPerPage]);
     const fetchCart = async () => {
