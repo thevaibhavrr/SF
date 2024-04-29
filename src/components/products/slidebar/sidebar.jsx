@@ -5,8 +5,12 @@ import "../../../styles/product/sidebar.css";
 import Allproduct from '../allproduct';
 import { makeApi } from '../../../api/callApi.tsx';
 import FilterPopup from './FilterPopup.jsx';
+import { useNavigate } from 'react-router-dom';
+
 
 const ProductSidebar = () => {
+    const history = useNavigate();
+
     const [minPrice, setMinPrice] = useState(0);
     const [maxPrice, setMaxPrice] = useState(1000);
     const [categories, setCategories] = useState([]);
@@ -33,6 +37,10 @@ const ProductSidebar = () => {
         setMaxPrice(filterData.maxPrice);
         setCategory(filterData.selectedCategory);
     };
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        history("/auth/login");
+    }
 
     return (
         <>
@@ -90,17 +98,20 @@ const ProductSidebar = () => {
                             </div>
                         </div>
                     </div>
-                    {/* more */}
+
+                  {/* more */}
                     <div className='product_sliderbar_options more_icon_sidebar'>
                         <div className='proudct_sidebar_heading'> More:</div>
                         {/* drop down */}
-                        <div className='more_icon_sidebar_div'  onClick={() => setShowPopup(true)}>
+                        <div className='more_icon_sidebar_div' onClick={() => setShowPopup(true)}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-three-dots-vertical" viewBox="0 0 16 16">
                                 <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
                             </svg>
                         </div>
                     </div>
+                    
                 </div>
+                
                 <div className='w-100' >
                     <Allproduct search={search} category={category} minPrice={minPrice} maxPrice={maxPrice} />
                 </div>
