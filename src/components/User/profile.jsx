@@ -11,7 +11,6 @@ const MyAccount = () => {
     const [userDatails, setUserDetails] = useState()
     const [AllProductLoader, setAllProductLoader] = useState(false);
 
-
     const fetchUserDetail = async () => {
         try {
             setAllProductLoader(true);

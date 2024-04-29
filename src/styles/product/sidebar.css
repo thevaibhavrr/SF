@@ -100,15 +100,44 @@
     height: 100%;
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 0px;
     padding: 10px;
   }
   .proudct_sidebar_heading {
-    font-size: 18px;
+    font-size: 17px;
   }
 
   /* price range */
   .price_filter_sidebar_pc_sidebar {
     display: none;
   }
+
+
+  
+/* search */
+.input_for_search_sidebar {
+  width: 70%;
+  padding: 10px 20px;
+  border-radius: 50px;
+  border: 1px solid var(--navy-blue-color);
+}
+
+/* drop down */
+.input_for_category_sidebar {
+  width: 70%;
+  text-align: center;
+  transition: all 0.5s ease;
+  border: 1px solid var(--navy-blue-color);
+  padding: 10px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+.input_category_options {
+  text-align: center;
+  color: var(--golden-color);
+}
+
+.input_for_category_sidebar option :hover {
+  background-color: var(--navy-blue-color);
+}
 }

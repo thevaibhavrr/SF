@@ -80,7 +80,7 @@ const ProductSidebar = () => {
 								<div>₹{minPrice}</div>
 							</div>
 							<div>
-							<span>Max Price</span>
+								<span>Max Price</span>
 
 								{/* for max price */}
 								<input type="range" min={minPrice} max={maxValueformaxPrice} className='input-ranges input_for_max_price' onChange={(e) => setMaxPrice(e.target.value)} />
@@ -89,6 +89,16 @@ const ProductSidebar = () => {
 
 
 						</div>
+					</div>
+
+					{/* more */}
+					<div className='product_sliderbar_options'>
+						<div className='proudct_sidebar_heading'> More:</div>
+						{/* drop down */}
+
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+							<path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
+						</svg>
 					</div>
 				</div>
 				<div className='w-100' >
