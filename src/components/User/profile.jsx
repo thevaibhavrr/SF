@@ -1,14 +1,13 @@
 
 import React, { useEffect, useState } from "react"
 import "../../styles/User/profile.css"
-import { useNavigate } from "react-router"
 import UserProfileSidebar from "./sidebar"
 import { makeApi } from "../../api/callApi.tsx"
 import BackButton from "../backButton.jsx"
 import Primaryloader from "../loaders/primaryloader.jsx"
+import { Link } from "react-router-dom"
 
 const MyAccount = () => {
-    const navigate = useNavigate()
     const [userDatails, setUserDetails] = useState()
     const [AllProductLoader, setAllProductLoader] = useState(false);
 
@@ -21,7 +20,7 @@ const MyAccount = () => {
             setUserDetails(responce.data.user)
         } catch (error) {
             console.log(error)
-        }finally {
+        } finally {
             setAllProductLoader(false);
         }
     }
@@ -33,91 +32,73 @@ const MyAccount = () => {
 
     return (
         <>
-        
-        <div className='top_parent_div_all_product' >
+
+            <div className='top_parent_div_all_product' >
                 {AllProductLoader ? <div className="All_Product_loader">
                     <div className='' >
                         <Primaryloader />
                     </div>
-                </div>:
+                </div> :
 
-        <div className="d-flex">
-            <div className="my_wishlist_mobile_view" >
-                <UserProfileSidebar />
-            </div>
-            <div className="hide_for_pc_screen" >
-                <BackButton pageLocation="/user/user-profile" />
-            </div>
-            <div className="myaccount w-100">
-                {/* <div className="userprofile-heading my_wishlist_mobile_view">
+                    <div className="d-flex">
+                        <div className="my_wishlist_mobile_view" >
+                            <UserProfileSidebar />
+                        </div>
+                        <div className="hide_for_pc_screen" >
+                            <BackButton pageLocation="/user/user-profile" />
+                        </div>
+                        <div className="myaccount w-100">
+                            {/* <div className="userprofile-heading my_wishlist_mobile_view">
                     <h1>PERSONAL INFORMATION</h1>
                 </div> */}
-                {/* {userDatails && ( */}
-                <div className="myaccount-info userprofile-info-css">
-                    {/* <div>
+                            {/* {userDatails && ( */}
+                            <div className="myaccount-info userprofile-info-css">
 
-                    </div> */}
-                    <div className="left-myaccount-info">
-                        <img
-                            src={userDatails?.userImage}
-                            // src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
-                            alt=""
-                        />
-                        <div className="userprofilename">
-                            <span>NAME</span>
-                            {/* <p>{userDatails.firstName + " " + userDatails.lastName}</p> */}
-                            <p>{userDatails?.firstName} {userDatails?.lastName}</p>
-                        </div>
-                        {/* <div className="userprofile-birthdate">
+                                <div className="left-myaccount-info">
+                                    <img
+                                        src={userDatails?.userImage}
+                                        // src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                                        alt=""
+                                    />
+                                    <div className="userprofilename">
+                                        <span>NAME</span>
+                                        {/* <p>{userDatails.firstName + " " + userDatails.lastName}</p> */}
+                                        <p>{userDatails?.firstName} {userDatails?.lastName}</p>
+                                    </div>
+                                    {/* <div className="userprofile-birthdate">
                             <span>DATE OF BIRTH</span>
                             <p> 01/01/2000 </p>
                         </div> */}
-                        {/* <div className="userprofile-gender">
+                                    {/* <div className="userprofile-gender">
                             <span>GENDER</span>
                             <p>Male</p>
                         </div> */}
-                        <div className="userprofile-no">
-                            <span>CONTACT NUMBER</span>
-                            {/* <p>{userDatails.mobileNumber}</p> */}
-                            <p>{userDatails?.mobileNumber}</p>
+                                    <div className="userprofile-no">
+                                        <span>CONTACT NUMBER</span>
+                                        {/* <p>{userDatails.mobileNumber}</p> */}
+                                        <p>{userDatails?.mobileNumber}</p>
+                                    </div>
+                                    <div className="userprofile-email">
+                                        <span>EMAIL ADDRESS</span>
+                                        {/* <p>{userDatails.email}</p> */}
+                                        <p>{userDatails?.email}</p>
+                                    </div>
+                                </div>
+                                <div className="right-myaccount-info">
+                                    <div>
+                                        <Link to={"/user/update-user"} className="css-for-link-tag text-black" >
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                                                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325" />
+                                            </svg>
+                                        </Link>
+                                    </div>                           </div>
+                            </div>
+                            {/* )} */}
                         </div>
-                        <div className="userprofile-email">
-                            <span>EMAIL ADDRESS</span>
-                            {/* <p>{userDatails.email}</p> */}
-                            <p>{userDatails?.email}</p>
-                        </div>
-                    </div>
-                    <div className="right-myaccount-info">
-                        {/* <div
-                            className="change-profileinfo"
-                            onClick={() => navigate("/edit-userprofile")}
-                        >
-                            <img
-                                // src={assets.profile_reset}
-                                src="https://img.icons8.com/external-vitaliy-gorbunov-lineal-color-vitaly-gorbunov/60/000000/external-settings-user-interface-vitaliy-gorbunov-lineal-color-vitaly-gorbunov-3.png"
-                                alt="image"
-                            />
-                            <p>change profile information</p>
-                        </div>{" "} */}
-                        {/* <div
-                            className="change-profilepwd"
-                            onClick={() => navigate("/edit-userprofile")}
-                        >
-                            <img
-                                // src={assets.password_reset}
-                                src="https://img.icons8.com/external-vitaliy-gorbunov-flat-vitaly-gorbunov/60/000000/external-key-security-vitaliy-gorbunov-flat-vitaly-gorbunov.png"
-                                alt="password"
-                            />
-                            <p>change password</p>
-                        </div> */}
-                    </div>
-                </div>
-                {/* )} */}
-            </div>
 
-        </div>
-}
-</div>
+                    </div>
+                }
+            </div>
         </>
     )
 }

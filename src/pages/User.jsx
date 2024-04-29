@@ -1,7 +1,6 @@
 import React from 'react'
 import { Route, Routes } from "react-router"
 import MyAccount from '../components/User/profile'
-import UserProfile from '../components/User/sidebar'
 import MyOrders from '../components/User/Myorder'
 import Mywhislist from '../components/User/mywhislist'
 import Myaddress from '../components/User/myaddress'
@@ -10,6 +9,7 @@ import ShippingAddress from '../components/Information/shippingAddress'
 import EditAddress from '../components/User/editAddress'
 import Ecombar from '../components/Header/ecombar'
 import UserProfileForMobile from '../components/User/mainMobilepageuserPofile'
+import EditUserProfile from '../components/User/editprofile'
 
 
 function User() {
@@ -23,6 +23,10 @@ function User() {
                 <Route
                     path="/userprofile"
                     element={<MyAccount />}
+                />
+                <Route
+                path="/update-user"
+                element={<EditUserProfile />}
                 />
                 <Route
                     path='/my-orders'

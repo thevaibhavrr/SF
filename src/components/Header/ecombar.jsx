@@ -52,8 +52,8 @@ function Ecombar() {
                         {/* <Link to={"/user/my-wishlist"} className='css-for-link-tag-color'  > */}
 
                         <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314" />
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
                             </svg>
                         </div>
                         <div>
@@ -94,3 +94,77 @@ function Ecombar() {
 }
 
 export default Ecombar
+
+// import React, { useEffect, useState } from 'react';
+// import LoginPopup from '../Auth/LoginPopup';
+// import "../../styles/header/ecombar.css";
+// import { Link, useNavigate } from 'react-router-dom';
+
+// function Ecombar() {
+//     const navigation = useNavigate();
+//     const [activeTab, setActiveTab] = useState("");
+//     console.log(activeTab, "==================");
+
+//     const [IsLogin, setIsLogin] = useState(false);
+//     const [showPopup, setShowPopup] = useState(false);
+
+//     const closePopup = () => {
+//         setShowPopup(false);
+//     };
+
+//     useEffect(() => {
+//         const token = localStorage.getItem("token");
+//         setIsLogin(!!token);
+//     }, []);
+
+//     useEffect(() => {
+//         if (activeTab === "Cart") {
+//             navigation('/order/my-cart');
+//         } else if (activeTab === "Profile") {
+//             navigation('/user/user-profile');
+//         } else if (activeTab === "Wishlist") {
+//             navigation('/user/my-wishlist');
+//         } else if (activeTab === "Home") {
+//             navigation('/product/all-products');
+//         }
+//     }, [activeTab]);
+
+//     const handelclick = async (PageName) => {
+//         if (IsLogin && PageName === "Cart") {
+//             await setActiveTab("Cart");
+//         } else if (IsLogin && PageName === "Profile") {
+//             await setActiveTab("Profile");
+//         } else if (IsLogin && PageName === "Wishlist") {
+//             await setActiveTab("Wishlist");
+//         } else if (PageName === "Home") {
+//             await setActiveTab("Home");
+//         } else {
+//             setShowPopup(true);
+//         }
+//     };
+
+//     return (
+//         <>
+//             {showPopup && <LoginPopup onClose={closePopup} />}
+
+//             <div className='main_ecombar_parent_div'>
+//                 <div className='ecom_bar_main_div'>
+//                     <div className='ecom_bar_items_div' onClick={() => handelclick("Home")}>
+//                         {/* Your Home content */}
+//                     </div>
+//                     <div className='ecom_bar_items_div' onClick={() => handelclick("Wishlist")}>
+//                         {/* Your Wishlist content */}
+//                     </div>
+//                     <div className='ecom_bar_items_div' onClick={() => handelclick("Cart")}>
+//                         {/* Your Cart content */}
+//                     </div>
+//                     <div className='ecom_bar_items_div' onClick={() => handelclick("Profile")}>
+//                         {/* Your Profile content */}
+//                     </div>
+//                 </div>
+//             </div>
+//         </>
+//     );
+// }
+
+// export default Ecombar;
