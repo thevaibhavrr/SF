@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { makeApi } from '../../api/callApi.tsx';
 import "../../styles/product/productDetails.css"
 import AddIcon from "../../Images/order/add_icon_green.png"
@@ -9,6 +9,7 @@ import BackButton from '../backButton.jsx';
 import HorizotalLoader from '../loaders/horizotalLoader.jsx';
 
 function ProductDetails() {
+    const history = useNavigate();
     const { productId } = useParams();
     const [product, setProduct] = useState();
     const [selectedImage, setSelectedImage] = useState('');
@@ -126,6 +127,30 @@ function ProductDetails() {
             setAddTocartLoader(false);
         }
     };
+      // Function to handle "BUY NOW" button click
+      const handleBuyNow = async () => {
+        try {
+            if (!isInCart) {
+                setAddTocartLoader(true);
+                const method = 'POST';
+                const endpoint = '/api/add-to-cart';
+                await makeApi(endpoint, method, {
+                    productId,
+                    quantity: 1,
+                    shippingPrice: 0
+                });
+                history('/order/my-cart');
+            } else {
+                history('/order/my-cart');
+            }
+        } catch (error) {
+            console.log(error);
+        } finally {
+            fetchCart();
+            setAddTocartLoader(false);
+        }
+    };
+
 
     // call all data 
 
@@ -235,7 +260,7 @@ function ProductDetails() {
                                             </div>
                                         )}
                                     </div>
-                                    <button>BUY NOW</button>
+                                    <button onClick={()=>handleBuyNow()} >BUY NOW</button>
                                 </div>
                             </div>
                         </div>
