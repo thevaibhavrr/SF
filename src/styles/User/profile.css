@@ -34,8 +34,9 @@
   }
   
   .myaccount-info {
+    margin-top: 50px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     padding: 10px 30px;
     padding-bottom: 30px;
     align-items: start;
@@ -126,7 +127,7 @@
   @media(max-width:800px) {
     .myaccount-info {
       display: flex;
-      justify-content: space-between;
+      justify-content: space-around;
       padding: 0px 0px 10px 0px;
       padding-bottom: 30px;
       align-items: start;
@@ -194,6 +195,14 @@
       display: flex;
       justify-content: center;
     }
+    .myaccount-info {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 30px;
+      padding-bottom: 30px;
+      align-items: start;
+    }
+    
 
   .left-myaccount-info div p {
     border: none;

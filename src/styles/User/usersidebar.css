@@ -1,17 +1,9 @@
 .userProfile {
-    /* width: 100%; */
     min-height: 100vh;
     padding: 0 100px;
-    /* padding-top: 10vh; */
-    /* background: #efe2d7; */
-  
-    /* border-top: 2px solid black; */
   }
   
-  .userprofile-hr {
-    margin-top: 50px;
-  }
-  
+ 
   .user-sidebar-info {
     display: flex;
     gap: 20px;
@@ -20,11 +12,10 @@
   }
   
   .userProfile-sidebar {
-    margin-top: 30px;
     /* width: 300px; */
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
     gap: 10px;
   
   }
@@ -217,7 +208,7 @@
   
     .userProfile-sidebar {
       position: absolute;
-      background: #efe2d7;
+      background: var(--bg-white-color);
       /* box-shadow: 0; */
       /* padding-left: 10px; */
       /* padding-right: 30px; */
