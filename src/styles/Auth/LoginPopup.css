@@ -62,3 +62,11 @@
     text-align: end;
     padding-right: 5px;
   }
+
+  @media (max-width:500px) {
+   
+   
+    .login-popup-content {
+      max-width: 380px;
+    }
+  }
