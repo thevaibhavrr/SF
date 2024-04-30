@@ -37,8 +37,12 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  color: var(--golden-color);
+  color: var(--golden-color) ;
   font-weight: 500;
+}
+.footer_text_golden_color{
+  color: var(--golden-color) ;
+
 }
 
 .Contact_us_div_footer {

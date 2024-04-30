@@ -7,7 +7,7 @@ import Primaryloader from '../../loaders/primaryloader.jsx'
 import AddIcon from "../../../Images/order/add_icon_green.png"
 import RemoveIcon from "../../../Images/order/remove_icon_red.png"
 import HorizotalLoader from '../../loaders/horizotalLoader.jsx'
-
+import EMPTYCARTImage from "../../../Images/order/empty-cart.svg"
 function CartItem() {
     const [cartItem, setCartItem] = useState([])
     const [loading, setLoading] = useState(false);
@@ -22,6 +22,9 @@ function CartItem() {
             const response = await makeApi("/api/my-cart", "GET")
 
             setCartItem(response.data)
+            if(response.data.orderItems.length === 0){
+                setIsCartEmpty(true)
+            }
             setCartProductList(response.data.orderItems)
         } catch (error) {
             console.log(error)
@@ -80,7 +83,8 @@ function CartItem() {
                 :
                 <div>
                     {IscartEmpty && <div className='empty_cart_div'>
-                        <img src='https://assets.materialup.com/uploads/16e7d0ed-140b-4f86-9b7e-d9d1c04edb2b/preview.png' className='NO_cart_image' />
+                        {/* <img src='https://assets.materialup.com/uploads/16e7d0ed-140b-4f86-9b7e-d9d1c04edb2b/preview.png' className='NO_cart_image' /> */}
+                        <img src={EMPTYCARTImage} alt=" No cart " className='NO_cart_image' />
                     </div>}
                     {!IscartEmpty &&
                         <div>

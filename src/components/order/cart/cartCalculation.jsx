@@ -27,7 +27,7 @@ function CartCalculation({ tax, shipping, CoupanApplied, total, Final, ButtonNam
                         <div>₹ {formatNumber(total)}</div>
                     </div>
                 </div>
-                <Link to="/order/checkout" >
+                <Link to="/order/checkout" className='css-for-link-tag' >
                     <div className='cart_calculation_button'>
 
                         {ButtonName}

@@ -3,7 +3,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "../../styles/contactUs/DropLine.css"
 import { makeApi } from "../../api/callApi.tsx";
 function DropLine() {
-
+    const [loading, setLoading] = useState(false)
     const [Data, setData] = useState({
         "firstname": "",
         "lastname": "",
@@ -47,29 +47,34 @@ function DropLine() {
             return;
         }
         try {
+            setLoading(true)
             const response = await makeApi("/api/create-message", "POST", Data)
-            toast.success(response.data.message,{
-            	onClose: () => {
-            		setData({
-            			"firstname": "",
-            			"lastname": "",
-            			"email": "",
-            			"message": "",
-            			"phonennumber": ""
-            		})
-            	}
+            toast.success(response.data.message, {
+                onClose: () => {
+                    setData({
+                        "firstname": "",
+                        "lastname": "",
+                        "email": "",
+                        "message": "",
+                        "phonennumber": ""
+                    })
+                }
             })
             toast.info("Thank you for sharing your thoughts with us")
 
         } catch (error) {
             toast.error(error);
             console.error('Error sending data:', error.response.data.message);
+        } finally {
+            setLoading(false)
         }
     }
 
 
-    return ( 
+    return (
         <>
+            <ToastContainer autoClose={2000} />
+
             <div className="drop_line_main_div" >
                 <div className="Main_Home_heading" >Drop Us a Line</div>
                 <div>
@@ -115,7 +120,7 @@ function DropLine() {
                                     value={Data.message}
                                 ></textarea>
                                 <div className="contact-from-button" >
-                                <button onClick={(e) => handleSubmit(e)} className="click_buttons" >Submit</button>
+                                    <button type="submit" className="click_buttons" disabled={loading} >Submit</button>
                                 </div>
                             </form>
                         </div>

@@ -8,8 +8,29 @@ import ASDN from "../../../Images/Home/Our collection/ASAD.png"
 import WhiteOcean from "../../../Images/Home/Our collection/White Ocean.png"
 import Mockup from "../../../Images/Home/Our collection/Bottle Mockup 1.png"
 import "../../../styles/Home/OurCollection.css"
+import { Link } from 'react-router-dom';
+import { makeApi } from '../../../api/callApi.tsx';
+import Primaryloader from '../../loaders/primaryloader.jsx';
 function Ourcollection() {
-    const [slidesPerView, setSlidesPerView] = useState(6);
+    const [slidesPerView, setSlidesPerView] = useState(5);
+    const [products, setProducts] = useState([]);
+    const [AllProductLoader, setAllProductLoader] = useState(false);
+
+
+    
+    // get data
+    const fetchProduct = async () => {
+        try {
+            setAllProductLoader(true);
+            const response = await makeApi(`/api/get-all-products?&perPage=10&IsOutOfStock=false`, "GET");
+            setProducts(response.data.products);
+        } catch (error) {
+            console.log(error);
+        } finally {
+            setAllProductLoader(false);
+        }
+    };
+
 
     useEffect(() => {
         const handleResize = () => {
@@ -68,6 +89,10 @@ function Ourcollection() {
         },
     ]
 
+    useEffect(() => {
+        fetchProduct();
+    },[])
+
     return (
         <>
             <div className='Our_collection_main_div' >
@@ -76,6 +101,11 @@ function Ourcollection() {
 
                 {/* Swiper */}
                 <div>
+                {AllProductLoader ? <div className="All_Product_loader">
+                    <div className='' >
+                        <Primaryloader />
+                    </div>
+                </div> :
                     <Swiper
                         slidesPerView={slidesPerView}
                         spaceBetween={20}
@@ -87,23 +117,25 @@ function Ourcollection() {
                         className="mySwiper main_our_collection_swiper"
                         modules={[Navigation]}
                     >
-                        {OurCollectionImages.map((image, index) => (
+                        {products.map((image, index) => (
                             <SwiperSlide key={index} className='main_swiper_slide_our_collection' >
+                                <Link to={`/product/product-details/${image._id}`} className='css-for-link-tag' >
                                 <div className='main_our_collection_swiper_options' >
-                                    <img src={image.image} alt={`ImagesOf ${index + 1}`} className='Our_collection_slider_images' />
-                                    <div>{image.name}</div>
+                                    <img src={image.thumbnail} alt={`ImagesOf ${index + 1}`} className='Our_collection_slider_images' />
+                                    <div className='text-black' >{image.name}</div>
                                 </div>
+                                </Link>
                             </SwiperSlide>
                         ))}
                     </Swiper>
-                    {/* Navigation Buttons */}
-                    {/* <div className="navigation-buttons">
-                        <div className="swiper-button-prev"></div>
-                        <div className="swiper-button-next"></div>
-                    </div> */}
+                   
+                }
                 </div>
                 <div className='view_more_button_div' >
+                <Link to={"/product/all-products"} className='css-for-link-tag' >
+
                     <div className='click_buttons view_more_button_home_page' >VIEW MORE </div>
+                    </Link>
                 </div>
             </div>
         </>

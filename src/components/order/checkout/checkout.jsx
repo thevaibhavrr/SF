@@ -5,6 +5,7 @@ import { makeApi } from '../../../api/callApi.tsx';
 import CartCalculation from '../cart/cartCalculation';
 import { useNavigate } from 'react-router-dom';
 import SucessGIF from '../../../Images/order/Order Placed GIF.gif';
+import Primaryloader from '../../loaders/primaryloader.jsx';
 
 function Checkout() {
     const navigation = useNavigate();
@@ -90,7 +91,7 @@ function Checkout() {
                                 <div className="shipping-address-container Order_page_display_none ">
                                     <div className="shipping-address-title">Shipping Address</div>
                                     <div className="shipping-address-list">
-                                        {loading && <div>Loading...</div>}
+                                        {loading && <div> <Primaryloader/> </div>}
                                         {!loading && shippingAddresses.map((address, index) => (
                                             <div key={index} className="address-item">
                                                 <input

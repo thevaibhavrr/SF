@@ -208,7 +208,7 @@ const EditUserProfile = () => {
                                     <div className="edit-pno">
                                         <label htmlFor="">Phone number</label>
                                         <input
-                                            type="text"
+                                            type="number"
                                             placeholder="Phone Number"
                                             name="mobileNumber"
                                             value={editData.mobileNumber}

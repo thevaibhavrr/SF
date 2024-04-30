@@ -21,8 +21,8 @@
     align-items: center;
 
 }
-.Our_collection_slider_images{
-    /* width: ; */
+.Best_saller_slider_images{
+    width: 200px;
 }
 
 .main_our_collection_swiper_options{
@@ -69,7 +69,7 @@
 .swiper-button-prev,
 .swiper-button-next {
     cursor: pointer;
-    z-index: 1;
+    /* z-index: 1; */
 }
 
 
