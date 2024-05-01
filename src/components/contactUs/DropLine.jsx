@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, {  useState } from "react"
 import { ToastContainer, toast } from "react-toastify";
 import "../../styles/contactUs/DropLine.css"
 import { makeApi } from "../../api/callApi.tsx";
@@ -80,7 +80,7 @@ function DropLine() {
                 <div>
                     <div className="contact-form">
                         <div className="fill-form">
-                            <form action="">
+                            <form action="#" onSubmit={(event)=>handleSubmit(event)}>
                                 <div className="enter-name">
                                     <input
                                         type="text"
@@ -120,7 +120,7 @@ function DropLine() {
                                     value={Data.message}
                                 ></textarea>
                                 <div className="contact-from-button" >
-                                    <button type="submit" className="click_buttons" disabled={loading} >Submit</button>
+                                    <button type="submit" className="click_buttons" disabled={loading} onClick={(event)=>handleSubmit(event)} >Submit</button>
                                 </div>
                             </form>
                         </div>
