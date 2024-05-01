@@ -4,11 +4,16 @@ import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { makeApi } from "../../api/callApi.tsx";
+import HorizotalLoader from "../loaders/horizotalLoader.jsx";
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [Islogin, setIslogin] = useState(false);
+  console.log(Islogin);
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -23,22 +28,31 @@ const Login = () => {
     }
 
     try {
+      setIsLoading(true);
       const response = await makeApi("/api/login-user", "POST", {
         password,
         email,
       });
       localStorage.setItem("token", response.data.token);
-      toast.success(response.data.message);
-      navigate("/");
+      // toast.success(response.data.message);
+
+      setIslogin(true);
+      toast.success(response.data.message, {
+        onClose: () => {
+          navigate("/product/all-products");
+        }
+      })
     } catch (error) {
       toast.error(error.response.data.message);
       console.error("Error sending data:", error.response.data.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
     <>
-      <ToastContainer />
+      <ToastContainer autoClose={1500} />
 
       <div className="login-signup">
         <form onSubmit={handleSubmit}>
@@ -64,8 +78,11 @@ const Login = () => {
                 Forgot password
               </Link>
             </div>
-
-            <button type="submit">Login</button>
+            {isLoading ? <HorizotalLoader /> :
+              <>
+                {!Islogin ? <button type="submit">Login</button> : null}
+              </>
+            }
             <p>
               Don't have an account?{" "}
               <span>

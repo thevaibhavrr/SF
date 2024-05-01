@@ -7,6 +7,7 @@ import RemoveIcon from "../../Images/order/remove_icon_red.png"
 import Primaryloader from '../loaders/primaryloader.jsx';
 import BackButton from '../backButton.jsx';
 import HorizotalLoader from '../loaders/horizotalLoader.jsx';
+import LoginPopup from '../Auth/LoginPopup.jsx';
 
 function ProductDetails() {
     const history = useNavigate();
@@ -19,7 +20,22 @@ function ProductDetails() {
     const [wishlistItems, setWishlistItems] = useState([]);
     const [cartItems, setCartItems] = useState([]);
     const [isInCart, setIsInCart] = useState(false);
+    const [IsLogin, setIsLogin] = useState(false)
+    const [showPopup, setShowPopup] = useState(false);
+
+
     // fetch data
+
+    useEffect(() => {
+        const token = localStorage.getItem("token")
+
+        if (token) {
+            setIsLogin(true)
+        } else {
+            setIsLogin(false)
+        }
+
+    }, [localStorage.getItem("token")])
     // product details
     const fetchProduct = async () => {
         try {
@@ -84,6 +100,9 @@ function ProductDetails() {
     };
     // add to cart
     const addToCart = async (productId) => {
+        if (!IsLogin) {
+            setShowPopup(true);
+        }else{
         try {
             setAddTocartLoader(true);
             const method = "POST";
@@ -111,6 +130,7 @@ function ProductDetails() {
             fetchCart();
             setAddTocartLoader(false);
         }
+    }
     };
     const removeFromCart = async (productId) => {
         try {
@@ -129,6 +149,9 @@ function ProductDetails() {
     };
       // Function to handle "BUY NOW" button click
       const handleBuyNow = async () => {
+        if (!IsLogin) {
+            setShowPopup(true);
+        } else{
         try {
             if (!isInCart) {
                 setAddTocartLoader(true);
@@ -149,8 +172,14 @@ function ProductDetails() {
             fetchCart();
             setAddTocartLoader(false);
         }
+    }
     };
 
+
+    // actions
+    const closePopup = () => {
+        setShowPopup(false);
+    };
 
     // call all data 
 
@@ -163,6 +192,8 @@ function ProductDetails() {
 
     return (
         < >
+            {showPopup && <LoginPopup onClose={closePopup} />}
+
             {loading ?
                 <div className="All_Product_loader">
                     <div className='d-flex justify-content-center align-items-center' style={{ height: "100vh" }} >
@@ -224,12 +255,11 @@ function ProductDetails() {
                      </div> */}
                                         </div>
                                     </div>
-                                    {/* <button onClick={() => addToCart(id)}>ADD To CART</button> */}
                                     <div className="productdisplay-item-cart">
                                         {!isInCart ? (
                                             <>
 
-                                                {AddTocartLoader ? <div> <HorizotalLoader /> </div> :
+                                                {AddTocartLoader ? <div className=' d-flex justify-content-center ' > <HorizotalLoader /> </div> :
                                                     <div
                                                         className="productdisplay-item-addto-cart "
                                                         onClick={() => addToCart(product._id)}

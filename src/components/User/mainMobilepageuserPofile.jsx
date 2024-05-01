@@ -24,7 +24,7 @@ const UserProfileForMobile = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    history("/auth/login");
+    history("/product/all-products");
   }
 
   useEffect(() => {
