@@ -6,6 +6,7 @@ import CartCalculation from '../cart/cartCalculation';
 import { useNavigate } from 'react-router-dom';
 import SucessGIF from '../../../Images/order/Order Placed GIF.gif';
 import Primaryloader from '../../loaders/primaryloader.jsx';
+import { ToastContainer, toast } from "react-toastify";
 
 function Checkout() {
     const navigation = useNavigate();
@@ -50,6 +51,10 @@ function Checkout() {
     }
 
     const handleSubmit = async (event) => {
+        if(!selectPaymentMethod){
+            toast("Please select payment method")
+            return
+        }
         event.preventDefault();
         const data = {
             shippingAddress: selectedAddress,
@@ -70,9 +75,19 @@ function Checkout() {
             setLoading(false);
         }
     }
+    const ManageCurrnetPage = (e) => {
+        e.preventDefault()
+        if(!selectedAddress){
+            toast("Please select shipping address")
+        }else{
+            setCurrentPage("PAYMENT")
+        }
+    }
 
     return (
         <>
+        <ToastContainer position="top-center" autoClose={3000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover   />
+
             {orderPlaced && (
                 <div className="success-gif-container">
                     <img src={SucessGIF} alt="Success GIF" className='success-gif'  />
@@ -111,7 +126,7 @@ function Checkout() {
                                     </div>
                                 </div>
                                 {/* payment */}
-                                <div onClick={() => setCurrentPage("PAYMENT")} >
+                                <div onClick={(e) => ManageCurrnetPage(e)} >
                                     <CartCalculation tax={cartItem.taxPrice} shipping={cartItem.shippingPrice} total={cartItem.totalPrice} CoupanApplied={cartItem.Iscoupanapplied} Final={cartItem.TotalProductPrice} ButtonName="PROCEED TO PAYMENT" />
                                 </div>
                             </div>

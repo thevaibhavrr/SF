@@ -8,10 +8,12 @@ import AddIcon from "../../../Images/order/add_icon_green.png"
 import RemoveIcon from "../../../Images/order/remove_icon_red.png"
 import HorizotalLoader from '../../loaders/horizotalLoader.jsx'
 import EMPTYCARTImage from "../../../Images/order/empty-cart.svg"
+import { ToastContainer, toast } from "react-toastify";
+
 function CartItem() {
     const [cartItem, setCartItem] = useState([])
     const [loading, setLoading] = useState(false);
-    const [cartPoductList, setCartProductList] = useState([])
+    const [cartPoductList, setCartProductList] = useState([]) 
     const [IscartEmpty, setIsCartEmpty] = useState(false)
     const [AllProductLoader, setAllProductLoader] = useState(false);
     const [AddTocartLoader, setAddTocartLoader] = useState(false);
@@ -70,11 +72,24 @@ function CartItem() {
         }
 
     }
+
+
+    // action
+    const handleAddToCart = (productId, quantity, availableQuantity) => {
+        if (quantity < availableQuantity) {
+            addToCart(productId);
+        } else {
+            toast("Cannot add more than available quantity.", { type: "error" });
+        }
+    };
+    
+
     useEffect(() => {
         fetchCartItem()
     }, [])
     return (
         <>
+        <ToastContainer/>
             {AllProductLoader ? <div className="All_Product_loader">
                 <div className='' >
                     <Primaryloader />
@@ -83,7 +98,6 @@ function CartItem() {
                 :
                 <div>
                     {IscartEmpty && <div className='empty_cart_div'>
-                        {/* <img src='https://assets.materialup.com/uploads/16e7d0ed-140b-4f86-9b7e-d9d1c04edb2b/preview.png' className='NO_cart_image' /> */}
                         <img src={EMPTYCARTImage} alt=" No cart " className='NO_cart_image' />
                     </div>}
                     {!IscartEmpty &&
@@ -110,22 +124,16 @@ function CartItem() {
                                                 <img src={item.productId.thumbnail} alt=' product ' className='cart_item_image' />
                                             </div>
                                             <div> {item.productId.name} </div>
+                                            {/* <div>{item.productId.quantity}</div> */}
                                             <div> ₹ {item.productId.price} </div>
-                                            {/* <div className="cart-quantity">
-                                                <button onClick={() => removeFromCart(item.productId._id)}>-</button>
-                                                <span>{item.quantity}</span>
-                                                <button onClick={() => addToCart(item.productId._id)}>+</button>
-                                            </div> */}
+                                           
                                             {AddTocartLoader ? <div className='Add_to_cart_and_watchlist_child' > <HorizotalLoader /> </div> :
                                                 <div className="cart-quantity  cart_add_remmove_section_cart_page ">
                                                     <img src={RemoveIcon} alt="AddIcon" className='Icon_add_to_cart_main_cart_page' onClick={() => removeFromCart(item.productId._id)} />
-                                                    {/* <button onClick={() => removeFromCart(product._id)}>-</button> */}
                                                     <span> {item.quantity} </span>
-                                                    {/* <button onClick={() => addToCart(product._id)}>+</button> */}
-                                                    <img src={AddIcon} alt="AddIcon" className='Icon_add_to_cart_main_cart_page' onClick={() => addToCart(item.productId._id)} />
+                                                    <img src={AddIcon} alt="AddIcon" className='Icon_add_to_cart_main_cart_page' onClick={() => handleAddToCart(item.productId._id, item.quantity,item.productId.quantity )} />
                                                 </div>
                                             }
-                                            {/* <div> {item.quantity} </div> */}
                                             <div> ₹ {item.totalPrice} </div>
                                         </div>
                                     </div>
@@ -145,3 +153,4 @@ function CartItem() {
 }
 
 export default CartItem
+

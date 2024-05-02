@@ -45,7 +45,7 @@ function Banner() {
 
   return (
     <div className="main_banner_div">
-      <Carousel fade  >
+      <Carousel fade interval={3000}  >
         {
           Banner.map((item) => (
             <Carousel.Item>

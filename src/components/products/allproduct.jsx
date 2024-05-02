@@ -9,6 +9,8 @@ import Heartloader from '../loaders/hearloader.jsx';
 import HorizotalLoader from '../loaders/horizotalLoader.jsx';
 import { Link } from "react-router-dom"
 import LoginPopup from '../Auth/LoginPopup.jsx';
+import { ToastContainer, toast } from "react-toastify";
+
 
 function Allproduct({ search, category, minPrice, maxPrice }) {
     const [products, setProducts] = useState([]);
@@ -90,6 +92,8 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
     const isInCart = (productId) => {
         return cartItems.some(item => item.productId === productId);
     };
+
+    // action
     const closePopup = () => {
         setShowPopup(false);
     };
@@ -178,9 +182,19 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
         setCurrentPage(pageNumber);
     };
 
+    const handleAddToCart = (productId, quantity, availableQuantity) => {
+        if (quantity < availableQuantity) {
+            addToCart(productId);
+        } else {
+            toast("Cannot add more than available quantity.", { type: "error" });
+        }
+    };
+    
+
     return (
         <>
             {showPopup && <LoginPopup onClose={closePopup} />}
+            <ToastContainer />
 
             <div className='top_parent_div_all_product' >
                 {AllProductLoader ? <div className="All_Product_loader">
@@ -211,7 +225,7 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
                                                             <div className="cart-quantity">
                                                                 <img src={RemoveIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => removeFromCart(product._id)} />
                                                                 <span>{getProductQuantity(product._id)}</span>
-                                                                <img src={AddIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => addToCart(product._id)} />
+                                                                <img src={AddIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => handleAddToCart(product._id,getProductQuantity(product._id),product.quantity)} />
                                                             </div>
                                                         }
                                                     </div>

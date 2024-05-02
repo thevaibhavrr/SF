@@ -8,6 +8,7 @@ import Primaryloader from '../loaders/primaryloader.jsx';
 import BackButton from '../backButton.jsx';
 import HorizotalLoader from '../loaders/horizotalLoader.jsx';
 import LoginPopup from '../Auth/LoginPopup.jsx';
+import { ToastContainer, toast } from "react-toastify";
 
 function ProductDetails() {
     const history = useNavigate();
@@ -180,6 +181,13 @@ function ProductDetails() {
     const closePopup = () => {
         setShowPopup(false);
     };
+    const handleAddToCart = (productId, quantity, availableQuantity) => {
+        if (quantity < availableQuantity) {
+            addToCart(productId);
+        } else {
+            toast("Cannot add more than available quantity.", { type: "error" });
+        }
+    };
 
     // call all data 
 
@@ -193,7 +201,7 @@ function ProductDetails() {
     return (
         < >
             {showPopup && <LoginPopup onClose={closePopup} />}
-
+<ToastContainer/>
             {loading ?
                 <div className="All_Product_loader">
                     <div className='d-flex justify-content-center align-items-center' style={{ height: "100vh" }} >
@@ -283,7 +291,7 @@ function ProductDetails() {
                                                     </p>
                                                 }
                                                 <img
-                                                    onClick={() => addToCart(product._id)}
+                                                    onClick={() =>  handleAddToCart(product._id,getProductQuantity(product._id),product.quantity)}
                                                     src={AddIcon}
                                                     alt=""
                                                 />
