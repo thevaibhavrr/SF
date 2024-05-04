@@ -27,13 +27,15 @@ function BesatSaller() {
     const [IsLogin, setIsLogin] = useState(false)
     const [showPopup, setShowPopup] = useState(false);
 
+    const [productType, setProductType] = useState("");
+
 
 
     // get data
     const fetchProduct = async () => {
         try {
             setAllProductLoader(true);
-            const response = await makeApi(`/api/get-all-products?&perPage=10&IsOutOfStock=false`, "GET");
+            const response = await makeApi(`/api/get-all-products?&perPage=10&productType=${productType}&IsOutOfStock=false`, "GET");
             setProducts(response.data.products);
         } catch (error) {
             console.log(error);
@@ -44,9 +46,12 @@ function BesatSaller() {
 
     useEffect(() => {
         const token = localStorage.getItem("token")
+        const userLocation = localStorage.getItem("country")
 
         if (token) {
             setIsLogin(true)
+            setProductType(userLocation)
+
         } else {
             setIsLogin(false)
         }

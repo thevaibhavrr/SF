@@ -17,6 +17,8 @@ function CartItem() {
     const [IscartEmpty, setIsCartEmpty] = useState(false)
     const [AllProductLoader, setAllProductLoader] = useState(false);
     const [AddTocartLoader, setAddTocartLoader] = useState(false);
+    const [AddToWishlistLoader, setAddToWishlistLoader] = useState({});
+    const [productLoaders, setProductLoaders] = useState({});
 
     const fetchCartItem = async () => {
         try {
@@ -41,7 +43,10 @@ function CartItem() {
 
     const removeFromCart = async (productId) => {
         try {
-            setAddTocartLoader(true);
+            setProductLoaders(prevState => ({
+                ...prevState,
+                [productId]: true
+            }));
             const method = "POST";
             const endpoint = "/api/remove-from-cart";
             const data = await makeApi(endpoint, method, { productId });
@@ -51,11 +56,18 @@ function CartItem() {
             console.log(error);
         } finally {
             fetchCartItem()
-            setAddTocartLoader(false);
+            setProductLoaders(prevState => ({
+                ...prevState,
+                [productId]: false
+            }));
         }
     };
     const addToCart = async (productId) => {
         try {
+            setProductLoaders(prevState => ({
+                ...prevState,
+                [productId]: true
+            }));
             setAddTocartLoader(true);
             const method = "POST";
             const endpoint = "/api/add-to-cart";
@@ -68,7 +80,10 @@ function CartItem() {
             console.log(error);
         } finally {
             fetchCartItem()
-            setAddTocartLoader(false);
+            setProductLoaders(prevState => ({
+                ...prevState,
+                [productId]: false
+            }));
         }
 
     }
@@ -127,7 +142,7 @@ function CartItem() {
                                             {/* <div>{item.productId.quantity}</div> */}
                                             <div> ₹ {item.productId.price} </div>
                                            
-                                            {AddTocartLoader ? <div className='Add_to_cart_and_watchlist_child' > <HorizotalLoader /> </div> :
+                                            {productLoaders[item.productId._id] ? <div className='Add_to_cart_and_watchlist_child' > <HorizotalLoader /> </div> :
                                                 <div className="cart-quantity  cart_add_remmove_section_cart_page ">
                                                     <img src={RemoveIcon} alt="AddIcon" className='Icon_add_to_cart_main_cart_page' onClick={() => removeFromCart(item.productId._id)} />
                                                     <span> {item.quantity} </span>

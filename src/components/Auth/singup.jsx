@@ -1,4 +1,31 @@
-import React, { useEffect, useState } from "react"
+
+// import React, { useState, useMemo } from 'react';
+// import countryList from 'react-select-country-list';
+
+// function CountrySelector() {
+//   const [value, setValue] = useState('');
+//   const options = useMemo(() => countryList().getData(), []);
+
+//   const changeHandler = event => {
+//     setValue(event.target.value);
+//   };
+
+//   return (
+// <select value={value} onChange={changeHandler}>
+//   <option value="">Select a country</option>
+//   {options.map(option => (
+//     <option key={option.value} value={option.value}>
+//       {option.label}
+//     </option>
+//   ))}
+// </select>
+//   );
+// }
+
+// export default CountrySelector;
+
+import React, { useEffect, useState, useMemo } from "react"
+import countryList from 'react-select-country-list'
 import { makeApi } from "../../api/callApi.tsx"
 import { Link, useNavigate } from "react-router-dom"
 import { ToastContainer, toast } from "react-toastify"
@@ -8,6 +35,7 @@ import "../../styles/Auth/singup.css"
 
 const Signup = () => {
     const navigate = useNavigate()
+    const options = useMemo(() => countryList().getData(), []);
 
 
     const [formData, setFormData] = useState({
@@ -16,12 +44,13 @@ const Signup = () => {
         password: "",
         email: "",
         mobileNumber: "",
+        country: "",
     })
     const changeHandler = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
 
-
+console.log(formData)
     const signup = async () => {
 
         if (!formData.email) {
@@ -44,16 +73,20 @@ const Signup = () => {
             toast.error("Please fill lastName")
             return
         }
+        if (!formData.country) {
+            toast.error("Please select country")
+            return
+        }
 
         try {
             const response = await makeApi("/api/register-user", "post", formData)
 
             const responseData = response.data
             if (responseData.success) {
-                localStorage.setItem("token", responseData.token)
+               
                 toast.success(responseData.message || "Sign up Successfully", {
                     onClose: () => {
-                        navigate("/")
+                        navigate("/auth/login")
                     },
                 })
             } else {
@@ -114,6 +147,16 @@ const Signup = () => {
                         value={formData.password}
                         onChange={changeHandler}
                     />
+                        {/* <label htmlFor="country"> Select a country </label> */}
+                    <select className="p-3" name="country" required placeholder="Select a country" value={formData.country} onChange={changeHandler}>
+                        <option >Select a country</option>
+                        {options.map(option => (
+                            <option key={option.value} value={option.value}>
+                                {option.label}
+                            </option>
+                        ))}
+                    </select>
+
                     <button
                         onClick={() => {
                             signup()
@@ -140,3 +183,22 @@ const Signup = () => {
 }
 
 export default Signup
+
+// import React, { useState, useMemo } from 'react'
+// import Select from 'react-select'
+// import countryList from 'react-select-country-list'
+
+// function CountrySelector() {
+//   const [value, setValue] = useState('')
+//   const options = useMemo(() => countryList().getData(), [])
+
+//   const changeHandler = value => {
+//     setValue(value)
+//   }
+
+//   return <Select options={options} value={value} onChange={changeHandler}  />
+// }
+
+// export default CountrySelector
+
+

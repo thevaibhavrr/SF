@@ -12,7 +12,6 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [Islogin, setIslogin] = useState(false);
-  console.log(Islogin);
 
 
   const handleSubmit = async (event) => {
@@ -33,8 +32,20 @@ const Login = () => {
         password,
         email,
       });
+      console.log(response.data.user.country);
+
       localStorage.setItem("token", response.data.token);
-      // toast.success(response.data.message);
+      if (response.data.user.country === "IN") {
+        console.log("domestic");
+        localStorage.setItem("country", "Domestic");
+      }
+      console.log("---",response.data.user.country)
+      if (response.data.user.country !== "IN") {
+        console.log("International");
+
+        localStorage.setItem("country", "International");
+      }
+      toast.success(response.data.message);
 
       setIslogin(true);
       toast.success(response.data.message, {

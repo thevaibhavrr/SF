@@ -15,14 +15,22 @@ function Ourcollection() {
     const [slidesPerView, setSlidesPerView] = useState(5);
     const [products, setProducts] = useState([]);
     const [AllProductLoader, setAllProductLoader] = useState(false);
+    const [productType, setProductType] = useState("");
 
 
-    
+    useEffect(() => {
+        const token = localStorage.getItem("token")
+        const userLocation = localStorage.getItem("country")
+        if (token) {
+            setProductType(userLocation)
+        } 
+
+    }, [localStorage.getItem("token")])
     // get data
     const fetchProduct = async () => {
         try {
             setAllProductLoader(true);
-            const response = await makeApi(`/api/get-all-products?&perPage=10&IsOutOfStock=false`, "GET");
+            const response = await makeApi(`/api/get-all-products?&perPage=10&productType=${productType}&IsOutOfStock=false`, "GET");
             setProducts(response.data.products);
         } catch (error) {
             console.log(error);
@@ -37,11 +45,11 @@ function Ourcollection() {
             const screenWidth = window.innerWidth;
             if (screenWidth <= 500) {
                 setSlidesPerView(1.5);
-            }else if (screenWidth <= 900) {
+            } else if (screenWidth <= 900) {
                 setSlidesPerView(3);
             } else if (screenWidth <= 1039) {
                 setSlidesPerView(4);
-            } 
+            }
         };
 
         handleResize();
@@ -50,48 +58,11 @@ function Ourcollection() {
             window.removeEventListener("resize", handleResize);
         };
     }, [])
-    const OurCollectionImages = [
-        {
-            image: ASDN,
-            name: "ASAD"
-        },
-        {
-            image: WhiteOcean,
-            name: "White Ocean"
-        },
-        {
-            image: Mockup,
-            name: "Bottle Mockup"
-        },
-        {
-            image: ASDN,
-            name: "ASAD"
-        },
-        {
-            image: WhiteOcean,
-            name: "White Ocean"
-        },
-        {
-            image: Mockup,
-            name: "Bottle Mockup"
-        },
-        {
-            image: ASDN,
-            name: "ASAD"
-        },
-        {
-            image: WhiteOcean,
-            name: "White Ocean"
-        },
-        {
-            image: Mockup,
-            name: "Bottle Mockup"
-        },
-    ]
+
 
     useEffect(() => {
         fetchProduct();
-    },[])
+    }, [])
 
     return (
         <>
@@ -101,40 +72,40 @@ function Ourcollection() {
 
                 {/* Swiper */}
                 <div>
-                {AllProductLoader ? <div className="All_Product_loader">
-                    <div className='' >
-                        <Primaryloader />
-                    </div>
-                </div> :
-                    <Swiper
-                        slidesPerView={slidesPerView}
-                        spaceBetween={20}
-                        slidesPerGroup={1}
-                        defaultValue={2}
-                        loop={true}
-                        loopFillGroupWithBlank={true}
-                        navigation={true}
-                        className="mySwiper main_our_collection_swiper"
-                        modules={[Navigation]}
-                    >
-                        {products.map((image, index) => (
-                            <SwiperSlide key={index} className='main_swiper_slide_our_collection' >
-                                <Link to={`/product/product-details/${image._id}`} className='css-for-link-tag' >
-                                <div className='main_our_collection_swiper_options' >
-                                    <img src={image.thumbnail} alt={`ImagesOf ${index + 1}`} className='Our_collection_slider_images' />
-                                    <div className='text-black' >{image.name}</div>
-                                </div>
-                                </Link>
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
-                   
-                }
+                    {AllProductLoader ? <div className="All_Product_loader">
+                        <div className='' >
+                            <Primaryloader />
+                        </div>
+                    </div> :
+                        <Swiper
+                            slidesPerView={slidesPerView}
+                            spaceBetween={20}
+                            slidesPerGroup={1}
+                            defaultValue={2}
+                            loop={true}
+                            loopFillGroupWithBlank={true}
+                            navigation={true}
+                            className="mySwiper main_our_collection_swiper"
+                            modules={[Navigation]}
+                        >
+                            {products.map((image, index) => (
+                                <SwiperSlide key={index} className='main_swiper_slide_our_collection' >
+                                    <Link to={`/product/product-details/${image._id}`} className='css-for-link-tag' >
+                                        <div className='main_our_collection_swiper_options' >
+                                            <img src={image.thumbnail} alt={`ImagesOf ${index + 1}`} className='Our_collection_slider_images' />
+                                            <div className='text-black' >{image.name}</div>
+                                        </div>
+                                    </Link>
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+
+                    }
                 </div>
                 <div className='view_more_button_div' >
-                <Link to={"/product/all-products"} className='css-for-link-tag' >
+                    <Link to={"/product/all-products"} className='css-for-link-tag' >
 
-                    <div className='click_buttons view_more_button_home_page' >VIEW MORE </div>
+                        <div className='click_buttons view_more_button_home_page' >VIEW MORE </div>
                     </Link>
                 </div>
             </div>
