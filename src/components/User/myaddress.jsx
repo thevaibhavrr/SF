@@ -65,6 +65,7 @@ function Myaddress() {
                 <div className="shipping-address-container mt-5 pt-5">
                     <div className="shipping-address-title">Shipping Address</div>
                     <div className="shipping-address-list">
+                        
                         {loading && <div className='w-100 d-flex justify-content-center' >
                             <Primaryloader /></div>}
                         {!loading && shippingAddresses.map((address, index) => (
@@ -95,10 +96,17 @@ function Myaddress() {
                         ))}
                     </div>
                     <div className='d-flex justify-content-center p-5'>
-                        <Link to={"/user/address/add-address"} className='css-for-link-tag'>
-                            <div className='click_buttons_second'>Add more</div>
+                        {shippingAddresses.length === 0 ? (
+                            <Link to={"/user/address/add-address"} className='css-for-link-tag'>
+                            <div className='click_buttons_second'>Add Address</div>
                         </Link>
-                    </div>
+                        ):(
+                            <Link to={"/user/address/add-address"} className='css-for-link-tag'>
+                                <div className='click_buttons_second'>Add more</div>
+                            </Link>
+
+                        ) }
+                        </div>
                 </div>
             </div>
 }

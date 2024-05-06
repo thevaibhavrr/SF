@@ -51,7 +51,7 @@ function PCHeaer() {
                     <img src={Logo} alt="Logo" className='Pc_Header_logo' />
                 </div>
                 <Link to="/" className='css-for-link-tag pcHeader_options ' >HOME</Link>
-                <Link to="/product/all-products" className=' css-for-link-tag pcHeader_options'>PRODUCTS</Link>
+                <Link to="/product/all-products" className=' css-for-link-tag pcHeader_options'>E-Store</Link>
                 <Link to="/about-us" className=' css-for-link-tag pcHeader_options'>ABOUT US</Link>
                 <Link to="/contact-us" className=' css-for-link-tag pcHeader_options'>CONTACT US</Link>
                 <div className='last_pcHeader_options' onClick={() => handelCartclick()} >

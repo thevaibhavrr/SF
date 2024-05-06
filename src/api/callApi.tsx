@@ -4,7 +4,7 @@ export const makeApi = async (
 	endpoint: string,
 	method: "GET" | "POST" | "PUT" | "DELETE" = "GET",
 	data?: any
-): Promise<AxiosResponse> => { 
+): Promise<AxiosResponse> => {  
 	try {
 		const token = localStorage.getItem("token")
 
@@ -20,9 +20,9 @@ export const makeApi = async (
 
 		const config: AxiosRequestConfig = {
 			method,
-			// url: `http://localhost:7000${endpoint}`, 
+			url: `http://localhost:7000${endpoint}`, 
 			// url: `https://pajiweb.onrender.com${endpoint}`, 
-			url: `https://sk-backend-uvv5.onrender.com${endpoint}`,
+			// url: `https://sk-backend-uvv5.onrender.com${endpoint}`,
 
 			headers,
 			data,

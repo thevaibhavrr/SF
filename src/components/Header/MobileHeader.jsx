@@ -69,7 +69,7 @@ function SmallNavbar() {
                   <li>About Us</li>
                 </Link>
                 <Link to={"/product/all-products"} className="css-for-link-tag">
-                  <li>Products</li>
+                  <li>E-Store</li>
                 </Link>
                 <Link to={"/infrastructure"} className="css-for-link-tag">
                   <li>Infrastructure</li>
