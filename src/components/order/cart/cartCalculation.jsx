@@ -22,7 +22,7 @@ function CartCalculation({ tax, shipping, CoupanApplied, total, Final, ButtonNam
                     <div className='cart_calculation_name_value'>
                         <div>₹ {formatNumber(Final)}</div>
                         <div>₹ 0.00</div>
-                        <div> 5%</div>
+                        <div> 18%</div>
                         <div>₹ {formatNumber(shipping)}</div>
                         <div>₹ {formatNumber(total)}</div>
                     </div>
