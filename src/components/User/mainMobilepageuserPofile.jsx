@@ -24,6 +24,7 @@ const UserProfileForMobile = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('country');
     history("/product/all-products");
   }
 

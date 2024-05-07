@@ -31,6 +31,14 @@ const LoginPopup = ({ onClose }) => {
         email,
       });
       localStorage.setItem("token", response.data.token);
+      if (response.data.user.country === "IN") {
+        localStorage.setItem("country", "Domestic");
+      }
+      if (response.data.user.country !== "IN") {
+        console.log("International");
+
+        localStorage.setItem("country", "International");
+      }
       toast.success(response.data.message);
       onClose();
       // refresh the page

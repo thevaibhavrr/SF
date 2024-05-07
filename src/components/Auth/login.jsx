@@ -36,10 +36,8 @@ const Login = () => {
 
       localStorage.setItem("token", response.data.token);
       if (response.data.user.country === "IN") {
-        console.log("domestic");
         localStorage.setItem("country", "Domestic");
       }
-      console.log("---",response.data.user.country)
       if (response.data.user.country !== "IN") {
         console.log("International");
 
