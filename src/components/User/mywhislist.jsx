@@ -15,7 +15,6 @@ function Mywhislist() {
     const [watchlistProducts, setWatchlistProducts] = useState([]);
     const [cartItems, setCartItems] = useState([]);
     const [AllProductLoader, setAllProductLoader] = useState(false);
-    const [AddTocartLoader, setAddTocartLoader] = useState(false);
     const [IsLogin, setIsLogin] = useState(false)
     const [showPopup, setShowPopup] = useState(false);
 

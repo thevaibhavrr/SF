@@ -10,6 +10,7 @@ import HorizotalLoader from '../loaders/horizotalLoader.jsx';
 import { Link } from "react-router-dom"
 import LoginPopup from '../Auth/LoginPopup.jsx';
 import { ToastContainer, toast } from "react-toastify";
+import { addToCart, removeFromCart  } from '../../utils/productFunction.js';
 
 function Allproduct({ search, category, minPrice, maxPrice }) {
     const [products, setProducts] = useState([]);
@@ -126,29 +127,7 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
             }
         }
     };
-    const removeFromCart = async (productId) => {
-        try {
-            // setAddTocartLoader(true);
-            setProductLoaders(prevState => ({
-                ...prevState,
-                [productId]: true
-            }));
-            const method = "POST";
-            const endpoint = "/api/remove-from-cart";
-            const data = await makeApi(endpoint, method, { productId });
-            setCartItems(prevState => prevState.filter(item => item.productId !== productId));
-
-        } catch (error) {
-            console.log(error);
-        } finally {
-            fetchCart();
-            setProductLoaders(prevState => ({
-                ...prevState,
-                [productId]: false
-            }));
-            // setAddTocartLoader(false);
-        }
-    };
+   
 
     const getProductQuantity = (productId) => {
         const cartItem = cartItems.find(item => item.productId === productId);
@@ -160,53 +139,13 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
 
     const handleAddToCart = (productId, quantity, availableQuantity) => {
         if (quantity < availableQuantity) {
-            addToCart(productId);
+            addToCart(productId, setIsLogin, setShowPopup, fetchCart, setCartItems, setProductLoaders);
         } else {
             toast("Cannot add more than available quantity.", { type: "error" });
         }
     };
 
 
-    const addToCart = async (productId) => {
-        if (!IsLogin) {
-            setShowPopup(true);
-        } else {
-            try {
-                setProductLoaders(prevState => ({
-                    ...prevState,
-                    [productId]: true
-                }));
-                const method = "POST";
-                const endpoint = "/api/add-to-cart";
-                await makeApi(endpoint, method, {
-                    productId,
-                    quantity: 1,
-                    shippingPrice: 0
-                });
-                setCartItems(prevState => {
-                    const existingItem = prevState.find(item => item.productId === productId);
-                    if (existingItem) {
-                        return prevState.map(item => {
-                            if (item.productId === productId) {
-                                return { ...item, quantity: item.quantity + 1 };
-                            }
-                            return item;
-                        });
-                    } else {
-                        return [...prevState, { productId, quantity: 1 }];
-                    }
-                });
-            } catch (error) {
-                console.log(error.response.data);
-            } finally {
-                fetchCart();
-                setProductLoaders(prevState => ({
-                    ...prevState,
-                    [productId]: false
-                }));
-            }
-        }
-    };
 
 
     return (
@@ -254,7 +193,7 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
                                                             </div>
                                                         ) : (
                                                             <div className="cart-quantity">
-                                                                <img src={RemoveIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => removeFromCart(product?._id)} />
+                                                                <img src={RemoveIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => removeFromCart(product?._id,setProductLoaders,setCartItems,fetchCart)} />
                                                                 <span>{getProductQuantity(product?._id)}</span>
                                                                 <img src={AddIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => handleAddToCart(product?._id, getProductQuantity(product?._id), product?.quantity)} />
                                                             </div>
@@ -267,7 +206,8 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
                                                                 <HorizotalLoader />
                                                             </div>
                                                         ) : (
-                                                            <div className="Add_to_cart_button" onClick={() => addToCart(product?._id)}>Add to Cart</div>
+                                                            <div className="Add_to_cart_button" onClick={() => handleAddToCart(product?._id, getProductQuantity(product?._id), product?.quantity)}>Add to Cart</div>
+                                                            // <div className="Add_to_cart_button" onClick={() => addToCartFun(product?._id)}>Add to Cart</div>
                                                         )}
                                                     </div>
                                                 )}

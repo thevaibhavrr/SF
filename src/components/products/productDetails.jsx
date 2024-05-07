@@ -14,6 +14,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from 'swiper/modules'
 
+
 function ProductDetails() {
     const history = useNavigate();
     const { productId } = useParams();
