@@ -22,3 +22,43 @@
     font-family: var(--Rhodium--Libre-font);
     width: 90%;
 }
+
+@media (max-width: 1100px) {
+    .endeavor_main_div{
+        padding: 50px 40px;
+    }
+    .endeavor_text{
+        font-size: 40px;
+        width: 90%;
+    }
+}
+
+@media (max-width:900px) {
+    .endeavor_main_div{
+        padding: 50px 30px;
+    }
+    .endeavor_images_div{
+        padding: 50px 50px;
+    }
+    .endeavor_text{
+        font-size: 30px;
+        font-family: var(--Rhodium--Libre-font);
+        width: 90%;
+    }
+}
+@media (max-width:500px) {
+    .endeavor_main_div{
+        padding: 50px 20px;
+    gap: 10px;
+
+    }
+    .endeavor_images_div{
+        padding: 50px 20px;
+        gap: 30px;
+    }
+    .endeavor_text{
+        font-size: 24px;
+        font-family: var(--Rhodium--Libre-font);
+        text-align: justify;
+    }
+}

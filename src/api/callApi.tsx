@@ -7,7 +7,6 @@ export const makeApi = async (
 ): Promise<AxiosResponse> => {  
 	try {
 		const token = localStorage.getItem("token")
-
 		if (!token && endpoint.includes("/auth-required")) {
 			window.location.href = "/Signup"
 			throw new Error("Please login to access this resource.")
