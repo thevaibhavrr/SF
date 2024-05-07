@@ -15,6 +15,7 @@
   /* color: var(--golden-color); */
   color: white ;
   border-bottom: 2px solid var(--golden-color);
+  z-index: 1000;
 }
 
 .ecom_bar_main_div div {

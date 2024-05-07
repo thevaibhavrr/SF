@@ -219,11 +219,11 @@ function ProductDetails() {
         const handleResize = () => {
             const screenWidth = window.innerWidth;
             if (screenWidth <= 500) {
-                setSlidesPerView(1.5);
+                setSlidesPerView(2);
             } else if (screenWidth <= 900) {
                 setSlidesPerView(3);
             } else if (screenWidth <= 1039) {
-                setSlidesPerView(4);
+                setSlidesPerView(5);
             }
         };
 

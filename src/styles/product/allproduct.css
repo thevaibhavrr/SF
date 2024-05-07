@@ -325,13 +325,13 @@
   margin: 8px 0px;
 }
 .All_product_price_after_discount{
-  font-size: 18px;
+  font-size: 16px;
   scale: 1.2;
   font-weight: 500;
 }
 .All_product_price_before_discount{
   font-weight: 500;
-  font-size: 16px;
+  font-size: 15px;
   scale: 0.8;
   text-decoration: line-through;
   color: #847c7c;
@@ -339,7 +339,7 @@
 .All_product_discount{
   color: green;
   font-weight: 550;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 
