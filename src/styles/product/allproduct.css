@@ -29,8 +29,24 @@
   border: 2px dashed var(--golden-color);
   border-radius: 30px;
 }
-.all_product_product_thumbnail {
+.All_product_name{
+  font-weight: bold;
+}
+.All_product_description {
+  padding: 0px 15px;
+  min-height: 40px; 
+  max-height: 45px; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: start;
   width: 100%;
+  color: #847c7c;
+}
+
+.all_product_product_thumbnail {
+  max-width: 250px;
+  max-height: 250px;
+
 }
 .product_name_and_price {
   display: flex;
@@ -43,6 +59,33 @@
   align-items: center;
   gap: 10px;
 }
+/* price */
+.All_product_price_div{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sura-font);
+  margin: 10px 0px;
+}
+.All_product_price_after_discount{
+  font-size: 20px;
+  scale: 1.2;
+  font-weight: 500;
+}
+.All_product_price_before_discount{
+  font-weight: 500;
+  font-size: 18px;
+  scale: 0.8;
+  text-decoration: line-through;
+  color: #847c7c;
+}
+.All_product_discount{
+  color: green;
+  font-weight: 550;
+  font-size: 16px;
+}
+
+
 
 /* cart */
 .cart-quantity {
@@ -138,9 +181,7 @@
     height: 100%;
     padding: 10px 5px 20px 5px;
   }
-  .all_product_product_thumbnail {
-    width: 90%;
-  }
+ 
   .product_name_and_price {
     display: flex;
     width: 100%;
@@ -195,9 +236,7 @@
     height: 100%;
     padding: 10px 5px 20px 5px;
   }
-  .all_product_product_thumbnail {
-    width: 90%;
-  }
+ 
   .product_name_and_price {
     display: flex;
     width: 100%;
@@ -257,7 +296,7 @@
     padding: 10px 5px 20px 5px;
   }
   .all_product_product_thumbnail {
-    width: 90%;
+    max-width: 180px;
   }
   .product_name_and_price {
     display: flex;
@@ -276,6 +315,34 @@
     cursor: pointer;
     width: 100%;
   }
+
+/* price */
+.All_product_price_div{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--sura-font);
+  margin: 8px 0px;
+}
+.All_product_price_after_discount{
+  font-size: 18px;
+  scale: 1.2;
+  font-weight: 500;
+}
+.All_product_price_before_discount{
+  font-weight: 500;
+  font-size: 16px;
+  scale: 0.8;
+  text-decoration: line-through;
+  color: #847c7c;
+}
+.All_product_discount{
+  color: green;
+  font-weight: 550;
+  font-size: 14px;
+}
+
+
 
   /* pagination */
   .pagination {

@@ -232,44 +232,52 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
                                             </div>
                                         </Link>
                                         <div className="product_name_and_price">
-                                            <div>{product.name}</div>
-                                            <div>₹{product.PriceAfterDiscount}</div>
+                                            <div className='All_product_name' >{product.name}</div>
+                                        </div>
+                                            <div className='All_product_description' >{product?.description}</div>
+                                        <div>
+                                            <div className='All_product_price_div' >
+                                                <div className='All_product_price_after_discount' >₹{product?.PriceAfterDiscount}</div>
+                                                <div className='All_product_price_before_discount' >₹{product?.price}</div>
+                                                <div className='All_product_discount' >  {product?.discountPercentage}% off</div>
+                                            </div>
+
                                         </div>
                                         <div className="Add_to_cart_and_watchlist_button">
                                             <>
-                                                {isInCart(product._id) ? (
+                                                {isInCart(product?._id) ? (
                                                     <div className='Add_to_cart_and_watchlist_child'>
-                                                        {productLoaders[product._id] ? (
+                                                        {productLoaders[product?._id] ? (
                                                             <div>
                                                                 <HorizotalLoader />
                                                             </div>
                                                         ) : (
                                                             <div className="cart-quantity">
-                                                                <img src={RemoveIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => removeFromCart(product._id)} />
-                                                                <span>{getProductQuantity(product._id)}</span>
-                                                                <img src={AddIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => handleAddToCart(product._id, getProductQuantity(product._id), product.quantity)} />
+                                                                <img src={RemoveIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => removeFromCart(product?._id)} />
+                                                                <span>{getProductQuantity(product?._id)}</span>
+                                                                <img src={AddIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => handleAddToCart(product?._id, getProductQuantity(product?._id), product?.quantity)} />
                                                             </div>
                                                         )}
                                                     </div>
                                                 ) : (
                                                     <div>
-                                                        {productLoaders[product._id] ? (
+                                                        {productLoaders[product?._id] ? (
                                                             <div>
                                                                 <HorizotalLoader />
                                                             </div>
                                                         ) : (
-                                                            <div className="Add_to_cart_button" onClick={() => addToCart(product._id)}>Add to Cart</div>
+                                                            <div className="Add_to_cart_button" onClick={() => addToCart(product?._id)}>Add to Cart</div>
                                                         )}
                                                     </div>
                                                 )}
                                             </>
-                                          
+
                                             <div className='Add_to_cart_and_watchlist_child'>
-                                               {AddToWishlistLoader[product._id] ? <div className='heart_loader_all_product' > <Heartloader /></div> : <IoIosHeart
-                                                     className={`watchlist-icon pointer-event ${wishlistItems.includes(product._id) ? "wishlist-active" : ""}`}
-                                                     onClick={() => toggleWishlist(product._id)}
-                                                 />}
-                                             </div> 
+                                                {AddToWishlistLoader[product?._id] ? <div className='heart_loader_all_product' > <Heartloader /></div> : <IoIosHeart
+                                                    className={`watchlist-icon pointer-event ${wishlistItems.includes(product?._id) ? "wishlist-active" : ""}`}
+                                                    onClick={() => toggleWishlist(product?._id)}
+                                                />}
+                                            </div>
 
                                         </div>
                                     </div>
