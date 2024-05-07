@@ -11,6 +11,7 @@
     min-height: 450px;
     max-height: 450px;
     overflow-y: scroll;
+    z-index: 100 !important;
 }
 
 .popup-header {
