@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
 }
 /* font family */
 @import url("https://fonts.googleapis.com/css2?family=Sura:wght@400;700&display=swap");
