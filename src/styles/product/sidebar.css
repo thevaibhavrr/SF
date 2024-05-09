@@ -88,6 +88,7 @@
   .proudct_sidebar_heading {
     font-size: 22px;
   }
+  
 }
 .more_icon_sidebar {
   display: none;
@@ -111,9 +112,9 @@
   }
 
   /* price range */
-  .price_filter_sidebar_pc_sidebar {
+  /* .price_filter_sidebar_pc_sidebar {
     display: none;
-  }
+  } */
 
   /* search */
   .input_for_search_sidebar {
