@@ -4,18 +4,6 @@ import { lazy ,  Suspense  } from "react";
 import Primaryloader from "./components/loaders/primaryloader";
 
 
-// import MainHeader from "./components/Header/MainHeader";
-// import Home from "./pages/Home";
-// import Auth from "./pages/auth";
-// import User from "./pages/User";
-// import Information from "./pages/information";
-// import Footer from "./components/Footer/footer";
-// import Product from "./pages/product";
-// import AboutUs from "./pages/aboutUs";
-// import ContectUs from "./pages/contect";
-// import Order from "./pages/order";
-// import ForgotPasswordForm from "./components/Auth/sendMail";
-// import OtpVerifiedForm from "./components/Auth/otp";
 
 const MainHeader = lazy(() => import("./components/Header/MainHeader"));
 const Home = lazy(() => import("./pages/Home"));

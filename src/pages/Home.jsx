@@ -1,25 +1,27 @@
-import React from 'react'
-import HomeBanner from '../components/Home/banner/banner'
-import Knowmore from '../components/Home/Knowmore'
-import MainOurStory from '../components/Home/ourStory/MainOurStory'
-import MainAllproductImages from '../components/Home/ourProductImages/mainAllproductImages'
-import Uptodate from '../components/Home/uptoDate/uptodate'
-import Footer from '../components/Footer/footer'
-import Ourcollection from '../components/Home/ourCollection/Ourcollection'
-import BesatSaller from '../components/Home/BestSaller/besatSaller'
-import Voice from '../components/Home/Voices/Voice'
+import React, { lazy, Suspense } from 'react'
+import Primaryloader from '../components/loaders/primaryloader'
+const HomeBanner = lazy(() => import("../components/Home/banner/banner"))
+const Knowmore = lazy(() => import("../components/Home/Knowmore"))
+const MainOurStory = lazy(() => import("../components/Home/ourStory/MainOurStory"))
+const MainAllproductImages = lazy(() => import("../components/Home/ourProductImages/mainAllproductImages"))
+const Uptodate = lazy(() => import("../components/Home/uptoDate/uptodate"))
+const Ourcollection = lazy(() => import("../components/Home/ourCollection/Ourcollection"))
+const BesatSaller = lazy(() => import("../components/Home/BestSaller/besatSaller"))
+const Voice = lazy(() => import("../components/Home/Voices/Voice"))
 
 function Home() {
   return (
     <div>
-        <HomeBanner/>
-        <Knowmore/>
-        <Ourcollection/>
-        <MainOurStory/>
-        <BesatSaller/>
-        <MainAllproductImages/>
-        <Voice/>
-        <Uptodate/>
+      <Suspense fallback={<div> <Primaryloader /> </div>}>
+        <HomeBanner />
+        <Knowmore />
+        <Ourcollection />
+        <MainOurStory />
+        <BesatSaller />
+        <MainAllproductImages />
+        <Voice />
+        <Uptodate />
+      </Suspense>
     </div>
   )
 }

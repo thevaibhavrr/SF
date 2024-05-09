@@ -1,14 +1,23 @@
-import React from 'react'
-import AboutBanner from '../components/aboutUs/aboutBanner'
-import AboutJourney from '../components/aboutUs/aboutJourney' 
-import AboutEndeavor from '../components/aboutUs/aboutEndeavor' 
+import React , { Suspense , lazy} from 'react'
+import Primaryloader from '../components/loaders/primaryloader'
+// import AboutBanner from '../components/aboutUs/aboutBanner'
+// import AboutJourney from '../components/aboutUs/aboutJourney' 
+// import AboutEndeavor from '../components/aboutUs/aboutEndeavor' 
+
+const AboutBanner = lazy(() => import("../components/aboutUs/aboutBanner"))
+const AboutJourney = lazy(() => import("../components/aboutUs/aboutJourney"))
+const AboutEndeavor = lazy(() => import("../components/aboutUs/aboutEndeavor"))
+
+
 
 function AboutUs() {
   return (
     <div>
+        <Suspense fallback={<div> <Primaryloader /> </div>}>
         <AboutBanner/>
         <AboutJourney/>
         <AboutEndeavor/>
+        </Suspense>
     </div>
   )
 }
