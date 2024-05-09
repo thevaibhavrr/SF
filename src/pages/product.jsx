@@ -2,6 +2,7 @@ import React, { Suspense, lazy } from 'react';
 import { Route, Routes } from "react-router";
 import Ecombar from '../components/Header/ecombar';
 import Primaryloader from '../components/loaders/primaryloader';
+import Scroll from '../components/scroll/smoothscroll';
 
 // Lazy load components
 const ProductSidebar = lazy(() => import('../components/products/slidebar/sidebar'));
@@ -10,6 +11,8 @@ const ProductDetails = lazy(() => import('../components/products/productDetails'
 function Product() {
     return (
         <div>
+      <Scroll/>
+
             <Suspense fallback={<div> <Primaryloader /> </div>}>
 
                 <Routes>
