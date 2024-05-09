@@ -43,7 +43,7 @@ var overscrollOptions = {
 };
 
 var options = {
-  damping: 0.05,
+  damping: 0.04,
   plugins: {
     overscroll: { ...overscrollOptions }
   }

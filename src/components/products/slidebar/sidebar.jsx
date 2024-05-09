@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useState } from 'react';
 import "../../../styles/product/sidebar.css";
 import Allproduct from '../allproduct';

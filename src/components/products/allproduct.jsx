@@ -11,6 +11,7 @@ import { Link } from "react-router-dom"
 import LoginPopup from '../Auth/LoginPopup.jsx';
 import { ToastContainer, toast } from "react-toastify";
 import { addToCart, removeFromCart  } from '../../utils/productFunction.js';
+import Scroll from '../scroll/smoothscroll.js';
 
 function Allproduct({ search, category, minPrice, maxPrice }) {
     const [products, setProducts] = useState([]);
@@ -162,8 +163,10 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
                     </div>
                 ) : (
                     <div className="">
+                         <Scroll/>
                         <div className="main_all_product_div">
                             {products.map((product, index) => (
+                                
                                 <div className="product_div_all_product_parent" key={index}>
                                     <div className="product_div_all_product">
                                         <Link to={`/product/product-details/${product._id}`} >
