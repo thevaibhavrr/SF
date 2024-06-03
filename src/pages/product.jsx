@@ -7,19 +7,21 @@ import Scroll from '../components/scroll/smoothscroll';
 // Lazy load components
 const ProductSidebar = lazy(() => import('../components/products/slidebar/sidebar'));
 const ProductDetails = lazy(() => import('../components/products/productDetails'));
+// import ProductSidebar from '../components/products/slidebar/sidebar';
+// import ProductDetails from '../components/products/productDetails';
 
 function Product() {
     return (
         <div>
-            <Scroll />
+            {/* <Scroll /> */}
 
             <Suspense fallback={<div> <Primaryloader /> </div>}>
 
                 <Routes>
-                    <Route
+                    {/* <Route
                         path="/sidebar"
                         element={<ProductSidebar />}
-                    />
+                    /> */}
                     <Route
                         path="/all-products"
                         element={<ProductSidebar />}
@@ -30,8 +32,9 @@ function Product() {
                         element={<ProductDetails />}
                     />
                 </Routes>
+                    <Ecombar />
             </Suspense>
-            <Ecombar />
+
         </div>
     );
 }

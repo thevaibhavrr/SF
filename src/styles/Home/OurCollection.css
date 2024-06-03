@@ -11,14 +11,16 @@
 
 /* slider */
 .main_our_collection_swiper {
-  height: 350px;
+  /* height: 550px; */
   padding: 20px 10px;
   margin: 0px 0px;
   display: flex;
+
   align-items: center;
 }
 .Our_collection_slider_images {
-  width: 200px;
+  /* max-width: 200px; */
+  /* width: 300px; */
 }
 
 .main_our_collection_swiper_options {

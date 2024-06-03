@@ -1,15 +1,16 @@
 .main_ecombar_parent_div {
   width: 100%;
   position: relative;
+  background: #000;
 }
 .ecom_bar_main_div {
+  position: fixed;
+  left: 0px;
+  bottom: 10px;
   width: 100%;
   display: flex;
   justify-content: space-around;
   text-align: center;
-  position: fixed;
-  bottom: 0px;
-  left: 0px;
   background: var(--navy-blue-color);
   padding: 10px 10px;
   /* color: var(--golden-color); */
@@ -36,5 +37,6 @@
 @media (max-width:500px) {
     .main_ecombar_parent_div{
         display: block;
+        /* position: relative; */
     }
 }

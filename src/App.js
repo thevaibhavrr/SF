@@ -21,7 +21,7 @@ const OtpVerifiedForm = lazy(() => import("./components/Auth/otp"));
 
 function App() {
   return (
-    <div>
+    <div  >
       {!useLocation().pathname.includes("/user-password") && <MainHeader />}
 
       <Suspense fallback={<div> <Primaryloader/> </div>}>

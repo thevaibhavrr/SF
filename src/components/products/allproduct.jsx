@@ -12,6 +12,7 @@ import LoginPopup from '../Auth/LoginPopup.jsx';
 import { ToastContainer, toast } from "react-toastify";
 import { addToCart, removeFromCart  } from '../../utils/productFunction.js';
 import Scroll from '../scroll/smoothscroll.js';
+import Ecombar from '../Header/ecombar.jsx';
 
 function Allproduct({ search, category, minPrice, maxPrice }) {
     const [products, setProducts] = useState([]);
@@ -147,9 +148,6 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
         }
     };
 
-
-
-
     return (
         <>
             {showPopup && <LoginPopup onClose={closePopup} />}
@@ -164,7 +162,7 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
                     </div>
                 ) : (
                     <div className="">
-                         <Scroll/>
+                         {/* <Scroll/> */}
                         <div className="main_all_product_div">
                             {products.map((product, index) => (
                                 
@@ -247,6 +245,8 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
                 )
                 }
             </div>
+            {/* <Ecombar /> */}
+
         </>
 
     );
