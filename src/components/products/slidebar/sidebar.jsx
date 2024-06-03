@@ -10,7 +10,7 @@ const ProductSidebar = () => {
     const history = useNavigate();
 
     const [minPrice, setMinPrice] = useState(0);
-    const [maxPrice, setMaxPrice] = useState(1000);
+    const [maxPrice, setMaxPrice] = useState(100000);
     const [categories, setCategories] = useState([]);
     const [search, setSearch] = useState("");
     const [category, setCategory] = useState("");

@@ -11,7 +11,7 @@ const ProductDetails = lazy(() => import('../components/products/productDetails'
 function Product() {
     return (
         <div>
-      <Scroll/>
+            <Scroll />
 
             <Suspense fallback={<div> <Primaryloader /> </div>}>
 

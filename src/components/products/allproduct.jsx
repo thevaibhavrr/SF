@@ -46,6 +46,7 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
             setAllProductLoader(true);
             console.log(search)
             const response = await makeApi(`/api/get-all-products?name=${search}&category=${category}&minPrice=${minPrice}&maxPrice=${maxPrice}&page=${currentPage}&perPage=${ResultPerPage}&productType=${productType}&IsOutOfStock=false`, "GET");
+             console.log(response.data)
             setProducts(response.data.products);
             setToalProduct(response.data.totalProducts);
         } catch (error) {
@@ -180,7 +181,8 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
                                             <div className='All_product_description' >{product?.description}</div>
                                         <div>
                                             <div className='All_product_price_div' >
-                                                <div className='All_product_price_after_discount' >₹{product?.PriceAfterDiscount}</div>
+                                                {/* <div className='All_product_price_after_discount' >₹{product?.PriceAfterDiscount}</div> */}
+                                                <div className='All_product_price_after_discount' >₹{product?.price}</div>
                                                 <div className='All_product_price_before_discount' >₹{product?.price}</div>
                                                 <div className='All_product_discount' >  {product?.discountPercentage}% off</div>
                                             </div>
