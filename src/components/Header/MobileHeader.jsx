@@ -33,7 +33,7 @@ function SmallNavbar() {
           >
             <div className="">
               <Link to={"/"} className="css-for-link-tag">
-                <img src={mainIcon} alt="" srcset="" className="header-logo-for-mobile-nav" />
+                <img load="lazy" src={mainIcon} alt="" srcset="" className="header-logo-for-mobile-nav" />
               </Link>
             </div>
             <div className="" onClick={toggleVerticalNavbar}>

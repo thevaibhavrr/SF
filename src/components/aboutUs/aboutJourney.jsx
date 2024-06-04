@@ -9,13 +9,13 @@ function AboutJourney() {
             <div className='contact_journey_divs journy_left'>
                 <div className='contact_journey_left_text' >Spice & Rice Specialists. Elevating your kitchen with premium flavors. Experience the difference with every dish.</div>
                 <div>
-                    <img src={product_image} alt="product_image" className='jounry_images jounry_images_first'/>
+                    <img load="lazy" src={product_image} alt="product_image" className='jounry_images jounry_images_first'/>
                 </div>
             </div>
             {/* center */}
             <div className='contact_journey_divs journy_center'>
                 <div className='journy_center_imaage_div' >
-                    <img src={masala_image} alt="masala_image" className='jounry_images  ' />
+                    <img load="lazy" src={masala_image} alt="masala_image" className='jounry_images  ' />
                 </div>
             </div>
             {/* right */}

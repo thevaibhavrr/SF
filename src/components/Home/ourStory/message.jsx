@@ -13,7 +13,7 @@ function OurStoryMessage() {
                 </div>
                 {/* right image */}
                 <div className='our_story_image_div' >
-                    <img src={OurStoryMessageImage} alt="Our Story Message" className='our_story_image' />
+                    <img load="lazy" src={OurStoryMessageImage} alt="Our Story Message" className='our_story_image' />
                 </div>
 
             </div>

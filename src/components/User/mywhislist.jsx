@@ -181,7 +181,7 @@ function Mywhislist() {
                                         <div className="product_div_all_product">
                                             <Link to={`/product/product-details/${product.products._id}`} >
                                                 <div>
-                                                    <img src={product.products.thumbnail} alt="product" className="all_product_product_thumbnail" />
+                                                    <img load="lazy" src={product.products.thumbnail} alt="product" className="all_product_product_thumbnail" />
                                                 </div>
                                             </Link>
                                             <div className="product_name_and_price">
@@ -194,9 +194,9 @@ function Mywhislist() {
                                                         <div className='Add_to_cart_and_watchlist_child'>
                                                             {productLoaders[product.products._id] ? <div> <HorizotalLoader /> </div> :
                                                                 <div className="cart-quantity">
-                                                                    <img src={RemoveIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => removeFromCart(product.products._id)} />
+                                                                    <img load="lazy" src={RemoveIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => removeFromCart(product.products._id)} />
                                                                     <span>{getProductQuantity(product.products._id)}</span>
-                                                                    <img src={AddIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => addToCart(product.products._id)} />
+                                                                    <img load="lazy" src={AddIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => addToCart(product.products._id)} />
                                                                 </div>
                                                             }
                                                         </div>

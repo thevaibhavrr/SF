@@ -283,7 +283,7 @@ function ProductDetails() {
                                             {product.image.map((item, i) => {
                                                 return (
                                                     <div className='d-flex justify-content-center align-items-center' >
-                                                        <img
+                                                        <img load="lazy"
                                                             key={i}
                                                             src={item}
                                                             alt=""
@@ -297,18 +297,21 @@ function ProductDetails() {
                                         </div>
                                         {selectedImage ? (
                                             <div className="productdisplay-img">
-                                                <img
-                                                    src={selectedImage} // Use the selected image here
+                                                <img load="lazy"
+                                                    src={selectedImage  }
                                                     alt=""
+                                                    
+
                                                     className="productdisplay-main-img"
                                                 />
                                             </div>
 
                                         ) :
                                             <div className="productdisplay-img">
-                                                <img
-                                                    src={product.thumbnail}
+                                                <img load="lazy"
+                                                    src={product.thumbnail ? product.thumbnail : `https://eu.evocdn.io/dealer/1065/catalog/product/images/cs_1612369426.png`}
                                                     alt=""
+                                                    
                                                     className="productdisplay-main-img"
                                                 />
 
@@ -322,9 +325,9 @@ function ProductDetails() {
                                         <p>{product.description}</p>
                                         <div>
                                             <div className='product_details_price_div' >
-                                                <div className='product_details_price_after_discount' >₹{product.PriceAfterDiscount}</div>
+                                                <div className='product_details_price_after_discount' >₹{product.PriceAfterDiscount ? product.PriceAfterDiscount : product.price }</div>
                                                 <div className='product_details_price_before_discount' >₹{product.price}</div>
-                                                <div className='product_details_discount' >  {product.discountPercentage}% off</div>
+                                                <div className='product_details_discount' >  {product.discountPercentage ? product.discountPercentage : 0 }% off</div>
                                             </div>
                                             
                                         </div>
@@ -350,7 +353,7 @@ function ProductDetails() {
                                                 </>
                                             ) : (
                                                 <div className="productdisplay-food-item-counter">
-                                                    <img
+                                                    <img load="lazy"
                                                         onClick={() => removeFromCart(product._id)}
                                                         src={RemoveIcon}
                                                         alt=""
@@ -362,7 +365,7 @@ function ProductDetails() {
                                                             <span>{getProductQuantity(product._id)}</span>
                                                         </p>
                                                     }
-                                                    <img
+                                                    <img load="lazy"
                                                         onClick={() => handleAddToCart(product._id, getProductQuantity(product._id), product.quantity)}
                                                         src={AddIcon}
                                                         alt=""
@@ -401,7 +404,7 @@ function ProductDetails() {
                                     <SwiperSlide key={index} className='main_swiper_slide_our_collection' >
                                         <Link to={`/product/product-details/${image._id}`} className='css-for-link-tag' >
                                             <div className='main_our_collection_swiper_options text-center product_details_similer_product_div ' style={{boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)", cursor: "pointer" , maxHeight: "300px" }} >
-                                                <img src={image.thumbnail} style={{ maxWidth: "200px"}} alt={`ImagesOf ${index + 1}`} className='Our_collection_slider_images' />
+                                                <img load="lazy" src={image.thumbnail} style={{ maxWidth: "200px"}} alt={`ImagesOf ${index + 1}`} className='Our_collection_slider_images' />
                                                 <div className='text-black' >{image.name}</div>
                                             </div>
                                         </Link>
@@ -709,7 +712,7 @@ export default ProductDetails
 //                                             {product.image.map((item, i) => {
 //                                                 return (
 //                                                     <div className='d-flex justify-content-center align-items-center' >
-//                                                         <img
+//                                                         <img load="lazy"
 //                                                             key={i}
 //                                                             src={item}
 //                                                             alt=""
@@ -723,7 +726,7 @@ export default ProductDetails
 //                                         </div>
 //                                         {selectedImage ? (
 //                                             <div className="productdisplay-img">
-//                                                 <img
+//                                                 <img load="lazy"
 //                                                     src={selectedImage} // Use the selected image here
 //                                                     alt=""
 //                                                     className="productdisplay-main-img"
@@ -732,7 +735,7 @@ export default ProductDetails
 
 //                                         ) :
 //                                             <div className="productdisplay-img">
-//                                                 <img
+//                                                 <img load="lazy"
 //                                                     src={product.thumbnail}
 //                                                     alt=""
 //                                                     className="productdisplay-main-img"
@@ -776,7 +779,7 @@ export default ProductDetails
 //                                                 </>
 //                                             ) : (
 //                                                 <div className="productdisplay-food-item-counter">
-//                                                     <img
+//                                                     <img load="lazy"
 //                                                         onClick={() => removeFromCart(product._id)}
 //                                                         src={RemoveIcon}
 //                                                         alt=""
@@ -788,7 +791,7 @@ export default ProductDetails
 //                                                             <span>{getProductQuantity(product._id)}</span>
 //                                                         </p>
 //                                                     }
-//                                                     <img
+//                                                     <img load="lazy"
 //                                                         onClick={() => handleAddToCart(product._id, getProductQuantity(product._id), product.quantity)}
 //                                                         src={AddIcon}
 //                                                         alt=""
@@ -825,7 +828,7 @@ export default ProductDetails
 //                                     <SwiperSlide key={index} className='main_swiper_slide_our_collection' >
 //                                         <Link to={`/product/product-details/${image._id}`} className='css-for-link-tag' >
 //                                             <div className='main_our_collection_swiper_options' >
-//                                                 <img src={image.thumbnail} alt={`ImagesOf ${index + 1}`} className='Our_collection_slider_images' />
+//                                                 <img load="lazy" src={image.thumbnail} alt={`ImagesOf ${index + 1}`} className='Our_collection_slider_images' />
 //                                                 <div className='text-black' >{image.name}</div>
 //                                             </div>
 //                                         </Link>

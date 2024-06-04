@@ -170,7 +170,7 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
                                     <div className="product_div_all_product">
                                         <Link to={`/product/product-details/${product._id}`} >
                                             <div>
-                                                <img src={product.thumbnail} alt="product" className="all_product_product_thumbnail" loading='lazy' />
+                                                <img load="lazy" src={product.thumbnail} alt="product" className="all_product_product_thumbnail" loading='lazy' />
                                             </div>
                                         </Link>
                                         <div className="product_name_and_price">
@@ -196,9 +196,9 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
                                                             </div>
                                                         ) : (
                                                             <div className="cart-quantity">
-                                                                <img src={RemoveIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => removeFromCart(product?._id,setProductLoaders,setCartItems,fetchCart)} />
+                                                                <img load="lazy" src={RemoveIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => removeFromCart(product?._id,setProductLoaders,setCartItems,fetchCart)} />
                                                                 <span>{getProductQuantity(product?._id)}</span>
-                                                                <img src={AddIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => handleAddToCart(product?._id, getProductQuantity(product?._id), product?.quantity)} />
+                                                                <img load="lazy" src={AddIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => handleAddToCart(product?._id, getProductQuantity(product?._id), product?.quantity)} />
                                                             </div>
                                                         )}
                                                     </div>

@@ -10,10 +10,10 @@ function AboutEndeavor() {
             <div className='endeavor_main_div' >
                 <div className='Main_Home_heading'>Our Endeavor</div>
                 <div className='endeavor_images_div' >
-                    <div><img src={Quality} alt="Quality" className='endeavor_images' /></div>
-                    <div><img src={Authenticity} alt="Authenticity" className='endeavor_images' /></div>
-                    <div><img src={Flavor} alt="Flavor" className='endeavor_images' /></div>
-                    <div><img src={Excellence} alt="Excellence" className='endeavor_images' /></div>
+                    <div><img load="lazy" src={Quality} alt="Quality" className='endeavor_images' /></div>
+                    <div><img load="lazy" src={Authenticity} alt="Authenticity" className='endeavor_images' /></div>
+                    <div><img load="lazy" src={Flavor} alt="Flavor" className='endeavor_images' /></div>
+                    <div><img load="lazy" src={Excellence} alt="Excellence" className='endeavor_images' /></div>
                 </div>
                 <div className='endeavor_text' >
                     SK Foods is dedicated to providing the highest quality spices and rice varieties, sourced with care and curated for exceptional flavor. We aim to enrich culinary experiences worldwide, fostering a love for authentic ingredients and a passion for delicious cooking.

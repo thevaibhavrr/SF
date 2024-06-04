@@ -4,7 +4,7 @@ function ContactUsBanner() {
   return (
     <>
     <div className='Home_page_banner_main_div' >
-        <img src={BannerImage} alt="Banner" className='home_page_banner_image' />
+        <img load="lazy" src={BannerImage} alt="Banner" className='home_page_banner_image' />
     </div>
 
 

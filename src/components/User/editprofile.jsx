@@ -162,7 +162,7 @@ const EditUserProfile = () => {
                                             />
                                         </div>
                                         <div>
-                                            <img
+                                            <img load="lazy"
                                                 src={editData?.userImage}
                                                 alt="profile"
                                             />

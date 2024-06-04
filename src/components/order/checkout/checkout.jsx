@@ -111,7 +111,7 @@ function Checkout() {
 
             {orderPlaced && (
                 <div className="success-gif-container">
-                    <img src={SucessGIF} alt="Success GIF" className='success-gif' />
+                    <img load="lazy" src={SucessGIF} alt="Success GIF" className='success-gif' />
                 </div>
             )}
             {!orderPlaced && (

@@ -61,7 +61,7 @@ const OrderDetailsPage = () => {
                         <h2>Ordered Products:</h2>
                         {orderDetails.CartId.orderItems.map((item) => (
                             <div key={item._id} className="product-item">
-                                <img src={item.productId.thumbnail} alt={item.productId.name} />
+                                <img load="lazy" src={item.productId.thumbnail} alt={item.productId.name} />
                                 <div className="product-details">
                                     <h3>{item.productId.name}</h3>
                                     <p><strong>Price:</strong> ₹{item.singleProductPrice}</p>

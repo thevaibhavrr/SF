@@ -13,15 +13,15 @@ function Footer() {
                 {/* main logo */}
                 <div className='footer_quick_links'>
                     <div className='footer_icon_image_div' >
-                        <img src={Logo} alt="Logo" className='Main_SK_logo' />
+                        <img load="lazy" src={Logo} alt="Logo" className='Main_SK_logo' />
                     </div>
                 </div>
                 {/* media links */}
                 <div className='footer_quick_links' >
                     <div className='footer_quick_links_heading' >Media Links</div>
                     <div className='media_links_div' >
-                        <div><img src={Instagram} alt="Instagram" className='media_links' /></div>
-                        <div><img src={Facebook} alt="Facebook" className='media_links' /></div>
+                        <div><img load="lazy" src={Instagram} alt="Instagram" className='media_links' /></div>
+                        <div><img load="lazy" src={Facebook} alt="Facebook" className='media_links' /></div>
                     </div>
                 </div>
                 {/* Quick Links */}

@@ -10,20 +10,20 @@ function UpperImages() {
         <>
             <div className='upper_images_main_div' >
                 <div>
-                    <img src={MasalaImg} alt="Masala" className='upper_images' />
+                    <img load="lazy" src={MasalaImg} alt="Masala" className='upper_images' />
                 </div>
                 <div>
-                    <img src={OilImg} alt="Oil" className='upper_images' />
+                    <img load="lazy" src={OilImg} alt="Oil" className='upper_images' />
                 </div>
 
 
             </div>
             <div className='upper_images_main_div' >
                 <div>
-                    <img src={Suger} alt="Suger" className='upper_images' />
+                    <img load="lazy" src={Suger} alt="Suger" className='upper_images' />
                 </div>
                 <div>
-                    <img src={RiceImg} alt="Rice" className='upper_images' />
+                    <img load="lazy" src={RiceImg} alt="Rice" className='upper_images' />
                 </div>
 
 
