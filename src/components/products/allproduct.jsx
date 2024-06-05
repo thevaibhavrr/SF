@@ -10,7 +10,7 @@ import HorizotalLoader from '../loaders/horizotalLoader.jsx';
 import { Link } from "react-router-dom"
 import LoginPopup from '../Auth/LoginPopup.jsx';
 import { ToastContainer, toast } from "react-toastify";
-import { addToCart, removeFromCart  } from '../../utils/productFunction.js';
+import { addToCart, removeFromCart } from '../../utils/productFunction.js';
 import Scroll from '../scroll/smoothscroll.js';
 import Ecombar from '../Header/ecombar.jsx';
 
@@ -19,7 +19,7 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
     const [loading, setLoading] = useState(false);
     const [wishlistItems, setWishlistItems] = useState([]);
     const [cartItems, setCartItems] = useState([]);
-    const [ResultPerPage, setResultPerPage] = useState(26);
+    const [ResultPerPage, setResultPerPage] = useState(10);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const [toalProduct, setToalProduct] = useState(0);
@@ -47,7 +47,7 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
             setAllProductLoader(true);
             console.log(search)
             const response = await makeApi(`/api/get-all-products?name=${search}&category=${category}&minPrice=${minPrice}&maxPrice=${maxPrice}&page=${currentPage}&perPage=${ResultPerPage}&productType=${productType}&IsOutOfStock=false`, "GET");
-             console.log(response.data)
+            console.log(response.data)
             setProducts(response.data.products);
             setToalProduct(response.data.totalProducts);
         } catch (error) {
@@ -130,7 +130,7 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
             }
         }
     };
-   
+
 
     const getProductQuantity = (productId) => {
         const cartItem = cartItems.find(item => item.productId === productId);
@@ -148,6 +148,8 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
         }
     };
 
+ 
+
     return (
         <>
             {showPopup && <LoginPopup onClose={closePopup} />}
@@ -162,10 +164,10 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
                     </div>
                 ) : (
                     <div className="">
-                         {/* <Scroll/> */}
+                        {/* <Scroll/> */}
                         <div className="main_all_product_div">
                             {products.map((product, index) => (
-                                
+
                                 <div className="product_div_all_product_parent" key={index}>
                                     <div className="product_div_all_product">
                                         <Link to={`/product/product-details/${product._id}`} >
@@ -176,11 +178,14 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
                                         <div className="product_name_and_price">
                                             <div className='All_product_name' >{product.name}</div>
                                         </div>
-                                            <div className='All_product_description' >{product?.description}</div>
+                                        <div className='All_product_description' >{product?.description}</div>
                                         <div>
                                             <div className='All_product_price_div' >
-                                                {/* <div className='All_product_price_after_discount' >₹{product?.PriceAfterDiscount}</div> */}
-                                                <div className='All_product_price_after_discount' >₹{product?.price}</div>
+                                                {/* <div className='All_product_price_after_discount' >₹{ product?.PriceAfterDiscount ? product?.PriceAfterDiscount : product?.price}</div> */}
+                                                <div className='All_product_price_after_discount'>
+                                                    ₹{Math.floor(product?.PriceAfterDiscount ? product?.PriceAfterDiscount : product?.price)}
+                                                </div>
+
                                                 <div className='All_product_price_before_discount' >₹{product?.price}</div>
                                                 <div className='All_product_discount' >  {product?.discountPercentage}% off</div>
                                             </div>
@@ -196,7 +201,7 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
                                                             </div>
                                                         ) : (
                                                             <div className="cart-quantity">
-                                                                <img load="lazy" src={RemoveIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => removeFromCart(product?._id,setProductLoaders,setCartItems,fetchCart)} />
+                                                                <img load="lazy" src={RemoveIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => removeFromCart(product?._id, setProductLoaders, setCartItems, fetchCart)} />
                                                                 <span>{getProductQuantity(product?._id)}</span>
                                                                 <img load="lazy" src={AddIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => handleAddToCart(product?._id, getProductQuantity(product?._id), product?.quantity)} />
                                                             </div>
