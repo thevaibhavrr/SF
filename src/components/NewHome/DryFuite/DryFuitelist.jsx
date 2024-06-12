@@ -134,10 +134,19 @@ function DryFuitelist() {
                                         {products.map((image, index) => (
                                             <SwiperSlide key={index}>
 
-                                                <div className='main_our_collection_swiper_options_New_Home orangeLinerGradient' >
-                                                    <img load="lazy" src={image.thumbnail} alt={`ImagesOf ${index + 1}`} className='Our_collection_slider_images' />
-                                                    <div className='text-black ' style={{ textWrap: "nowrap" }} >{image.name}</div>
+<Link to={`/product/product-details/${image._id}`} className='css-for-link-tag' >
+                                            <div className='main_our_collection_swiper_options_New_Home orangeLinerGradient'>
+                                                <img
+                                                    loading="lazy"
+                                                    src={image.thumbnail}
+                                                    alt={`ImagesOf ${index + 1}`}
+                                                    className='Our_collection_slider_images'
+                                                />
+                                                <div className='text-black' style={{ textWrap: 'nowrap' }}>
+                                                    {image.name}
                                                 </div>
+                                            </div>
+                                            </Link>
                                             </SwiperSlide>
                                         ))}
                                     </Swiper>

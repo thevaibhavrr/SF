@@ -105,6 +105,7 @@ function MoretoExportSlider() {
                                 >
                                     {products.map((image, index) => (
                                         <SwiperSlide key={index}>
+                                            <Link to={`/product/product-details/${image._id}`} className='css-for-link-tag' >
                                             <div className='main_our_collection_swiper_options_New_Home orangeLinerGradient'>
                                                 <img
                                                     loading="lazy"
@@ -116,6 +117,7 @@ function MoretoExportSlider() {
                                                     {image.name}
                                                 </div>
                                             </div>
+                                            </Link>
                                         </SwiperSlide>
                                     ))}
                                 </Swiper>
