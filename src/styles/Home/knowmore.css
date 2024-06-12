@@ -1,5 +1,5 @@
 .knowmore_main_div {
-  background-image: url("../../Images/Home/knowMore/knowMoreBgImage.png");
+  /* background-image: url("../../Images/Home/knowMore/knowMoreBgImage.png"); */
   background-size: 100% 100%;
   background-position: center;
   display: flex;
@@ -10,12 +10,14 @@
   gap: 20px;
 }
 .knowmore_heading {
-  color: var(--golden-color);
+  color: var(--navy-blue-color);
   font-size: 60px;
   font-weight: 700;
   text-transform: uppercase;
   text-align: center;
+  font-family: var(--Insanibu-font);
 }
+
 
 @media (max-width: 1024px) {
   .knowmore_heading {

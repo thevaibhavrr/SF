@@ -1,0 +1,38 @@
+.product_card_container_New_home {
+}
+.product_card {
+  max-width: 300px;
+  height: 390px;
+  padding: 0px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border-radius: 60px;
+  font-family: var(--Rhodium--Libre-font);
+  /* border-bottom: 440px solid orange; */
+  background-image: url("../../assets/img/NewHome/home_card_bg_image.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* border-left: 30px solid orange; */
+  /* border-top: 50px solid rgb(205, 169, 53); */
+}
+.offerImage {
+  width: 70%;
+}
+.product_image {
+  width: 80%;
+  scale: 1.1;
+}
+.ADD_button_new_home_page {
+  background: white;
+  padding: 3px 20px;
+}
+.new-price{
+    font-size: 20px;
+    font-weight: 600;
+}
+.old-price {
+    font-size: 18px;
+  text-decoration: line-through;
+}

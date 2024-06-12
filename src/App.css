@@ -1,38 +1,70 @@
-.App {
-  text-align: center;
+.main-slider-div {
+  padding: 20px 40px;
+  position: relative;
+  margin: 0px 80px;
+  
+}
+.main-slider-section-start {
+  background: var(--gay-main-bg-color);
+  padding-bottom: 10px;
+
+}
+.our-product-text {
+  font-size: 20px;
+  font-family: Georgia;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.slider_images{
+  display: block;
+  width: 100%;
+  margin-top: 30px;
+  object-fit: cover;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+
+.prev-button {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+.next-button {
+  cursor: pointer;
+  
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+@media (max-width: 500px) {
+  .mySwiper .swiper-slide img,
+  iframe {
+    width: 100%;
+    height: 300%;
+    /* border-radius: 8px; */
   }
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.second-about-us-image {
+  /* background-image: url("../images/new_about_2.png"); */
+  width: 100%;
+  height: 100vh;
+  background-size: 100% 100%;
+background-repeat: no-repeat;
+  background-position: center;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: flex-end;
   color: white;
 }
+/* .our-collection-icons {
+  filter: invert(1);
+} */
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+/* for laptop */
+@media (min-width:768px) {
+  .second-about-us-image {
+    /* background-image: url("../images/home_tea_image_for_big_screen.webp"); */
   }
 }

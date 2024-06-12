@@ -11,7 +11,11 @@ body {
 @import url("https://fonts.googleapis.com/css2?family=Sura:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Rhodium+Libre&family=Sura:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Dynalight&display=swap");
-
+@font-face {
+  font-family: INSANIBU;
+  /* src: url("../../assets/font/INSANIBU.TTF"); */
+  src: url("./assets/font/INSANIBU.TTF");
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -22,6 +26,7 @@ code {
   --sura-font: "Sura", sans-serif;
   --Rhodium--Libre-font: "Rhodium Libre", serif;
   --Dynalight-font: "Dynalight", cursive;
+  --Insanibu-font: INSANIBU;
 
   /* colors */
   --golden-color: #b8844e;
@@ -31,9 +36,14 @@ code {
   --bg-white-color: #f8f8ff;
 }
 
+
 /* my query */
 .hide_for_pc_screen{
   display: none;
+}
+.orangeLinerGradient {
+  background: linear-gradient(to bottom, #ffa500, #ffd900d0);
+
 }
 
 /* common button */
@@ -94,6 +104,16 @@ code {
 .css-for-link-tag-color{
   text-decoration: none;
 color:var(--white-color);
+}
+
+
+/* font family */
+.Insanibufontfamily{
+  font-family: var(--Insanibu-font);
+  color: var(--navy-blue-color);
+  font-size: 65px;
+  text-wrap: nowrap;
+  margin: 10px 0px;
 }
 
 /* media query */

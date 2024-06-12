@@ -2,6 +2,9 @@ import "./App.css";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { lazy ,  Suspense  } from "react";
 import Primaryloader from "./components/loaders/primaryloader";
+import NewHome from "./pages/NewHome";
+import ProductCard from "./components/NewHome/Newhomeproduct/Newhomeproduct";
+import OurProduct from "./components/NewHome/TEST/TEst";
 
 
 
@@ -27,6 +30,8 @@ function App() {
       <Suspense fallback={<div> <Primaryloader/> </div>}>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/pp" element={<OurProduct />} />
+        <Route path="/new" element={<NewHome />} />
         {/* about */}
         <Route path="/about-us" element={<AboutUs />} />
         {/* contact */}

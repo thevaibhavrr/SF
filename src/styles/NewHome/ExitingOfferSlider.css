@@ -1,0 +1,13 @@
+.main_banner_div {
+  width: 100%;
+  overflow: hidden;
+}
+
+.home_page_banner_image {
+  width: 100%;
+  height: auto;
+}
+
+.New_Home_banner{
+    border: 100px;
+}

@@ -4,9 +4,6 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from 'swiper/modules'
-import ASDN from "../../../Images/Home/Our collection/ASAD.png"
-import WhiteOcean from "../../../Images/Home/Our collection/White Ocean.png"
-import Mockup from "../../../Images/Home/Our collection/Bottle Mockup 1.png"
 import "../../../styles/Home/OurCollection.css"
 import { Link } from 'react-router-dom';
 import { makeApi } from '../../../api/callApi.tsx';
