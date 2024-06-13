@@ -18,11 +18,19 @@
         max-width: 170px;
       }  
 }
+*/
 
 @media (max-width: 500px) {
     .craftingFood_div {
         max-width: 100%;
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
       }
-} */
+      .craftingFood_image {
+        width: 40%;
+  border-radius: 20px;
+
+      }
+} 
