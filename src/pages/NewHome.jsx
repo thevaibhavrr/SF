@@ -24,9 +24,9 @@ function NewHome() {
         <Knowmore/>
         <SpicesLineUpmain/>
         <ExitingOfferMain/>
-        <MainMoretoExplore/>
         <DryFuitemain/>
         <NewHomeProducts/>
+        <MainMoretoExplore/>
         <CraftingFoodMain/>
         <NewHomeBottomBanner/>
         <StayUpToDate/>
