@@ -122,12 +122,12 @@ function SpicesProduct() {
                                     <Swiper
                                         onSwiper={setSwiperRef}
                                         onSlideChange={handleSlideChange}
-                                        slidesPerView={5}
+                                        slidesPerView={slidesPerView}
                                         initialSlide={2}
                                         centeredSlides={true}
                                         spaceBetween={20}
                                         pagination={{
-                                            type: "fraction",
+                                            type: 'fraction',
                                         }}
                                         className="mySwiper"
                                     >

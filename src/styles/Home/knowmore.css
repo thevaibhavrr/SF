@@ -19,9 +19,12 @@
 }
 
 
-@media (max-width: 1024px) {
+@media (max-width: 1026px) {
   .knowmore_heading {
-    font-size: 49px;
+    font-size: 50px;
+  }
+  .knowmore_main_div {
+    padding: 50px 30px;
   }
 }
 

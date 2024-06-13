@@ -15,6 +15,7 @@
     "react-scripts": "5.0.1",
     "react-select-country-list": "^2.2.3",
     "react-toastify": "^10.0.5",
+    "react-transition-group": "^4.4.5",
     "smooth-scrollbar": "^8.8.4",
     "swiper": "^11.1.1",
     "web-vitals": "^2.1.4"

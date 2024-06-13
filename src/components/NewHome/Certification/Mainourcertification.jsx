@@ -6,6 +6,7 @@ import BRC from "../../../assets/img/NewHome/BRC.svg"
 import BSI from "../../../assets/img/NewHome/BSI.svg"
 import FDA from "../../../assets/img/NewHome/FDA.svg"
 
+import "../../../styles/NewHome/Certification.css"
 function Mainourcertification() {
     const images = [FDA,BSI, BRC,FASSAI,HACCP,  ]
   return (
@@ -13,10 +14,10 @@ function Mainourcertification() {
         <div>
         <SeondrayHeading HeadingText="CRAFTING FOOD" />
         </div>
-        <div className='mx-5' >
-            <div className='d-flex justify-content-between align-items-around gap-5 mx-5' >
+        <div className='' >
+            <div className=' our_certification_div ' >
                 {images.map((image, index) => (
-                    <img key={index} src={image} alt="Crafting Food" width="130px" className='img-fluid' />
+                    <img key={index} src={image} alt="Crafting Food" className='img-fluid our_certification_images ' />
                 ))}
             </div>
         </div>

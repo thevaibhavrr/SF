@@ -1,0 +1,28 @@
+.craftingFood_div {
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  justify-content: space-around;
+}
+.craftingFood_image {
+  width: 20%;
+}
+
+/* @media (max-width: 1026px) {
+    .craftingFood_image {
+        max-width: 200px;
+      }  
+}
+@media (max-width: 800px) {
+    .craftingFood_image {
+        max-width: 170px;
+      }  
+}
+
+@media (max-width: 500px) {
+    .craftingFood_div {
+        max-width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+      }
+} */

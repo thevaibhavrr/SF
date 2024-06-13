@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react'
 import "swiper/css";
 import "swiper/css/navigation";
-import { Navigation } from 'swiper/modules'
 import "../../../styles/NewHome/SpicesLineUp.css"
 import { Link } from 'react-router-dom';
 import { makeApi } from '../../../api/callApi.tsx';
@@ -15,6 +14,41 @@ function DryFuitelist() {
     const [productType, setProductType] = useState("");
     const [swiperRef, setSwiperRef] = useState(null);
     const [activeIndex, setActiveIndex] = useState(2);
+
+console.log("slidesPerView",slidesPerView)
+  useEffect(() => {
+    const handleResize = () => {
+        const screenWidth = window.innerWidth;
+        if (screenWidth <= 500) {
+            setSlidesPerView(1.5);
+        } else if (screenWidth <= 900) {
+            setSlidesPerView(3);
+        } else if (screenWidth <= 1039) {
+            setSlidesPerView(4);
+        } else {
+            setSlidesPerView(5.3);
+        }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => {
+        window.removeEventListener('resize', handleResize);
+    };
+}, []);
+  const calculateSlidesPerView = () => {
+    const screenWidth = window.innerWidth;
+    if (screenWidth <= 500) {
+      return 2;
+    } else if (screenWidth <= 1039) {
+      return 5;
+    } else if (screenWidth <= 900) {
+      return 3;
+    } else {
+      // Default value or custom logic if needed
+      return 5.4;
+    }
+  };
 
 
     const handleSlideChange = () => {
@@ -55,25 +89,7 @@ function DryFuitelist() {
         }
     };
 
-    useEffect(() => {
-        const handleResize = () => {
-            const screenWidth = window.innerWidth;
-            if (screenWidth <= 500) {
-                setSlidesPerView(1.5);
-            } else if (screenWidth <= 900) {
-                setSlidesPerView(3);
-            } else if (screenWidth <= 1039) {
-                setSlidesPerView(4);
-            }
-        };
-
-        handleResize();
-        window.addEventListener("resize", handleResize);
-        return () => {
-            window.removeEventListener("resize", handleResize);
-        };
-    }, [])
-
+  
     useEffect(() => {
         fetchProduct();
     }, [productType])
@@ -92,40 +108,19 @@ function DryFuitelist() {
                             </div>
                         </div>
                     ) : (
-                        // <Swiper
-                        //     slidesPerView={slidesPerView}
-                        //     spaceBetween={20}
-                        //     slidesPerGroup={1}
-                        //     defaultValue={2}
-                        //     loop={true}
-                        //     loopFillGroupWithBlank={true}
-                        //     navigation={true}
-                        //     className="mySwiper main_our_collection_swiper"
-                        //     modules={[Navigation]}
-                        // >
-                        //     {products.map((image, index) => (
-                        //         <SwiperSlide key={index} className='main_swiper_slide_our_collection' >
-                        //             <Link to={`/product/product-details/${image._id}`} className='css-for-link-tag' >
-                        //                 <div className='main_our_collection_swiper_options_New_Home orangeLinerGradient' >
-                        //                     <img load="lazy" src={image.thumbnail} alt={`ImagesOf ${index + 1}`} className='Our_collection_slider_images' />
-                        //                     <div className='text-black' >{image.name}</div>
-                        //                 </div>
-                        //             </Link>
-                        //         </SwiperSlide>
-                        //     ))}
-                        // </Swiper>
+                       
                         <div className="main-slider-section-start pt-3">
                             <div className="main-slider-div">
 
 
                                 <div className="our-product-slider-start ">
                                     <Swiper
-                                        onSwiper={setSwiperRef}
-                                        onSlideChange={handleSlideChange}
-                                        slidesPerView={5}
-                                        initialSlide={2}
-                                        centeredSlides={true}
-                                        spaceBetween={20}
+                                          onSwiper={setSwiperRef}
+                                          onSlideChange={handleSlideChange}
+                                          slidesPerView={slidesPerView}
+                                          initialSlide={2}
+                                          centeredSlides={true}
+                                          spaceBetween={20}
                                         pagination={{
                                             type: "fraction",
                                         }}
@@ -134,19 +129,19 @@ function DryFuitelist() {
                                         {products.map((image, index) => (
                                             <SwiperSlide key={index}>
 
-<Link to={`/product/product-details/${image._id}`} className='css-for-link-tag' >
-                                            <div className='main_our_collection_swiper_options_New_Home orangeLinerGradient'>
-                                                <img
-                                                    loading="lazy"
-                                                    src={image.thumbnail}
-                                                    alt={`ImagesOf ${index + 1}`}
-                                                    className='Our_collection_slider_images'
-                                                />
-                                                <div className='text-black' style={{ textWrap: 'nowrap' }}>
-                                                    {image.name}
-                                                </div>
-                                            </div>
-                                            </Link>
+                                                <Link to={`/product/product-details/${image._id}`} className='css-for-link-tag' >
+                                                    <div className='main_our_collection_swiper_options_New_Home orangeLinerGradient'>
+                                                        <img
+                                                            loading="lazy"
+                                                            src={image.thumbnail}
+                                                            alt={`ImagesOf ${index + 1}`}
+                                                            className='Our_collection_slider_images'
+                                                        />
+                                                        <div className='text-black' style={{ textWrap: 'nowrap' }}>
+                                                            {image.name}
+                                                        </div>
+                                                    </div>
+                                                </Link>
                                             </SwiperSlide>
                                         ))}
                                     </Swiper>

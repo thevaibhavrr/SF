@@ -1,0 +1,11 @@
+.our_certification_div{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* gap: 30px; */
+    width: 100%;
+
+}
+.our_certification_images{
+    width: 10%;
+}

@@ -114,13 +114,20 @@ color:var(--white-color);
   font-size: 65px;
   text-wrap: nowrap;
   margin: 10px 0px;
+  
 }
+
 
 /* media query */
 @media (max-width: 1026px) {
   .Main_Home_heading {
     font-size: 60px;
   }
+  
+.Insanibufontfamily{
+  font-size: 40px;
+  margin: 10px 0px;
+}
 }
 @media (max-width: 1050px) {
   .Add_to_cart_button {
@@ -130,6 +137,9 @@ color:var(--white-color);
 @media (max-width: 800px) {
   .Main_Home_heading {
     font-size: 50px;
+  }
+  .Insanibufontfamily{
+    font-size: 34px;
   }
 
 }

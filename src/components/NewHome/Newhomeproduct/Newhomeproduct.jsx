@@ -36,7 +36,7 @@ const ProductList = [
 
 const NewHomeProducts = () => {
     return (
-        <div className="product_card_container_New_home d-flex justify-content-around">
+        <div className="product_card_container_New_home py-5 my-5 ">
             {ProductList.map((product) => (
                 <div key={product.id} className="product_card">
                     {/* top */}
@@ -50,7 +50,7 @@ const NewHomeProducts = () => {
                     </div>
                     {/* bottom */}
                     <div className='d-flex flex-column gap-2'>
-                        <div>
+                        <div className='New_Home_product_name_and_weight' >
                             <div>{product.name}</div>
                             <div>Net weight: {product.weight}</div>
                         </div>

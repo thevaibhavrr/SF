@@ -1,4 +1,6 @@
 .product_card_container_New_home {
+  display: flex;
+  justify-content: space-around;
 }
 .product_card {
   max-width: 300px;
@@ -6,6 +8,7 @@
   padding: 0px 20px 20px 20px;
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   gap: 15px;
   border-radius: 60px;
   font-family: var(--Rhodium--Libre-font);
@@ -14,8 +17,6 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  /* border-left: 30px solid orange; */
-  /* border-top: 50px solid rgb(205, 169, 53); */
 }
 .offerImage {
   width: 70%;
@@ -28,11 +29,96 @@
   background: white;
   padding: 3px 20px;
 }
-.new-price{
-    font-size: 20px;
-    font-weight: 600;
+.new-price {
+  font-size: 20px;
+  font-weight: 600;
 }
 .old-price {
-    font-size: 18px;
+  font-size: 18px;
   text-decoration: line-through;
+}
+
+@media (max-width: 960px) {
+  .product_card {
+    max-width: 240px;
+    height: 360px;
+    padding: 0px 17px 17px 17px;
+  }
+  .product_image {
+    width: 80%;
+    scale: 1.1;
+  }
+  .ADD_button_new_home_page {
+    padding: 3px 15px;
+  }
+  .new-price {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .old-price {
+    font-size: 17px;
+  }
+}
+@media (max-width: 730px) {
+  .product_card_container_New_home{
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .product_card {
+    max-width: 210px;
+    height: 300px;
+    padding: 0px 17px 17px 17px;
+    gap: 0px;
+    flex-wrap: wrap;
+  }
+  .product_image {
+    width: 80%;
+    scale: 1.1;
+  }
+  .ADD_button_new_home_page {
+    padding: 3px 7px;
+    font-size: 13px;
+  }
+  .new-price {
+    font-size: 17px;
+    font-weight: 600;
+  }
+  .old-price {
+    font-size: 16px;
+  }
+  .New_Home_product_name_and_weight{
+    font-size: 16px;
+    margin-top: 5px;
+  }
+}
+
+@media (max-width:500px) {  
+.product_card_container_New_home{
+  flex-wrap: wrap;
+}
+   .product_card {
+    max-width: 210px;
+    height: 300px;
+    padding: 0px 17px 17px 17px;
+    gap: 0px;
+  }
+  .product_image {
+    width: 80%;
+    scale: 1.1;
+  }
+  .ADD_button_new_home_page {
+    padding: 3px 7px;
+    font-size: 13px;
+  }
+  .new-price {
+    font-size: 17px;
+    font-weight: 600;
+  }
+  .old-price {
+    font-size: 16px;
+  }
+  .New_Home_product_name_and_weight{
+    font-size: 16px;
+    margin-top: 5px;
+  }
 }

@@ -1,0 +1,96 @@
+/* Carousel container */
+#carousel {
+    position: relative;
+    width: 90%;
+    margin: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Arrows */
+.arrow {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    text-align: center;
+    font-size: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #228291;
+    line-height: 30px;
+    z-index: 1000;
+}
+
+.arrow-left {
+    left: 10px;
+}
+
+.arrow-right {
+    right: 10px;
+}
+
+/* Transition classes */
+.left-enter {
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
+.left-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: transform 1s, opacity 1s;
+}
+
+.left-exit {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.left-exit-active {
+    opacity: 0;
+    transform: translateX(100%);
+    transition: transform 1s, opacity 1s;
+}
+
+.right-enter {
+    opacity: 0;
+    transform: translateX(100%);
+}
+
+.right-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: transform 1s, opacity 1s;
+}
+
+.right-exit {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.right-exit-active {
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: transform 1s, opacity 1s;
+}
+
+/* Items */
+.item {
+    position: absolute;
+    width: 70%;
+    transition: transform 1s, opacity 1s;
+}
+
+/* Disable text selection */
+.noselect {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
