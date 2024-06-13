@@ -31,12 +31,11 @@ function App() {
 
       <Suspense fallback={<div> <Primaryloader/> </div>}>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/pp" element={<DryFuitelist />} />
-        {/* <Route path="/pp" element={<Carousel  active={0}  />} /> */}
+        {/* <Route path="/" element={<Home />} /> */}
+        {/* <Route path="/pp" element={<DryFuitelist />} /> */}
         
 
-        <Route path="/new" element={<NewHome />} />
+        <Route path="/" element={<NewHome />} />
         {/* about */}
         <Route path="/about-us" element={<AboutUs />} />
         {/* contact */}
