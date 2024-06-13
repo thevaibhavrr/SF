@@ -2,8 +2,8 @@
   padding: 20px 40px;
   position: relative;
   margin: 0px 80px;
-  
 }
+
 .main-slider-section-start {
   background: var(--gay-main-bg-color);
   padding-bottom: 10px;
@@ -43,28 +43,19 @@
   iframe {
     width: 100%;
     height: 300%;
-    /* border-radius: 8px; */
+  }
+  .main-slider-div {
+    padding: 20px 40px;
+    margin: 0px 20px;
   }
 }
-.second-about-us-image {
-  /* background-image: url("../images/new_about_2.png"); */
-  width: 100%;
-  height: 100vh;
-  background-size: 100% 100%;
-background-repeat: no-repeat;
-  background-position: center;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  color: white;
-}
-/* .our-collection-icons {
-  filter: invert(1);
-} */
+
 
 /* for laptop */
 @media (min-width:768px) {
-  .second-about-us-image {
-    /* background-image: url("../images/home_tea_image_for_big_screen.webp"); */
+
+  .main-slider-div {
+    padding: 20px 40px;
+    margin: 0px 50px;
   }
 }

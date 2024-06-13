@@ -11,3 +11,17 @@
 .New_Home_banner{
     border: 100px;
 }
+.main-slider-div-for-banner{
+  padding: 20px 40px;
+  position: relative;
+  margin: 0px 30px;
+}
+
+@media (max-width:800px) {
+  .main-slider-div-for-banner{
+    padding: 20px 20px;
+    margin: 0px 0px;
+  }
+  
+  
+}

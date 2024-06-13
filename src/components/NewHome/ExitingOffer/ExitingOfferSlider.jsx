@@ -5,8 +5,6 @@ import "../../../styles/NewHome/ExitingOfferSlider.css";
 import BannerImage from "../../../Images/Home/banner/home_banner.png";
 import BannerSecondImage from "../../../Images/Home/banner/banner_2.png";
 import BannerThirdImage from "../../../Images/Home/banner/banner_3.png";
-import { Link } from 'react-router-dom';
-
 function Banner() {
   const Banner = [
     { id: 1, image: BannerImage },
@@ -40,31 +38,10 @@ function Banner() {
   };
 
   return (
-    <div className="main_banner_div top_slider">
-      {/* <Swiper
-        spaceBetween={100}
-        slidesPerView={1.4}
-        initialSlide={2.5}
-        loop={true}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-        }}
-      >
-        {Banner.map((item) => (
-          <SwiperSlide key={item.id}>
-            <img
-              src={item.image}
-              alt={`banner-${item.id}`}
-              className="home_page_banner_image New_Home_banner"
-              style={{borderRadius:"50px"}}
-            />
-          </SwiperSlide>
-        ))}
-      </Swiper> */}
-      <div className="main-slider-section-start pt-3">
-        <div className="main-slider-div">
-          <div className="our-product-slider-start">
+    <div className="">
+    <div className=" pt-3">
+        <div className="main-slider-div-for-banner">
+          <div className="">
             <Swiper
               onSwiper={setSwiperRef}
               onSlideChange={handleSlideChange}
@@ -79,7 +56,7 @@ function Banner() {
             >
               {Banner.map((image, index) => (
                 <SwiperSlide key={index}>
-                    <div className='main_our_collection_swiper_options_New_Home '>
+                    <div className=' '>
                       <img
                         loading="lazy"
                         src={image.image}

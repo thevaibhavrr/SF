@@ -114,7 +114,6 @@ color:var(--white-color);
   font-size: 65px;
   text-wrap: nowrap;
   margin: 10px 0px;
-  
 }
 
 
@@ -146,6 +145,10 @@ color:var(--white-color);
 @media (max-width: 500px) {
   .Main_Home_heading {
     font-size: 40px;
+  }
+  .Insanibufontfamily{
+    font-size: 25px;
+    margin: 10px 0px;
   }
   .click_buttons {
     padding: 10px 20px;

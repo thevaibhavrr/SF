@@ -6,6 +6,7 @@ import NewHome from "./pages/NewHome";
 import ProductCard from "./components/NewHome/Newhomeproduct/Newhomeproduct";
 import OurProduct from "./components/NewHome/TEST/TEst";
 import Carousel from "./components/NewHome/TEST/TEst";
+import DryFuitelist from "./components/NewHome/DryFuite/DryFuitelist";
 
 
 
@@ -31,8 +32,9 @@ function App() {
       <Suspense fallback={<div> <Primaryloader/> </div>}>
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route path="/pp" element={<OurProduct />} /> */}
-        <Route path="/pp" element={<Carousel  active={0}  />} />
+        <Route path="/pp" element={<DryFuitelist />} />
+        {/* <Route path="/pp" element={<Carousel  active={0}  />} /> */}
+        
 
         <Route path="/new" element={<NewHome />} />
         {/* about */}
