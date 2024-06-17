@@ -1,18 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "../../../styles/NewHome/ExitingOfferSlider.css";
-import BannerImage from "../../../Images/Home/banner/home_banner.png";
-import BannerSecondImage from "../../../Images/Home/banner/banner_2.png";
-import BannerThirdImage from "../../../Images/Home/banner/banner_3.png";
+
+import Oil from "../../../assets/img/NewHome/Oil -Banner.svg"
+import Rice from "../../../assets/img/NewHome/Rice - Banner.svg"
+import Spices from "../../../assets/img/NewHome/Spices- Banner.svg"
 function Banner() {
   const Banner = [
-    { id: 1, image: BannerImage },
-    { id: 2, image: BannerSecondImage },
-    { id: 3, image: BannerThirdImage },
-    { id: 4, image: BannerImage },
-    { id: 6, image: BannerThirdImage },
-    { id: 5, image: BannerSecondImage },
+    { id: 1, image: Oil },
+    { id: 2, image: Rice },
+    { id: 3, image: Spices },
+    { id: 4, image: Oil },
+    { id: 6, image: Spices },
+    { id: 5, image: Rice },
   ];
   const [swiperRef, setSwiperRef] = useState(null);
   const [activeIndex, setActiveIndex] = useState(2);
