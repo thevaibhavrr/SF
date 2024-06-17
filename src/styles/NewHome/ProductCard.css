@@ -109,6 +109,7 @@
   .ADD_button_new_home_page {
     padding: 3px 7px;
     font-size: 13px;
+    cursor: pointer;
   }
   .new-price {
     font-size: 17px;

@@ -31,7 +31,7 @@ function App() {
 
       <Suspense fallback={<div> <Primaryloader/> </div>}>
       <Routes>
-        {/* <Route path="/" element={<Home />} /> */}
+        <Route path="/old" element={<Home />} />
         {/* <Route path="/pp" element={<DryFuitelist />} /> */}
         
 
