@@ -18,7 +18,7 @@ function NewHome() {
     <div>
 
       <Suspense fallback={<div> <Primaryloader /> </div>}>
-      <Scroll/>
+      {/* <Scroll/> */}
 
         <HomeBanner />
         <Knowmore/>
