@@ -11,12 +11,11 @@ import { Link } from "react-router-dom"
 import LoginPopup from '../Auth/LoginPopup.jsx';
 import { ToastContainer, toast } from "react-toastify";
 import { addToCart, removeFromCart } from '../../utils/productFunction.js';
-import Scroll from '../scroll/smoothscroll.js';
-import Ecombar from '../Header/ecombar.jsx';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+
 
 function Allproduct({ search, category, minPrice, maxPrice }) {
     const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(false);
     const [wishlistItems, setWishlistItems] = useState([]);
     const [cartItems, setCartItems] = useState([]);
     const [ResultPerPage, setResultPerPage] = useState(10);
@@ -172,7 +171,7 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
                                     <div className="product_div_all_product">
                                         <Link to={`/product/product-details/${product._id}`} >
                                             <div>
-                                                <img load="lazy" src={product.thumbnail} alt="product" className="all_product_product_thumbnail" loading='lazy' />
+                                                <LazyLoadImage effect="blur" load="lazy" src={product.thumbnail} alt="product" className="all_product_product_thumbnail" loading='lazy' />
                                             </div>
                                         </Link>
                                         <div className="product_name_and_price">
@@ -201,9 +200,9 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
                                                             </div>
                                                         ) : (
                                                             <div className="cart-quantity">
-                                                                <img load="lazy" src={RemoveIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => removeFromCart(product?._id, setProductLoaders, setCartItems, fetchCart)} />
+                                                                <LazyLoadImage effect="blur" load="lazy" src={RemoveIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => removeFromCart(product?._id, setProductLoaders, setCartItems, fetchCart)} />
                                                                 <span>{getProductQuantity(product?._id)}</span>
-                                                                <img load="lazy" src={AddIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => handleAddToCart(product?._id, getProductQuantity(product?._id), product?.quantity)} />
+                                                                <LazyLoadImage effect="blur" load="lazy" src={AddIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => handleAddToCart(product?._id, getProductQuantity(product?._id), product?.quantity)} />
                                                             </div>
                                                         )}
                                                     </div>

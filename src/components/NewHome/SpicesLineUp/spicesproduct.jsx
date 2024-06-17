@@ -27,7 +27,7 @@ function SpicesProduct() {
     const fetchProduct = async () => {
         try {
             setAllProductLoader(true);
-            const response = await makeApi(`/api/get-all-products?&perPage=10&productType=${productType}&IsOutOfStock=false`, "GET");
+            const response = await makeApi(`/api/get-all-products?&perPage=10&category=665d6b3e4133e96dad0359e6&productType=${productType}&IsOutOfStock=false`, "GET");
             setProducts(response.data.products);
         } catch (error) {
             console.log(error);
