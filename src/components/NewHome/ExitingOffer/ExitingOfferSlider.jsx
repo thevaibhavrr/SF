@@ -11,9 +11,6 @@ function Banner() {
     { id: 1, image: Oil },
     { id: 2, image: Rice },
     { id: 3, image: Spices },
-    { id: 4, image: Oil },
-    { id: 6, image: Spices },
-    { id: 5, image: Rice },
   ];
   const [swiperRef, setSwiperRef] = useState(null);
   const [activeIndex, setActiveIndex] = useState(2);
@@ -50,6 +47,7 @@ function Banner() {
               initialSlide={2}
               centeredSlides={true}
               spaceBetween={20}
+              loop={true}
               pagination={{
                 type: 'fraction',
               }}
