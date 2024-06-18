@@ -7,12 +7,37 @@ import Banner04 from "../../../Images/Home/banner/Banner04.svg"
 import Banner05 from "../../../Images/Home/banner/Banner05.svg"
 // import "../../../styles/Home/banner.css"
 import "../../../styles/NewHome/newbanner.css"
+import { makeApi } from '../../../api/callApi.tsx';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 
-const images = [Banner01, Banner02, Banner03, Banner04, Banner05];
+
+// const images = [Banner01, Banner02, Banner03, Banner04, Banner05];
 
 function BannerCampain() {
     const [activeIndex, setActiveIndex] = useState(0);
+    const [images, setImages] = useState([]);
+    console.log(images)
+
+    // useEffect(() => {
+    //     const intervalId = setInterval(() => {
+    //         setActiveIndex((activeIndex + 1) % images.length);
+    //     }, 2000);
+    //     return () => clearInterval(intervalId);
+    // }, [activeIndex]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const banner = await makeApi('/api/get-all-banners', 'GET');
+                setImages(banner.data.banner);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        fetchData();
+    }, []);
+
 
   
 
@@ -34,8 +59,8 @@ function BannerCampain() {
                 </div>
                 <div className="carousel-inner">
                     {images.map((image, index) => (
-                        <div key={index} className={`carousel-item ${index === activeIndex ? "active" : ""}`}>
-                            <img src={image} className="caretor_banner_image" alt={`Slide ${index + 1}`} />
+                        <div key={index} className={` carousel-item ${index === activeIndex ? "active" : ""}`}>
+                            <LazyLoadImage effect="blur" loading='lazy'  src={image.bannerImage} className="caretor_banner_image" alt={`Slide ${index + 1}`}  />
                         </div>
                     ))}
                 </div>

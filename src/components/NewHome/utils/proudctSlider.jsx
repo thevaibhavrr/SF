@@ -182,7 +182,7 @@ const ProductSlider = ({ slidesPerView, initialSlide }) => {
                                 <div><HorizotalLoader /></div>
                               ) : (
                                 <div className="cart-quantity">
-                                  <img
+                                  <LazyLoadImage effect="blur"
                                     loading="lazy"
                                     src={RemoveIcon}
                                     alt="RemoveIcon"
@@ -190,7 +190,7 @@ const ProductSlider = ({ slidesPerView, initialSlide }) => {
                                     onClick={() => removeFromCart(product._id)}
                                   />
                                   <span>{getProductQuantity(product._id)}</span>
-                                  <img
+                                  <LazyLoadImage effect="blur"
                                     loading="lazy"
                                     src={AddIcon}
                                     alt="AddIcon"
