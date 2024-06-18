@@ -12,7 +12,7 @@ function Mainourcertification() {
   return (
     <div className='mt-5 py-5' >
         <div>
-        <SeondrayHeading HeadingText="CRAFTING FOOD" />
+        <SeondrayHeading HeadingText="OUR CERTIFICATION" />
         </div>
         <div className='' >
             <div className=' our_certification_div ' >

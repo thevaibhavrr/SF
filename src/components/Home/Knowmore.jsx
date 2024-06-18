@@ -5,7 +5,7 @@ function Knowmore() {
     return (
         <>
             <div className='knowmore_main_div' >
-                <div className='knowmore_heading'  >"SF Foods: Where Every Dish tells a story"</div>
+                <div className='knowmore_heading'  >"SK Foods: Where Every Dish tells a story"</div>
                 <Link to={"/about-us"} className='css-for-link-tag' >
                 <div className='click_buttons' >KNOW MORE </div>
                 </Link>
