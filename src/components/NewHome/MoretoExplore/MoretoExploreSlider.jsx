@@ -23,7 +23,7 @@ function MoretoExportSlider() {
         const fetchProduct = async () => {
             try {
                 setAllProductLoader(true);
-                const response = await makeApi(`/api/get-all-products?&category=665d795d784cfa407511e783&perPage=10&productType=${productType}&IsOutOfStock=false`, 'GET');
+                const response = await makeApi(`/api/get-all-products?perPage=10&productType=${productType}&IsOutOfStock=false`, 'GET');
                 setProducts(response.data.products);
             } catch (error) {
                 console.log(error);
