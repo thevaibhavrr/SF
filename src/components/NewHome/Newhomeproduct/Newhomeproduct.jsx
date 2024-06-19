@@ -122,6 +122,7 @@ import { makeApi } from '../../../api/callApi.tsx';
 import { Link } from 'react-router-dom';
 import AddIcon from "../../../Images/order/add_icon_green.png";
 import RemoveIcon from "../../../Images/order/remove_icon_red.png";
+import HorizotalLoader from '../../loaders/horizotalLoader.jsx';
 
 const NewHomeProducts = () => {
     const [products, setProducts] = useState([]);
@@ -262,9 +263,12 @@ const NewHomeProducts = () => {
                                 {isInCart(product._id) ? (
                                     <div className='Add_to_cart_and_watchlist_child'>
                                         {addToCartLoader[product._id] ? (
-                                            <div className="loader">Loading...</div>
+                                            <div className="loader">
+                                                <HorizotalLoader/>
+                                                
+                                            </div>
                                         ) : (
-                                            <div className="cart-quantity">
+                                            <div className="cart-quantity d-flex gap-2">
                                                 <img
                                                     src={RemoveIcon}
                                                     alt="RemoveIcon"
@@ -284,7 +288,9 @@ const NewHomeProducts = () => {
                                 ) : (
                                     <div>
                                         {addToCartLoader[product._id] ? (
-                                            <div className="loader">Loading...</div>
+                                            <div className="loader">
+                                                <HorizotalLoader/>
+                                            </div>
                                         ) : (
                                             <div className="ADD_button_new_home_page" onClick={() => addToCart(product._id)} style={{ cursor: "pointer" }}>ADD</div>
                                         )}
