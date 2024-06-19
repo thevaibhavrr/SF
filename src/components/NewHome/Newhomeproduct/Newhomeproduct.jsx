@@ -1,117 +1,3 @@
-// import React, { useEffect, useState } from 'react';
-// // import './ProductCard.css';
-// import "../../../styles/NewHome/ProductCard.css"
-// import productImage from '../../../assets/img/NewHome/Mumtaz 1.png'; // Replace with your image path
-// import offerImage from '../../../assets/img/NewHome/offerImage.png'
-// import AsAD from '../../../assets/img/NewHome/AsAD.svg'
-// import RIC from '../../../assets/img/NewHome/RIC.svg'
-// import { makeApi } from '../../../api/callApi.tsx';
-// import { Link } from 'react-router-dom';
-
-
-// const ProductListt = [
-//     {
-//         id: 1,
-//         name: "Mumtaz Premium Basmati rice",
-//         weight: "1 kg",
-//         price: "₹9,750",
-//         oldPrice: "₹10,835",
-//         thumbnail: AsAD
-//     },
-//     {
-//         id: 2,
-//         name: "Mumtaz Premium Basmati rice",
-//         weight: "1 kg",
-//         price: "₹9,750",
-//         oldPrice: "₹10,835",
-//         thumbnail: productImage
-//     },
-//     {
-//         id: 3,
-//         name: "Mumtaz Premium Basmati rice",
-//         weight: "1 kg",
-//         price: "₹9,750",
-//         oldPrice: "₹10,835",
-//         thumbnail: RIC
-//     },
-// ]
-
-
-// const NewHomeProducts = () => {
-//     const [ProductList, setProducts] = useState([]);
-// const [AllProductLoader, setAllProductLoader] = useState(false);
-// const [productType, setProductType] = useState("");
-
-// useEffect(() => {
-//     const token = localStorage.getItem("token")
-//     const userLocation = localStorage.getItem("country")
-//     if (token) {
-//         setProductType(userLocation)
-//     }
-// }, [localStorage.getItem("token")])
-
-// // get data
-// const fetchProduct = async () => {
-//     try {
-//         setAllProductLoader(true);
-//             const response = await makeApi(`/api/get-all-products?&perPage=10&category=665d67c04133e96dad0359a4`, "GET");
-
-//         setProducts(response.data.products);
-//     } catch (error) {
-//         console.log(error);
-//     } finally {
-//         setAllProductLoader(false);
-//     }
-// };
-
-
-// useEffect(() => {
-//     fetchProduct();
-// }, [productType])
-
-//     return (
-//         <div className="product_card_container_New_home py-5 my-5 ">
-//             {ProductList.map((product) => (
-//                 <div key={product.id} className="product_card">
-//                     {/* top */}
-//                     <div className='new_product_product_and_offer_image'>
-//                         <div>
-//                             <img src={offerImage} alt="offer" className="offerImage" />
-//                         </div>
-//                         <div>
-//                             <img src={product.thumbnail} alt={product.name} className="product_image" />
-//                         </div>
-//                     </div>
-//                     {/* bottom */}
-//                     <div className='d-flex flex-column gap-2'>
-//                         <div className='New_Home_product_name_and_weight' >
-//                             <div>{product.name}</div>
-//                             <div>{product.description}</div>
-//                             {/* <div>Net weight: {product.weight}</div> */}
-//                         </div>
-//                         <div className='d-flex justify-content-between'>
-//                             <div className='d-flex align-items-center gap-2'>
-//                                 <div className="new-price">{product.PriceAfterDiscount}</div>
-//                                 <div className="old-price">{product.price}</div>
-//                             </div>
-//                             <Link to={"product/all-products"} className='css-for-link-tag' >
-//                             <div className='ADD_button_new_home_page'>
-//                                 ADD
-//                             </div>
-//                             </Link>
-//                         </div>
-//                     </div>
-//                 </div>
-                
-//             ))}
-
-
-//         </div>
-//     );
-// };
-
-// export default NewHomeProducts;
-
 import React, { useEffect, useState } from 'react';
 import "../../../styles/NewHome/ProductCard.css"
 import productImage from '../../../assets/img/NewHome/Mumtaz 1.png'; // Replace with your image path
@@ -123,6 +9,8 @@ import { Link } from 'react-router-dom';
 import AddIcon from "../../../Images/order/add_icon_green.png";
 import RemoveIcon from "../../../Images/order/remove_icon_red.png";
 import HorizotalLoader from '../../loaders/horizotalLoader.jsx';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import ProductLloader from '../../loaders/productLoader.jsx';
 
 const NewHomeProducts = () => {
     const [products, setProducts] = useState([]);
@@ -132,6 +20,7 @@ const NewHomeProducts = () => {
     const [isLogin, setIsLogin] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
     const [productType, setProductType] = useState("");
+    const [productLoader,setProductLoader] = useState(true)
 
     useEffect(() => {
         const token = localStorage.getItem("token");
@@ -147,12 +36,14 @@ const NewHomeProducts = () => {
     const fetchProduct = async () => {
         try {
             setAllProductLoader(true);
-            const response = await makeApi(`/api/get-all-products?&perPage=10&category=665d67c04133e96dad0359a4&productType=${productType}&IsOutOfStock=false`, "GET");
+            setProductLoader(true)
+            const response = await makeApi(`/api/get-all-products?&perPage=10&category=665d67c04133e96dad0359a4&productType=${productType}&IsOutOfStock=false&ResultsPerPage=10`, "GET");
             setProducts(response.data.products);
         } catch (error) {
             console.log(error);
         } finally {
             setAllProductLoader(false);
+            // setProductLoader(false)
         }
     };
 
@@ -239,14 +130,19 @@ const NewHomeProducts = () => {
         <div className="product_card_container_New_home py-5 my-5 ">
             {products.map((product) => (
                 <div key={product._id} className="product_card">
-                    {/* top */}
+                    
                     <div className='new_product_product_and_offer_image'>
-                        <div>
-                            <img src={offerImage} alt="offer" className="offerImage" />
+                        <>
+                        <div className='offer_image_div' >
+                            <LazyLoadImage effect="blur"
+                                    loading="lazy" src={offerImage} alt="offer" className="offerImage" />
                         </div>
+                      
                         <div>
-                            <img src={product.thumbnail} alt={product.name} className="product_image" />
+                            <LazyLoadImage effect="blur"
+                                    loading="lazy" src={product.thumbnail} alt={product.name} className="product_image" />
                         </div>
+                        </>
                     </div>
                     {/* bottom */}
                     <div className='d-flex flex-column gap-2'>
@@ -268,19 +164,24 @@ const NewHomeProducts = () => {
                                                 
                                             </div>
                                         ) : (
-                                            <div className="cart-quantity d-flex gap-2">
-                                                <img
+                                            <div className="cart-quantity d-flex gap-2 align-items-center">
+                                                <LazyLoadImage effect="blur"
+                                    loading="lazy"
                                                     src={RemoveIcon}
                                                     alt="RemoveIcon"
                                                     className='Icon_add_to_cart'
                                                     onClick={() => removeFromCart(product._id)}
+                                                    style={{ cursor: "pointer" }}
                                                 />
                                                 <span>{getProductQuantity(product._id)}</span>
-                                                <img
+                                                <LazyLoadImage effect="blur"
+                                    loading="lazy"
                                                     src={AddIcon}
                                                     alt="AddIcon"
                                                     className='Icon_add_to_cart'
                                                     onClick={() => addToCart(product._id)}
+                                                    style={{ cursor: "pointer" }}
+
                                                 />
                                             </div>
                                         )}

@@ -4,7 +4,7 @@
 }
 .product_card {
   max-width: 300px;
-  height: 390px;
+  max-height: 420px;
   padding: 0px 20px 20px 20px;
   display: flex;
   flex-direction: column;
@@ -23,11 +23,14 @@
   display: flex;
   gap: 50px;
 }
+.offer_image_div{
+  min-width: 30px;
+}
 .offerImage {
   width: 40px;
   /* margin-top: -10px; */
   position: absolute;
-  top: 10px;
+  top: -24px;
 }
 .product_image {
   width: 140px;

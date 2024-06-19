@@ -14,6 +14,7 @@ import LoginPopup from '../../Auth/LoginPopup';
 import AddIcon from "../../../Images/order/add_icon_green.png";
 import RemoveIcon from "../../../Images/order/remove_icon_red.png";
 import { makeApi } from '../../../api/callApi.tsx';
+import ProductLloader from '../../loaders/productLoader.jsx';
 
 const ProductSlider = ({ products, slidesPerView, initialSlide }) => {
   const [swiperRef, setSwiperRef] = useState(null);
@@ -177,7 +178,7 @@ const ProductSlider = ({ products, slidesPerView, initialSlide }) => {
     <div className='swiper-container-wrapper' style={{ position: "relative" }}>
       {showPopup && <LoginPopup onClose={closePopup} />}
       {isLoading ? (
-        <div className="All_Product_loader">
+        <div className="All_Product_loader w-100 d-flex justify-content-center  py-4">
           <Primaryloader />
         </div>
       ) : (
@@ -199,6 +200,7 @@ const ProductSlider = ({ products, slidesPerView, initialSlide }) => {
                 {products.map((product, index) => (
                   <SwiperSlide key={index}>
                     <div className='main_our_collection_swiper_options_New_Home orangeLinerGradient'>
+
                       <LazyLoadImage
                         src={product.thumbnail}
                         alt={`ImagesOf ${index + 1}`}
@@ -214,7 +216,7 @@ const ProductSlider = ({ products, slidesPerView, initialSlide }) => {
                           {isInCart(product._id) ? (
                             <div className='Add_to_cart_and_watchlist_child'>
                               {addToCartLoader[product._id] ? (
-                                <div><HorizotalLoader /></div>
+                                <div className='' ><HorizotalLoader /></div>
                               ) : (
                                 <div className="cart-quantity d-flex gap-2 align-items-center">
                                   <LazyLoadImage effect="blur"
