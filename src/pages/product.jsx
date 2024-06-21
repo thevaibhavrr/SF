@@ -16,7 +16,7 @@ function Product() {
             {/* <Scroll /> */}
 
             <Suspense fallback={<div> <Primaryloader /> </div>}>
-z
+
                 <Routes>
                     {/* <Route
                         path="/sidebar"

@@ -35,7 +35,7 @@ function Banner() {
     { id: 1, bannerImage: Oil },
     { id: 2, bannerImage: Rice },
     { id: 3, bannerImage: Spices },
-  ];
+  ];  
   const [swiperRef, setSwiperRef] = useState(null);
   const [activeIndex, setActiveIndex] = useState(2);
   const [slidesPerView, setSlidesPerView] = useState(1.1);
