@@ -45,7 +45,7 @@ const UserProfileForMobile = () => {
           <div className="UserProfileForMobile_container">
             <div className="top-bar">
               <div className="user-info">
-                <img load="lazy" src={userDatails?.userImage} alt="User Avatar" className="avatar" loading='lazy' />
+                <img loading="lazy" src={userDatails?.userImage} alt="User Avatar" className="avatar" loading='lazy' />
                 <span className="username">Hi, {userDatails?.firstName}</span>
               </div>
             </div>

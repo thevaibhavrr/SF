@@ -171,7 +171,7 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
                                     <div className="product_div_all_product">
                                         <Link to={`/product/product-details/${product._id}`} >
                                             <div>
-                                                <LazyLoadImage effect="blur" load="lazy" src={product.thumbnail} alt="product" className="all_product_product_thumbnail" loading='lazy' />
+                                                <LazyLoadImage effect="blur" loading="lazy" src={product.thumbnail} alt="product" className="all_product_product_thumbnail"  />
                                             </div>
                                         </Link>
                                         <div className="product_name_and_price">
@@ -200,9 +200,9 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
                                                             </div>
                                                         ) : (
                                                             <div className="cart-quantity">
-                                                                <LazyLoadImage effect="blur" load="lazy" src={RemoveIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => removeFromCart(product?._id, setProductLoaders, setCartItems, fetchCart)} />
+                                                                <LazyLoadImage effect="blur" loading="lazy" src={RemoveIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => removeFromCart(product?._id, setProductLoaders, setCartItems, fetchCart)} />
                                                                 <span>{getProductQuantity(product?._id)}</span>
-                                                                <LazyLoadImage effect="blur" load="lazy" src={AddIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => handleAddToCart(product?._id, getProductQuantity(product?._id), product?.quantity)} />
+                                                                <LazyLoadImage effect="blur" loading="lazy" src={AddIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => handleAddToCart(product?._id, getProductQuantity(product?._id), product?.quantity)} />
                                                             </div>
                                                         )}
                                                     </div>

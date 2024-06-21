@@ -57,7 +57,7 @@ function PCHeaer() {
                 </div>
                 <Link to="/" className='css-for-link-tag pcHeader_options' >
                 <div className='Pc_Header_logo_div' >
-                    <img load="lazy" src={Logo} alt="Logo" className='Pc_Header_logo' />
+                    <img loading="lazy" src={Logo} alt="Logo" className='Pc_Header_logo' />
                 </div>
                 </Link>
                 <Link to="/" className='css-for-link-tag pcHeader_options ' >HOME</Link>

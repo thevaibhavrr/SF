@@ -89,7 +89,7 @@ function Ourcollection() {
                                 <SwiperSlide key={index} className='main_swiper_slide_our_collection' >
                                     <Link to={`/product/product-details/${image._id}`} className='css-for-link-tag' >
                                         <div className='main_our_collection_swiper_options' >
-                                            <img load="lazy" src={image.thumbnail} alt={`ImagesOf ${index + 1}`} className='Our_collection_slider_images' />
+                                            <img loading="lazy" src={image.thumbnail} alt={`ImagesOf ${index + 1}`} className='Our_collection_slider_images' />
                                             <div className='text-black' >{image.name}</div>
                                         </div>
                                     </Link>

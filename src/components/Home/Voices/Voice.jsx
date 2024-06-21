@@ -76,7 +76,7 @@ function Voices() {
                             <SwiperSlide key={index} className='Voice_slider_option_SwiperSlide' >
 
                                 <div className='Voice_slider_Image_div' >
-                                    <img load="lazy" src={image.image} alt={`ImageNumber ${index + 1}`} className='Voice_slider_images' />
+                                    <img loading="lazy" src={image.image} alt={`ImageNumber ${index + 1}`} className='Voice_slider_images' />
                                 </div>
                                 <div className='Voice_slider_details_div ' >
                                     <div className='Voice_slider_Heading' >{image.Heading}</div>

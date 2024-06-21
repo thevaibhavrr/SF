@@ -69,7 +69,7 @@ const MyOrders = () => {
                                         return (
                                             <div className="order-summary order-summary2" key={item._id}>
                                                 <div>
-                                                    <img load="lazy" src={item.productId.thumbnail} alt={item.productId.name} />
+                                                    <img loading="lazy" src={item.productId.thumbnail} alt={item.productId.name} />
                                                     <p className="myproduct-name">{item.productId.name}</p>
                                                 </div>
                                                 <p>₹{item.totalPrice}</p>

@@ -7,7 +7,7 @@ import ProductCard from "./components/NewHome/Newhomeproduct/Newhomeproduct";
 import OurProduct from "./components/NewHome/TEST/TEst";
 import Carousel from "./components/NewHome/TEST/TEst";
 import DryFuitelist from "./components/NewHome/DryFuite/DryFuitelist";
-
+import { CartProvider } from "./utils/CartContext";
 
 
 const MainHeader = lazy(() => import("./components/Header/MainHeader"));
@@ -26,6 +26,7 @@ const OtpVerifiedForm = lazy(() => import("./components/Auth/otp"));
 
 function App() {
   return (
+    <CartProvider>
     <div  >
       {!useLocation().pathname.includes("/user-password") && <MainHeader />}
 
@@ -65,6 +66,8 @@ function App() {
       </Suspense>
       <Footer />
     </div>
+    </CartProvider>
+
   );
 }
 

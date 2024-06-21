@@ -182,7 +182,7 @@
 //                                         <div className="product_div_all_product">
 //                                             <Link to={`/product/product-details/${product?.products._id}`} >
 //                                                 <div>
-//                                                     <img load="lazy" src={product.products.thumbnail} alt="product" className="all_product_product_thumbnail" />
+//                                                     <img loading="lazy" src={product.products.thumbnail} alt="product" className="all_product_product_thumbnail" />
 //                                                 </div>
 //                                             </Link>
 //                                             <div className="product_name_and_price">
@@ -195,9 +195,9 @@
 //                                                         <div className='Add_to_cart_and_watchlist_child'>
 //                                                             {productLoaders[product.products._id] ? <div> <HorizotalLoader /> </div> :
 //                                                                 <div className="cart-quantity">
-//                                                                     <img load="lazy" src={RemoveIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => removeFromCart(product.products._id)} />
+//                                                                     <img loading="lazy" src={RemoveIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => removeFromCart(product.products._id)} />
 //                                                                     <span>{getProductQuantity(product.products._id)}</span>
-//                                                                     <img load="lazy" src={AddIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => addToCart(product.products._id)} />
+//                                                                     <img loading="lazy" src={AddIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => addToCart(product.products._id)} />
 //                                                                 </div>
 //                                                             }
 //                                                         </div>
@@ -404,7 +404,7 @@ function Mywhislist() {
                                             <div className="product_div_all_product">
                                                 <Link to={`/product/product-details/${product?.products._id}`}>
                                                     <div>
-                                                        <img load="lazy" src={product.products.thumbnail} alt="product" className="all_product_product_thumbnail" />
+                                                        <img loading="lazy" src={product.products.thumbnail} alt="product" className="all_product_product_thumbnail" />
                                                     </div>
                                                 </Link>
                                                 <div className="product_name_and_price">
@@ -419,9 +419,9 @@ function Mywhislist() {
                                                                     <div><HorizotalLoader /></div>
                                                                 ) : (
                                                                     <div className="cart-quantity">
-                                                                        <img load="lazy" src={RemoveIcon} alt="RemoveIcon" className='Icon_add_to_cart' onClick={() => removeFromCart(product.products._id)} />
+                                                                        <img loading="lazy" src={RemoveIcon} alt="RemoveIcon" className='Icon_add_to_cart' onClick={() => removeFromCart(product.products._id)} />
                                                                         <span>{getProductQuantity(product.products._id)}</span>
-                                                                        <img load="lazy" src={AddIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => addToCart(product.products._id)} />
+                                                                        <img loading="lazy" src={AddIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => addToCart(product.products._id)} />
                                                                     </div>
                                                                 )}
                                                             </div>

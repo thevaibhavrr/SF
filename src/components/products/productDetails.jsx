@@ -286,7 +286,7 @@ function ProductDetails() {
                                                 return (
                                                     <div className='d-flex justify-content-center align-items-center' >
                                                         <LazyLoadImage effect="blur"
-                                                             load="lazy"
+                                                             loading="lazy"
                                                             key={i}
                                                             src={item}
                                                             alt=""
@@ -300,7 +300,7 @@ function ProductDetails() {
                                         </div>
                                         {selectedImage ? (
                                             <div className="productdisplay-img">
-                                                <LazyLoadImage effect="blur" load="lazy"
+                                                <LazyLoadImage effect="blur" loading="lazy"
                                                     src={selectedImage  }
                                                     alt=""
                                                     
@@ -311,7 +311,7 @@ function ProductDetails() {
 
                                         ) :
                                             <div className="productdisplay-img">
-                                                <LazyLoadImage effect="blur" load="lazy"
+                                                <LazyLoadImage effect="blur" loading="lazy"
                                                     src={product.thumbnail ? product.thumbnail : `https://eu.evocdn.io/dealer/1065/catalog/product/images/cs_1612369426.png`}
                                                     alt=""
                                                     
@@ -356,7 +356,7 @@ function ProductDetails() {
                                                 </>
                                             ) : (
                                                 <div className="productdisplay-food-item-counter">
-                                                    <LazyLoadImage effect="blur" load="lazy"
+                                                    <LazyLoadImage effect="blur" loading="lazy"
                                                         onClick={() => removeFromCart(product._id)}
                                                         src={RemoveIcon}
                                                         alt=""
@@ -368,7 +368,7 @@ function ProductDetails() {
                                                             <span>{getProductQuantity(product._id)}</span>
                                                         </p>
                                                     }
-                                                    <LazyLoadImage effect="blur" load="lazy"
+                                                    <LazyLoadImage effect="blur" loading="lazy"
                                                         onClick={() => handleAddToCart(product._id, getProductQuantity(product._id), product.quantity)}
                                                         src={AddIcon}
                                                         alt=""
@@ -407,7 +407,7 @@ function ProductDetails() {
                                     <SwiperSlide key={index} className='main_swiper_slide_our_collection' >
                                         <Link to={`/product/product-details/${image._id}`} className='css-for-link-tag' >
                                             <div className='main_our_collection_swiper_options text-center product_details_similer_product_div ' style={{boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)", cursor: "pointer" , maxHeight: "300px" }} >
-                                                <LazyLoadImage effect="blur" load="lazy" src={image.thumbnail} style={{ maxWidth: "200px"}} alt={`ImagesOf ${index + 1}`} className='Our_collection_slider_images' />
+                                                <LazyLoadImage effect="blur" loading="lazy" src={image.thumbnail} style={{ maxWidth: "200px"}} alt={`ImagesOf ${index + 1}`} className='Our_collection_slider_images' />
                                                 <div className='text-black' >{image.name}</div>
                                             </div>
                                         </Link>

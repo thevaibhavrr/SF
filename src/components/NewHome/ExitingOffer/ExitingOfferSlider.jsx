@@ -6,8 +6,24 @@ import "../../../styles/NewHome/ExitingOfferSlider.css";
 import Oil from "../../../assets/img/NewHome/Oil -Banner.svg"
 import Rice from "../../../assets/img/NewHome/Rice - Banner.svg"
 import Spices from "../../../assets/img/NewHome/Spices- Banner.svg"
+import { useEffect } from 'react';
+import { makeApi } from '../../../api/callApi.tsx';
 function Banner() {
-  const Banner = [
+  const [Banner, setImages] = useState([]);
+  console.log("0--",Banner);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const banner = await makeApi('/api/get-all-existing-banners', 'GET');
+                setImages(banner.data.banner);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        fetchData();
+    }, []);
+  const Banners = [
     { id: 1, image: Oil },
     { id: 2, image: Rice },
     { id: 3, image: Spices },
@@ -23,7 +39,7 @@ function Banner() {
   ];
   const [swiperRef, setSwiperRef] = useState(null);
   const [activeIndex, setActiveIndex] = useState(2);
-  const [slidesPerView, setSlidesPerView] = useState(1.3);
+  const [slidesPerView, setSlidesPerView] = useState(1.1);
 
 
   const handleSlideChange = () => {
@@ -53,7 +69,7 @@ function Banner() {
               onSwiper={setSwiperRef}
               onSlideChange={handleSlideChange}
               slidesPerView={slidesPerView}
-              initialSlide={2}
+              initialSlide={1.3}
               centeredSlides={true}
               spaceBetween={20}
               loop={true}
@@ -67,13 +83,13 @@ function Banner() {
                     <div className=' '>
                       <img
                         loading="lazy"
-                        src={image.image}
+                        src={image.bannerImage}
                         alt={`ImagesOf ${index + 1}`}
                         className='w-100'
                       />
-                      <div className='text-black' style={{ textWrap: 'nowrap' }}>
-                        {image.name}
-                      </div>
+                      {/* <div className='text-black' style={{ textWrap: 'nowrap' }}>
+                        {image.BannerFor}
+                      </div> */}
                     </div>
                 </SwiperSlide>
               ))}

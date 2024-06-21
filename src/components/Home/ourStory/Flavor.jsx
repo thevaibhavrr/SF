@@ -6,7 +6,7 @@ function FlavorOurStory() {
         <>
             <div className='main_flavor_div' >
                 <div className='our_story_shape_image' >
-                    <img load="lazy" src={Shafe} alt="Shape" className='our_story_shape_image' />
+                    <img loading="lazy" src={Shafe} alt="Shape" className='our_story_shape_image' />
                 </div>
                 <div className='our_story_flavor_text' >
                     <div>

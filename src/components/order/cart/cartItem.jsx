@@ -113,7 +113,7 @@ function CartItem() {
                 :
                 <div>
                     {IscartEmpty && <div className='empty_cart_div'>
-                        <img load="lazy" src={EMPTYCARTImage} alt=" No cart " className='NO_cart_image' />
+                        <img loading="lazy" src={EMPTYCARTImage} alt=" No cart " className='NO_cart_image' />
                     </div>}
                     {!IscartEmpty &&
                         <div>
@@ -136,7 +136,7 @@ function CartItem() {
                                     <div className='cart_item_details_parent_div' key={index} >
                                         <div className='cart_item_details' >
                                             <div>
-                                                <img load="lazy" src={item.productId.thumbnail} alt=' product ' className='cart_item_image' />
+                                                <img loading="lazy" src={item.productId.thumbnail} alt=' product ' className='cart_item_image' />
                                             </div>
                                             <div> {item.productId.name} </div>
                                             {/* <div>{item.productId.quantity}</div> */}
@@ -144,9 +144,9 @@ function CartItem() {
                                            
                                             {productLoaders[item.productId._id] ? <div className='Add_to_cart_and_watchlist_child' > <HorizotalLoader /> </div> :
                                                 <div className="cart-quantity  cart_add_remmove_section_cart_page ">
-                                                    <img load="lazy" src={RemoveIcon} alt="AddIcon" className='Icon_add_to_cart_main_cart_page' onClick={() => removeFromCart(item.productId._id)} />
+                                                    <img loading="lazy" src={RemoveIcon} alt="AddIcon" className='Icon_add_to_cart_main_cart_page' onClick={() => removeFromCart(item.productId._id)} />
                                                     <span> {item.quantity} </span>
-                                                    <img load="lazy" src={AddIcon} alt="AddIcon" className='Icon_add_to_cart_main_cart_page' onClick={() => handleAddToCart(item.productId._id, item.quantity,item.productId.quantity )} />
+                                                    <img loading="lazy" src={AddIcon} alt="AddIcon" className='Icon_add_to_cart_main_cart_page' onClick={() => handleAddToCart(item.productId._id, item.quantity,item.productId.quantity )} />
                                                 </div>
                                             }
                                             <div> ₹ {item.totalPrice} </div>

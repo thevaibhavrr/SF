@@ -50,7 +50,7 @@ const UserProfileSidebar = () => {
 			<div className="user-sidebar-info">
 				<div className="userProfile-sidebar">
 				<div className="userprofile-h1">
-						<img load="lazy"
+						<img loading="lazy"
 							src={assets.userprofile_menu}
 							alt=""
 							className="userprofiele-menu"
@@ -61,7 +61,7 @@ const UserProfileSidebar = () => {
 						className="userprofile-name user-flexcol"
 						onClick={() => navigate("/user/userprofile")}
 					>
-						<img load="lazy"
+						<img loading="lazy"
 							className="myuser-profile-icon"
 							src={userDatails?.userImage}
 							alt=""
@@ -83,7 +83,7 @@ const UserProfileSidebar = () => {
 						className="user-account user-flexcol"
 						onClick={() => navigate("/user/userprofile")}
 					>
-						<img load="lazy"
+						<img loading="lazy"
 							src={assets.user_account}
 							alt="user_account"
 						/>
@@ -93,7 +93,7 @@ const UserProfileSidebar = () => {
 						className="user-orders user-flexcol"
 						onClick={() => navigate("/user/my-orders")}
 					>
-						<img load="lazy"
+						<img loading="lazy"
 							src={assets.user_orders}
 							alt="user-orders"
 						/>
@@ -103,7 +103,7 @@ const UserProfileSidebar = () => {
 						className="user-address user-flexcol"
 						onClick={() => navigate("/user/my-address")}
 					>
-						<img load="lazy"
+						<img loading="lazy"
 							src={assets.user_address}
 							alt="user_address"
 						/>
@@ -113,7 +113,7 @@ const UserProfileSidebar = () => {
 						className="user-watchlist user-flexcol"
 						onClick={() => navigate("/user/my-wishlist")}
 					>
-						<img load="lazy"
+						<img loading="lazy"
 							src={assets.user_watchlist}
 							alt="user_watchlist"
 						/>
@@ -123,7 +123,7 @@ const UserProfileSidebar = () => {
 						className="user-watchlist user-flexcol"
 						onClick={() => navigate("/user/my-wishlist")}
 					>
-						{/* <img load="lazy"
+						{/* <img loading="lazy"
 							// src={assets.user_watchlist}
 							alt="user_watchlist"
 						/> */}

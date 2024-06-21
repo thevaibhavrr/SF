@@ -6,6 +6,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from 'swiper/modules';
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from "react-toastify";
+
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import Primaryloader from '../../loaders/primaryloader';
@@ -15,6 +17,7 @@ import AddIcon from "../../../Images/order/add_icon_green.png";
 import RemoveIcon from "../../../Images/order/remove_icon_red.png";
 import { makeApi } from '../../../api/callApi.tsx';
 import ProductLloader from '../../loaders/productLoader.jsx';
+import { addToCart, removeFromCart } from '../../../utils/productFunction';
 
 const ProductSlider = ({ products, slidesPerView, initialSlide }) => {
   const [swiperRef, setSwiperRef] = useState(null);
@@ -28,15 +31,15 @@ const ProductSlider = ({ products, slidesPerView, initialSlide }) => {
   const [productType, setProductType] = useState("");
 
   useEffect(() => {
-    const token = localStorage.getItem("token")
-    const userLocation = localStorage.getItem("country")
+    const token = localStorage.getItem("token");
+    const userLocation = localStorage.getItem("country");
     if (token) {
-        setIsLogin(true)
-        setProductType(userLocation)
+      setIsLogin(true);
+      setProductType(userLocation);
     } else {
-        setIsLogin(false)
+      setIsLogin(false);
     }
-}, [])
+  }, []);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -54,18 +57,18 @@ const ProductSlider = ({ products, slidesPerView, initialSlide }) => {
     fetchProducts();
   }, [productType]);
 
+  const fetchCart = async () => {
+    try {
+      const response = await makeApi("/api/my-cart", "GET");
+      setCartItems(response.data.orderItems.map(item => ({
+        productId: item.productId._id,
+        quantity: item.quantity
+      })));
+    } catch (error) {
+      console.error(error);
+    }
+  };
   useEffect(() => {
-    const fetchCart = async () => {
-      try {
-        const response = await makeApi("/api/my-cart", "GET");
-        setCartItems(response.data.orderItems.map(item => ({
-          productId: item.productId._id,
-          quantity: item.quantity
-        })));
-      } catch (error) {
-        console.error(error);
-      }
-    };
 
     fetchCart();
   }, []);
@@ -97,77 +100,16 @@ const ProductSlider = ({ products, slidesPerView, initialSlide }) => {
     return cartItem ? cartItem.quantity : 0;
   };
 
-  const addToCart = async (productId) => {
-    if (!isLogin) { 
-      setShowPopup(true);
+  const handleAddToCart = async (productId, quantity, availableQuantity) => {
+    if (quantity < availableQuantity) {
+      await addToCart(productId, setIsLogin, setShowPopup, fetchCart, setCartItems, setAddToCartLoader);
     } else {
-      try {
-        setAddToCartLoader(prevState => ({ ...prevState, [productId]: true }));
-        await makeApi("/api/add-to-cart", "POST", { productId, quantity: 1, shippingPrice: 0 });
-        setCartItems(prevState => {
-          const existingItem = prevState.find(item => item.productId === productId);
-          if (existingItem) {
-            return prevState.map(item => {
-              if (item.productId === productId) {
-                return { ...item, quantity: item.quantity + 1 };
-              }
-              return item;
-            });
-          } else {
-            return [...prevState, { productId, quantity: 1 }];
-          }
-        });
-      } catch (error) {
-        console.error(error.response.data);
-      } finally {
-        setAddToCartLoader(prevState => ({ ...prevState, [productId]: false }));
-      }
+      toast("Cannot add more than available quantity.", { type: "error" });
     }
   };
 
-  const removeFromCart = async (productId) => {
-    try {
-      setAddToCartLoader(prevState => ({ ...prevState, [productId]: true }));
-      const existingItem = cartItems.find(item => item.productId === productId);
-      if (existingItem.quantity > 1) {
-        await makeApi("/api/remove-from-cart", "POST", { productId });
-        setCartItems(prevState =>
-          prevState.map(item =>
-            item.productId === productId ? { ...item, quantity: item.quantity - 1 } : item
-          )
-        );
-      } else {
-        await makeApi("/api/remove-from-cart", "POST", { productId });
-        setCartItems(prevState => prevState.filter(item => item.productId !== productId));
-      }
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setAddToCartLoader(prevState => ({ ...prevState, [productId]: false }));
-    }
-  };
-  
-  
-  const removeFromCarnlkt = async (productId) => {
-    try {
-      setAddToCartLoader(prevState => ({ ...prevState, [productId]: true }));
-      const existingItem = cartItems.find(item => item.productId === productId);
-      if (existingItem.quantity > 1) {
-        await makeApi("/api/update-cart", "POST", { productId, quantity: existingItem.quantity - 1 });
-        setCartItems(prevState => 
-          prevState.map(item => 
-            item.productId === productId ? { ...item, quantity: item.quantity - 1 } : item
-          )
-        );
-      } else {
-        await makeApi("/api/remove-from-cart", "POST", { productId });
-        setCartItems(prevState => prevState.filter(item => item.productId !== productId));
-      }
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setAddToCartLoader(prevState => ({ ...prevState, [productId]: false }));
-    }
+  const handleRemoveFromCart = async (productId) => {
+    await removeFromCart(productId, setAddToCartLoader, setCartItems, fetchCart);
   };
 
   const closePopup = () => {
@@ -178,7 +120,7 @@ const ProductSlider = ({ products, slidesPerView, initialSlide }) => {
     <div className='swiper-container-wrapper' style={{ position: "relative" }}>
       {showPopup && <LoginPopup onClose={closePopup} />}
       {isLoading ? (
-        <div className="All_Product_loader w-100 d-flex justify-content-center  py-4">
+        <div className="All_Product_loader w-100 d-flex justify-content-center py-4">
           <Primaryloader />
         </div>
       ) : (
@@ -216,7 +158,7 @@ const ProductSlider = ({ products, slidesPerView, initialSlide }) => {
                           {isInCart(product._id) ? (
                             <div className='Add_to_cart_and_watchlist_child'>
                               {addToCartLoader[product._id] ? (
-                                <div className='' ><HorizotalLoader /></div>
+                                <div className=''><HorizotalLoader /></div>
                               ) : (
                                 <div className="cart-quantity d-flex gap-2 align-items-center">
                                   <LazyLoadImage effect="blur"
@@ -224,7 +166,7 @@ const ProductSlider = ({ products, slidesPerView, initialSlide }) => {
                                     src={RemoveIcon}
                                     alt="RemoveIcon"
                                     className='Icon_add_to_cart'
-                                    onClick={() => removeFromCart(product._id)}
+                                    onClick={() => handleRemoveFromCart(product._id)}
                                     style={{ cursor: "pointer" }}
                                   />
                                   <span>{getProductQuantity(product._id)}</span>
@@ -233,7 +175,7 @@ const ProductSlider = ({ products, slidesPerView, initialSlide }) => {
                                     src={AddIcon}
                                     alt="AddIcon"
                                     className='Icon_add_to_cart'
-                                    onClick={() => addToCart(product._id)}
+                                    onClick={() => handleAddToCart(product._id, getProductQuantity(product._id), product?.quantity)}
                                     style={{ cursor: "pointer" }}
                                   />
                                 </div>
@@ -244,7 +186,7 @@ const ProductSlider = ({ products, slidesPerView, initialSlide }) => {
                               {addToCartLoader[product._id] ? (
                                 <div><HorizotalLoader /></div>
                               ) : (
-                                <div className="ADD_button_new_home_page text-black" onClick={() => addToCart(product._id)} style={{ cursor: "pointer" }}>ADD</div>
+                                <div className="ADD_button_new_home_page text-black" onClick={() => handleAddToCart(product._id, getProductQuantity(product._id), product?.quantity)} style={{ cursor: "pointer" }}>ADD</div>
                               )}
                             </div>
                           )}
@@ -264,7 +206,7 @@ const ProductSlider = ({ products, slidesPerView, initialSlide }) => {
                     className="bi bi-caret-left-fill"
                     viewBox="0 0 16 16"
                   >
-                    <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+                    <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
                   </svg>
                 </div>
                 <div onClick={handleNextClick} className="next-button">
@@ -276,7 +218,7 @@ const ProductSlider = ({ products, slidesPerView, initialSlide }) => {
                     className="bi bi-caret-right-fill"
                     viewBox="0 0 16 16"
                   >
-                    <path d="m12.14 8.753-5.482 4.796c.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                    <path d="M3.86 7.247l5.482-4.796c.646-.566 1.658-.106 1.658.753v9.592a1 1 0 0 1-1.659.753L3.86 8.753a1 1 0 0 1 0-1.506z" />
                   </svg>
                 </div>
               </div>

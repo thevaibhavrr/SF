@@ -33,7 +33,7 @@ function Banner() {
         {
           Banner.map((item) => (
             <Carousel.Item>
-              <img load="lazy"
+              <img loading="lazy"
                 key={item.id}
                 src={item.image}
                 alt="banner"

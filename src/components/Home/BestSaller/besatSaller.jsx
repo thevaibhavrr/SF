@@ -194,7 +194,7 @@ function BesatSaller() {
                         {products.map((product, index) => (
                             <SwiperSlide key={index} className='main_swiper_slide_our_collection' >
                                 <div className='main_our_collection_swiper_options' >
-                                    <img load="lazy" src={product.thumbnail} alt={`ImageNumber ${index + 1}`} className='Best_saller_slider_images' />
+                                    <img loading="lazy" src={product.thumbnail} alt={`ImageNumber ${index + 1}`} className='Best_saller_slider_images' />
                                     <div className='bestSaller_details' >
                                         <div>{product.name}</div>
                                         <div>₹{product.PriceAfterDiscount}</div>
@@ -205,9 +205,9 @@ function BesatSaller() {
                                                     <div className='Add_to_cart_and_watchlist_child'>
                                                         {AddTocartLoader ? <div> <HorizotalLoader /> </div> :
                                                             <div className="cart-quantity">
-                                                                <img load="lazy" src={RemoveIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => removeFromCart(product._id)} />
+                                                                <img loading="lazy" src={RemoveIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => removeFromCart(product._id)} />
                                                                 <span>{getProductQuantity(product._id)}</span>
-                                                                <img load="lazy" src={AddIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => addToCart(product._id)} />
+                                                                <img loading="lazy" src={AddIcon} alt="AddIcon" className='Icon_add_to_cart' onClick={() => addToCart(product._id)} />
                                                             </div>
                                                         }
                                                     </div>
