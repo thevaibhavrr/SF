@@ -7,8 +7,28 @@
   font-weight: 450;
   font-size: 20px;
   color: var(--golden-color);
+  top: 0px;
+  z-index: 10000000;
+  width: 100%;
+  backdrop-filter: blur(5px);
+  transition: all 1s ease;
 }
 
+.fixed-position {
+  position: fixed;
+  top: 0;
+  animation: slide-down 1s ease;
+}
+@keyframes slide-down {
+  0% {
+      transform: translateY(-100%);
+      opacity: 0;
+  }
+  100% {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
 .Pc_Header_logo {
   width: 70%;
 }
@@ -16,17 +36,16 @@
   cursor: pointer;
   transition: all 0.5s ease;
   color: var(--golden-color);
-
 }
 .pcHeader_options:hover {
-  scale: 1.1;
+  transform: scale(1.1)
 }
 .header_icons {
   cursor: pointer;
   transition: all 0.5s ease;
 }
 .header_icons:hover {
-  scale: 1.1;
+  transform: scale(1.1)
 }
 
 .pc_header_cart_icon{
@@ -58,6 +77,7 @@
   }
   .Pc_Header_logo {
     width: 62%;
+    scale: 1.9;
   }
   .Pc_Header_logo_div{
     text-align: center;

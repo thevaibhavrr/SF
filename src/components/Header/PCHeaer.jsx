@@ -3,11 +3,11 @@ import Logo from "../../Images/Header/SK Foods Logo 3.png"
 import "../../styles/header/PCHeader.css"
 import { Link, useNavigate } from 'react-router-dom'
 import LoginPopup from "../Auth/LoginPopup"
-import { assets } from '../../assets/assets'
 function PCHeaer() {
     const navigation = useNavigate()
     const [IsLogin, setIsLogin] = useState(false)
     const [showPopup, setShowPopup] = useState(false);
+    const [isFixed, setIsFixed] = useState(false);
 
 
     const closePopup = () => {
@@ -38,10 +38,26 @@ function PCHeaer() {
             setShowPopup(true);
             }
     }
+    
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 80) {
+        setIsFixed(true);
+      } else {
+        setIsFixed(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
     return (
         <>
             {showPopup && <LoginPopup onClose={closePopup} />}
-            <div className='main_PCHeader_div' >
+            <div className={`main_PCHeader_div ${isFixed ? "fixed-position" : "absolute-position"}`} >
                 <div>
                     {IsLogin ?
                         <Link to={"/user/profile"} className='css-for-link-tag text-black' >
@@ -80,4 +96,4 @@ function PCHeaer() {
     )
 }
 
-export default PCHeaer
+export default PCHeaer 
