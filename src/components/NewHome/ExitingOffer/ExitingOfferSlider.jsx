@@ -9,8 +9,7 @@ import Spices from "../../../assets/img/NewHome/Spices- Banner.svg"
 import { useEffect } from 'react';
 import { makeApi } from '../../../api/callApi.tsx';
 function Banner() {
-  const [Banner, setImages] = useState([]);
-  console.log("0--",Banner);
+  const [Banners, setImages] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -23,7 +22,7 @@ function Banner() {
         };
         fetchData();
     }, []);
-  const Banners = [
+  const Banner = [
     { id: 1, image: Oil },
     { id: 2, image: Rice },
     { id: 3, image: Spices },
