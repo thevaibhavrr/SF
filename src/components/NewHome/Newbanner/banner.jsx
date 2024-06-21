@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Banner01 from "../../../Images/Home/banner/Banner01.png"
 import Banner02 from "../../../Images/Home/banner/Banner02.svg"
@@ -10,21 +9,9 @@ import "../../../styles/NewHome/newbanner.css"
 import { makeApi } from '../../../api/callApi.tsx';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
-
-
-// const images = [Banner01, Banner02, Banner03, Banner04, Banner05];
-
 function BannerCampain() {
     const [activeIndex, setActiveIndex] = useState(0);
     const [images, setImages] = useState([]);
-    console.log(images)
-
-    // useEffect(() => {
-    //     const intervalId = setInterval(() => {
-    //         setActiveIndex((activeIndex + 1) % images.length);
-    //     }, 2000);
-    //     return () => clearInterval(intervalId);
-    // }, [activeIndex]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -38,8 +25,13 @@ function BannerCampain() {
         fetchData();
     }, []);
 
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setActiveIndex((prevIndex) => (prevIndex + 1) % images.length);
+        }, 3000); // Change slide every 3 seconds
 
-  
+        return () => clearInterval(interval);
+    }, [images]);
 
     return (
         <div className='main_creator_banner'>
@@ -54,21 +46,22 @@ function BannerCampain() {
                             className={index === activeIndex ? "active" : ""}
                             aria-current={index === activeIndex ? "true" : undefined}
                             aria-label={`Slide ${index + 1}`}
+                            onClick={() => setActiveIndex(index)}
                         ></button>
                     ))}
                 </div>
                 <div className="carousel-inner">
                     {images.map((image, index) => (
-                        <div key={index} className={` carousel-item ${index === activeIndex ? "active" : ""}`}>
-                            <LazyLoadImage effect="blur" loading='lazy'  src={image.bannerImage} className="caretor_banner_image" alt={`Slide ${index + 1}`}  />
+                        <div key={index} className={`carousel-item ${index === activeIndex ? "active" : ""}`}>
+                            <LazyLoadImage effect="blur" loading='lazy' src={image.bannerImage} className="caretor_banner_image" alt={`Slide ${index + 1}`} />
                         </div>
                     ))}
                 </div>
-                <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev" onClick={() => setActiveIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length)}>
                     <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span className="visually-hidden">Previous</span>
                 </button>
-                <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next" onClick={() => setActiveIndex((prevIndex) => (prevIndex + 1) % images.length)}>
                     <span className="carousel-control-next-icon" aria-hidden="true"></span>
                     <span className="visually-hidden">Next</span>
                 </button>

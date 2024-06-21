@@ -11,6 +11,15 @@ function Banner() {
     { id: 1, image: Oil },
     { id: 2, image: Rice },
     { id: 3, image: Spices },
+    { id: 1, image: Oil },
+    { id: 2, image: Rice },
+    { id: 3, image: Spices },
+    { id: 1, image: Oil },
+    { id: 2, image: Rice },
+    { id: 3, image: Spices },
+    { id: 1, image: Oil },
+    { id: 2, image: Rice },
+    { id: 3, image: Spices },
   ];
   const [swiperRef, setSwiperRef] = useState(null);
   const [activeIndex, setActiveIndex] = useState(2);
