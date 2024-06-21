@@ -46,7 +46,7 @@ function Footer() {
                 <div className='footer_quick_links Contact_us_div_footer' >
                     <div className='footer_quick_links_heading contact_us_heading ' >Contact Us</div>
                     <div className='footer_quick_links_data' >
-                        <Link to={"/"} >
+                        <Link to={"/"} className='css-for-link-tag pcHeader_options' >
                         <div>HOME</div>
                         </Link>
                         <a href="tel:+91123456789" className='css-for-link-tag footer_text_golden_color'>

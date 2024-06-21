@@ -67,7 +67,7 @@ function PCHeaer() {
                             </svg>
                         </Link>
                         :
-                        <Link to="/auth/login" className='css-for-link-tag'>Login</Link>
+                        <Link to="/auth/login" className='css-for-link-tag pcHeader_options'>Login</Link>
                     }
 
                 </div>

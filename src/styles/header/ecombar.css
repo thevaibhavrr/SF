@@ -2,6 +2,7 @@
   width: 100%;
   position: relative;
   background: #000;
+  z-index: 1000;
 }
 .ecom_bar_main_div {
   position: fixed;
