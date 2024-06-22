@@ -20,8 +20,17 @@ function Footer() {
                 <div className='footer_quick_links' >
                     <div className='footer_quick_links_heading' >Media Links</div>
                     <div className='media_links_div' >
-                        <div><img loading="lazy" src={Instagram} alt="Instagram" className='media_links' /></div>
-                        <div><img loading="lazy" src={Facebook} alt="Facebook" className='media_links' /></div>
+                        
+                        <div>
+                            <Link to={"https://www.instagram.com/skfoods_unitedgroup"} target="_blank" >
+                            <img loading="lazy" src={Instagram} alt="Instagram" className='media_links' />
+                            </Link>
+                            </div>
+                        <div>
+                            <Link to={"https://www.facebook.com/skfoodsbyunitedgroup"} target="_blank">
+                            <img loading="lazy" src={Facebook} alt="Facebook" className='media_links' />
+                            </Link>
+                            </div>
                     </div>
                 </div>
                 {/* Quick Links */}

@@ -229,7 +229,7 @@
 //             </div>
 //         </>
 
-//     );
+//     ); 
 // }
 
 // export default Mywhislist;
@@ -409,7 +409,7 @@ function Mywhislist() {
                                                 </Link>
                                                 <div className="product_name_and_price">
                                                     <div>{product.products.name}</div>
-                                                    <div>₹{product.products.PriceAfterDiscount}</div>
+                                                    <div>₹{ product.products.PriceAfterDiscount ? product.products.PriceAfterDiscount : product.products.price }</div>
                                                 </div>
                                                 <div className="Add_to_cart_and_watchlist_button">
                                                     <>

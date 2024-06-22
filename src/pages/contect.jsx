@@ -14,7 +14,7 @@ const Mylocation = lazy(() => import("../components/contactUs/mylocation"))
 function ContectUs() {
   return (
     <div>
-      <Scroll/>
+      {/* <Scroll/> */}
 
         <Suspense fallback={<div> <Primaryloader /> </div>}>
         <ContactUsBanner/>

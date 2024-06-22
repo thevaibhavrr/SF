@@ -10,7 +10,7 @@ const ProductSidebar = () => {
     const history = useNavigate();
 
     const [minPrice, setMinPrice] = useState(0);
-    const [maxPrice, setMaxPrice] = useState(100000);
+    const [maxPrice, setMaxPrice] = useState(10000);
     const [categories, setCategories] = useState([]);
     const [search, setSearch] = useState("");
     const [category, setCategory] = useState("");
@@ -86,14 +86,14 @@ const ProductSidebar = () => {
                         <div className='main_price_range_product_sidebar' >
                             <div>
                                 <span>Min Price</span>
-                                <input type="range" min={0} max={1000} value={minPrice} className='input-ranges input_for_min_price' onChange={(e) => setMinPrice(e.target.value)} />
+                                <input type="range" min={0} max={10000} value={minPrice} className='input-ranges input_for_min_price' onChange={(e) => setMinPrice(e.target.value)} />
                                 <div>₹{minPrice}</div>
                             </div>
-                            <div>
+                            {/* <div>
                                 <span>Max Price</span>
-                                <input type="range" min={0} max={1000} value={maxPrice} className='input-ranges input_for_max_price' onChange={(e) => setMaxPrice(e.target.value)} />
+                                <input type="range" min={minPrice} max={10000} value={maxPrice} className='input-ranges input_for_max_price' onChange={(e) => setMaxPrice(e.target.value)} />
                                 <div className='text-end' >₹{maxPrice}</div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
 

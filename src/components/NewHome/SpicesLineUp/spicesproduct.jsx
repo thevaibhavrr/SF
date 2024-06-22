@@ -10,7 +10,7 @@ import Primaryloader from '../../loaders/primaryloader.jsx';
 import ProductSlider from '../utils/proudctSlider.jsx';
 
 function SpicesProduct() {
-    const [slidesPerView, setSlidesPerView] = useState(5.3);
+    const [slidesPerView, setSlidesPerView] = useState(5);
     const [products, setProducts] = useState([]);
     const [AllProductLoader, setAllProductLoader] = useState(false);
     const [productType, setProductType] = useState("");
@@ -40,7 +40,7 @@ function SpicesProduct() {
         const handleResize = () => {
             const screenWidth = window.innerWidth;
             if (screenWidth <= 500) {
-                setSlidesPerView(1.5);
+                setSlidesPerView(1);
             } else if (screenWidth <= 900) {
                 setSlidesPerView(3);
             } else if (screenWidth <= 1039) {

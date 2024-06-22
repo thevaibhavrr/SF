@@ -12,6 +12,8 @@
 .Our_collection_slider_images {
   max-width: 200px;
   width: 300px;
+  max-height: 200px;
+  object-fit: contain;
 }
 
 .main_our_collection_swiper_options_New_Home {

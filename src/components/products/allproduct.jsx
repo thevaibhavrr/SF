@@ -46,7 +46,7 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
             setAllProductLoader(true);
             console.log(search)
             const response = await makeApi(`/api/get-all-products?name=${search}&category=${category}&minPrice=${minPrice}&maxPrice=${maxPrice}&page=${currentPage}&perPage=${ResultPerPage}&productType=${productType}&IsOutOfStock=false`, "GET");
-            console.log(response.data)
+            console.log("llllll",response.data.products.length)
             setProducts(response.data.products);
             setToalProduct(response.data.totalProducts);
         } catch (error) {
@@ -147,13 +147,12 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
         }
     };
 
- 
 
     return (
         <>
             {showPopup && <LoginPopup onClose={closePopup} />}
             <ToastContainer />
-
+            
             <div className='top_parent_div_all_product'>
                 {AllProductLoader ? (
                     <div className="All_Product_loader">
@@ -164,19 +163,26 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
                 ) : (
                     <div className="">
                         {/* <Scroll/> */}
+                        {products.length === 0 ? (
+                            <div className='w-100 text-center' >
+                                <img src='https://minteventrentals.com/public/templates/mint/images/noproductfound.png'
+                                style={{maxWidth:"800px"}}
+                                />
+                            </div>
+                        ):
                         <div className="main_all_product_div">
                             {products.map((product, index) => (
 
                                 <div className="product_div_all_product_parent" key={index}>
                                     <div className="product_div_all_product">
-                                        <Link to={`/product/product-details/${product._id}`} >
+                                        <Link to={`/product/product-details/${product._id}`} className='css-for-link-tag text-black' >
                                             <div>
                                                 <LazyLoadImage effect="blur" loading="lazy" src={product.thumbnail} alt="product" className="all_product_product_thumbnail"  />
                                             </div>
-                                        </Link>
                                         <div className="product_name_and_price">
                                             <div className='All_product_name' >{product.name}</div>
                                         </div>
+                                        </Link>
                                         <div className='All_product_description' >{product?.description}</div>
                                         <div>
                                             <div className='All_product_price_div' >
@@ -232,6 +238,7 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
                                 </div>
                             ))}
                         </div>
+                        }
                         <div className="pagination">
                             {Array.from({ length: totalPages }, (_, index) => index + 1).map(
                                 (pageNumber) => (

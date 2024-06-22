@@ -153,8 +153,8 @@ const ProductSlider = ({ products, slidesPerView, initialSlide }) => {
                         {product.name}
                       </div>
                       <div className='d-flex justify-content-between w-75 pt-3'>
-                        <div className='text-black new-price'>₹{product.price}</div>
-                        <div className=''>
+                        <div className='text-black new-price'>₹{Math.floor(product?.PriceAfterDiscount ? product?.PriceAfterDiscount : product?.price)}</div>
+                        <div className=''> 
                           {isInCart(product._id) ? (
                             <div className='Add_to_cart_and_watchlist_child'>
                               {addToCartLoader[product._id] ? (
@@ -197,7 +197,7 @@ const ProductSlider = ({ products, slidesPerView, initialSlide }) => {
                 ))}
               </Swiper>
               <div className="prev-next-buttons">
-                <div onClick={handlePrevClick} className="prev-button">
+                <div onClick={ handleNextClick} className=" next-button ">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -209,7 +209,7 @@ const ProductSlider = ({ products, slidesPerView, initialSlide }) => {
                     <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
                   </svg>
                 </div>
-                <div onClick={handleNextClick} className="next-button">
+                <div onClick={handlePrevClick} className="prev-button">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"

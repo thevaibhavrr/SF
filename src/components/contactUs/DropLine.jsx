@@ -73,7 +73,7 @@ function DropLine() {
 
     return (
         <>
-            <ToastContainer autoClose={2000} />
+            <ToastContainer autoClose={2000} position="bottom-right" />
 
             <div className="drop_line_main_div" >
                 <div className="Main_Home_heading" >Drop Us a Line</div>
