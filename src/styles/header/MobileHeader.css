@@ -12,9 +12,15 @@
     opacity: 1;
   }
 }
-
+.vertical-navbar-close-open-button{
+  cursor: pointer;
+  position: fixed;
+  right: 10px;
+  
+}
 .vertical-navbar {
-  position: absolute;
+  /* position: absolute; */
+  position: fixed;
   top: 74px;
   right: 0;
   height: 94vh;
@@ -26,6 +32,13 @@
   animation: fadeIn 0.5s ease-in-out;
   color: var(--golden-color);
   border: 1px solid var(--golden-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 150px;
+}
+.css-for-golden-color{
+  color: var(--golden-color) !important;
 }
 
 .toggle_button {

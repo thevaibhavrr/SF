@@ -63,7 +63,7 @@ const FilterPopup = ({ onClose, onSubmit }) => {
                     <div className={`category-menu ${showCategoryMenu ? 'active' : ''}`}>
                         <h3>Select Category:</h3>
                         <ul>
-                            {categories.map(category => (
+                            {categories?.map(category => (
                                 <li key={category._id}>
                                     <label>
                                         <input type="radio" name="category" value={category._id} onChange={() => setSelectedCategory(category._id)} checked={selectedCategory === category._id} />

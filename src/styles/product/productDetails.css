@@ -75,6 +75,8 @@
   width: 450px;
   height: 500px;
   margin-top: -100px;
+  object-fit: contain;
+
 }
 
 .product-display-right {

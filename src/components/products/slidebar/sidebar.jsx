@@ -89,11 +89,11 @@ const ProductSidebar = () => {
                                 <input type="range" min={0} max={10000} value={minPrice} className='input-ranges input_for_min_price' onChange={(e) => setMinPrice(e.target.value)} />
                                 <div>₹{minPrice}</div>
                             </div>
-                            {/* <div>
+                            <div>
                                 <span>Max Price</span>
                                 <input type="range" min={minPrice} max={10000} value={maxPrice} className='input-ranges input_for_max_price' onChange={(e) => setMaxPrice(e.target.value)} />
                                 <div className='text-end' >₹{maxPrice}</div>
-                            </div> */}
+                            </div>
                         </div>
                     </div>
 
