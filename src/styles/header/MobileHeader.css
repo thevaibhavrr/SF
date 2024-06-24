@@ -70,3 +70,25 @@
     width: 100%;
   }
 }
+/* Define the filter_price class */
+.sidebar_price_max_min_div {
+  /* Font properties */
+  font-weight: bold;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+
+  /* Text color */
+  color: white; /* You can choose any color you like */
+
+  /* Background color */
+  /* background-color: #f9f9f9; Light gray background */
+  background-color: var(--navy-blue-color); /* Light gray background */
+
+  /* Padding */
+  padding: 10px; /* Adjust as needed */
+
+  /* Center the content horizontally */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
