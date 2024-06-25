@@ -1,5 +1,125 @@
 
+//   import { makeApi } from "../api/callApi.tsx";
+
+// export const fetchCart = async (setCartItems) => {
+//   try {
+//     const response = await makeApi("/api/my-cart", "GET");
+//     setCartItems(response.data.orderItems.map(item => ({
+//       productId: item.productId._id,
+//       quantity: item.quantity
+//     })));
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+
+// export const fetchWishlist = async (setWishlistItems) => {
+//   try {
+//     const response = await makeApi("/api/get-my-wishlist", "GET");
+//     const wishlistIds = response.data.wishlist
+//       .filter(item => item.products !== null)
+//       .map(item => item.products._id);
+//     setWishlistItems(wishlistIds);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+
+// export const addToCart = async (
+//   productId,
+//   setIsLogin,
+//   setShowPopup,
+//   fetchCart,
+//   setCartItems,
+//   setProductLoaders,
+// ) => {
+//   const token = localStorage.getItem("token");
+//   if (!token) {
+//     setIsLogin(false);
+//     setShowPopup(true);
+//     return;
+//   }
+
+//   try {
+//     setProductLoaders((prevState) => ({
+//       ...prevState,
+//       [productId]: true,
+//     }));
+
+//     const method = "POST";
+//     const endpoint = "/api/add-to-cart";
+//     await makeApi(endpoint, method, {
+//       productId,
+//       quantity: 1,
+//       shippingPrice: 0,
+//     });
+
+//     fetchCart(setCartItems);
+//   } catch (error) {
+//     console.log(error.response.data);
+//   } finally {
+//     setProductLoaders((prevState) => ({
+//       ...prevState,
+//       [productId]: false,
+//     }));
+//   }
+// };
+
+// export const removeFromCart = async (
+//   productId,
+//   setProductLoaders,
+//   setCartItems,
+//   fetchCart
+// ) => {
+//   try {
+//     setProductLoaders((prevState) => ({
+//       ...prevState,
+//       [productId]: true,
+//     }));
+//     const method = "POST";
+//     const endpoint = "/api/remove-from-cart";
+//     await makeApi(endpoint, method, { productId });
+
+//     fetchCart(setCartItems);
+//   } catch (error) {
+//     console.log(error);
+//   } finally {
+//     setProductLoaders((prevState) => ({
+//       ...prevState,
+//       [productId]: false,
+//     }));
+//   }
+// };
+
 import { makeApi } from "../api/callApi.tsx";
+
+let cartCountListeners = [];
+
+export const fetchCart = async (setCartItems) => {
+  try {
+    const response = await makeApi("/api/my-cart", "GET");
+    const cartItems = response.data.orderItems.map(item => ({
+      productId: item.productId._id,
+      quantity: item.quantity
+    }));
+    setCartItems(cartItems);
+    updateCartCount(cartItems);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchWishlist = async (setWishlistItems) => {
+  try {
+    const response = await makeApi("/api/get-my-wishlist", "GET");
+    const wishlistIds = response.data.wishlist
+      .filter(item => item.products !== null)
+      .map(item => item.products._id);
+    setWishlistItems(wishlistIds);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export const addToCart = async (
   productId,
@@ -30,22 +150,7 @@ export const addToCart = async (
       shippingPrice: 0,
     });
 
-    fetchCart();
-    setCartItems((prevState) => {
-      const existingItem = prevState.find(
-        (item) => item.productId === productId
-      );
-      if (existingItem) {
-        return prevState.map((item) => {
-          if (item.productId === productId) {
-            return { ...item, quantity: item.quantity + 1 };
-          }
-          return item;
-        });
-      } else {
-        return [...prevState, { productId, quantity: 1 }];
-      }
-    });
+    fetchCart(setCartItems);
   } catch (error) {
     console.log(error.response.data);
   } finally {
@@ -63,18 +168,15 @@ export const removeFromCart = async (
   fetchCart
 ) => {
   try {
-    // setAddTocartLoader(true);
     setProductLoaders((prevState) => ({
       ...prevState,
       [productId]: true,
     }));
     const method = "POST";
     const endpoint = "/api/remove-from-cart";
-    const data = await makeApi(endpoint, method, { productId });
-    setCartItems((prevState) =>
-      prevState.filter((item) => item.productId !== productId)
-    );
-    fetchCart();
+    await makeApi(endpoint, method, { productId });
+
+    fetchCart(setCartItems);
   } catch (error) {
     console.log(error);
   } finally {
@@ -82,6 +184,18 @@ export const removeFromCart = async (
       ...prevState,
       [productId]: false,
     }));
-    // setAddTocartLoader(false);
   }
+};
+
+const updateCartCount = (cartItems) => {
+  const cartCount = cartItems.reduce((count, item) => count + item.quantity, 0);
+  cartCountListeners.forEach(listener => listener(cartCount));
+};
+
+export const subscribeToCartCount = (listener) => {
+  cartCountListeners.push(listener);
+};
+
+export const unsubscribeFromCartCount = (listener) => {
+  cartCountListeners = cartCountListeners.filter(l => l !== listener);
 };

@@ -160,6 +160,7 @@
 .productdisplay-food-item-counter {
   display: flex;
   align-items: center;
+  justify-content: center;
   margin: auto;
   width: 60%;
   height: 45px;

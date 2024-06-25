@@ -13,7 +13,7 @@ import { ToastContainer, toast } from "react-toastify";
 function CartItem() {
     const [cartItem, setCartItem] = useState([])
     const [loading, setLoading] = useState(false);
-    const [cartPoductList, setCartProductList] = useState([]) 
+    const [cartPoductList, setCartProductList] = useState([])
     const [IscartEmpty, setIsCartEmpty] = useState(false)
     const [AllProductLoader, setAllProductLoader] = useState(false);
     const [AddTocartLoader, setAddTocartLoader] = useState(false);
@@ -26,7 +26,7 @@ function CartItem() {
             const response = await makeApi("/api/my-cart", "GET")
 
             setCartItem(response.data)
-            if(response.data.orderItems.length === 0){
+            if (response.data.orderItems.length === 0) {
                 setIsCartEmpty(true)
             }
             setCartProductList(response.data.orderItems)
@@ -97,14 +97,14 @@ function CartItem() {
             toast("Cannot add more than available quantity.", { type: "error" });
         }
     };
-    
+
 
     useEffect(() => {
         fetchCartItem()
     }, [])
     return (
         <>
-        <ToastContainer/>
+            <ToastContainer />
             {AllProductLoader ? <div className="All_Product_loader">
                 <div className='' >
                     <Primaryloader />
@@ -132,7 +132,7 @@ function CartItem() {
                                     <div>Total</div>
                                 </div>
                                 {/* details */}
-                                {cartPoductList && cartPoductList.map((item,index) => (
+                                {cartPoductList && cartPoductList.map((item, index) => (
                                     <div className='cart_item_details_parent_div' key={index} >
                                         <div className='cart_item_details' >
                                             <div>
@@ -141,12 +141,12 @@ function CartItem() {
                                             <div> {item.productId.name} </div>
                                             {/* <div>{item.productId.quantity}</div> */}
                                             <div> ₹ {item.productId.price} </div>
-                                           
+
                                             {productLoaders[item.productId._id] ? <div className='Add_to_cart_and_watchlist_child' > <HorizotalLoader /> </div> :
                                                 <div className="cart-quantity  cart_add_remmove_section_cart_page ">
                                                     <img loading="lazy" src={RemoveIcon} alt="AddIcon" className='Icon_add_to_cart_main_cart_page' onClick={() => removeFromCart(item.productId._id)} />
                                                     <span> {item.quantity} </span>
-                                                    <img loading="lazy" src={AddIcon} alt="AddIcon" className='Icon_add_to_cart_main_cart_page' onClick={() => handleAddToCart(item.productId._id, item.quantity,item.productId.quantity )} />
+                                                    <img loading="lazy" src={AddIcon} alt="AddIcon" className='Icon_add_to_cart_main_cart_page' onClick={() => handleAddToCart(item.productId._id, item.quantity, item.productId.quantity)} />
                                                 </div>
                                             }
                                             <div> ₹ {item.totalPrice} </div>
