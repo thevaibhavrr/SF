@@ -5,9 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from 'swiper/modules';
-import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from "react-toastify";
-
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import Primaryloader from '../../loaders/primaryloader';
@@ -16,8 +14,7 @@ import LoginPopup from '../../Auth/LoginPopup';
 import AddIcon from "../../../Images/order/add_icon_green.png";
 import RemoveIcon from "../../../Images/order/remove_icon_red.png";
 import { makeApi } from '../../../api/callApi.tsx';
-import ProductLloader from '../../loaders/productLoader.jsx';
-import { addToCart, removeFromCart } from '../../../utils/productFunction';
+import { addToCart, removeFromCart , fetchCart } from '../../../utils/productFunction';
 
 const ProductSlider = ({ products, slidesPerView, initialSlide }) => {
   const [swiperRef, setSwiperRef] = useState(null);
@@ -46,7 +43,7 @@ const ProductSlider = ({ products, slidesPerView, initialSlide }) => {
       try {
         setIsLoading(true);
         const response = await makeApi(`/api/get-all-products?&perPage=10&productType=${productType}&IsOutOfStock=false`, "GET");
-        setProducts(response.data.products);
+          setProducts(response.data.products);
       } catch (error) {
         console.error(error);
       } finally {
@@ -57,19 +54,7 @@ const ProductSlider = ({ products, slidesPerView, initialSlide }) => {
     fetchProducts();
   }, [productType]);
 
-  const fetchCart = async () => {
-    try {
-      const response = await makeApi("/api/my-cart", "GET");
-      setCartItems(response.data.orderItems.map(item => ({
-        productId: item.productId._id,
-        quantity: item.quantity
-      })));
-    } catch (error) {
-      console.error(error);
-    }
-  };
   useEffect(() => {
-
     fetchCart();
   }, []);
 
@@ -95,8 +80,8 @@ const ProductSlider = ({ products, slidesPerView, initialSlide }) => {
     return cartItems.some(item => item.productId === productId);
   };
 
-  const getProductQuantity = (productId) => {
-    const cartItem = cartItems.find(item => item.productId === productId);
+  const getProductQuantity =  async (productId) => {
+    const cartItem = await cartItems.find(item => item.productId === productId);
     return cartItem ? cartItem.quantity : 0;
   };
 
@@ -117,6 +102,8 @@ const ProductSlider = ({ products, slidesPerView, initialSlide }) => {
   };
 
   return (
+    <>
+    <ToastContainer autoClose={2000} position="bottom-right" />
     <div className='swiper-container-wrapper' style={{ position: "relative" }}>
       {showPopup && <LoginPopup onClose={closePopup} />}
       {isLoading ? (
@@ -227,6 +214,7 @@ const ProductSlider = ({ products, slidesPerView, initialSlide }) => {
         </div>
       )}
     </div>
+    </>
   );
 };
 
