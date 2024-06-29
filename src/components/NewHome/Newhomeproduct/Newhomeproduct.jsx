@@ -37,7 +37,7 @@ const NewHomeProducts = () => {
         try {
             setAllProductLoader(true);
             setProductLoader(true)
-            const response = await makeApi(`/api/get-all-products?&perPage=10&category=665d67c04133e96dad0359a4&productType=${productType}&IsOutOfStock=false&ResultsPerPage=10`, "GET");
+            const response = await makeApi(`/api/get-all-products?&perPage=10&category=665d67c04133e96dad0359a4&productType=${productType}&IsOutOfStock=false&ResultsPerPage=3`, "GET");
             setProducts(response.data.products);
         } catch (error) {
             console.log(error);
