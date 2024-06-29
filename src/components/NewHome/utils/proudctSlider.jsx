@@ -142,7 +142,7 @@ const ProductSlider = ({ products, slidesPerView, initialSlide }) => {
                           effect="blur"
                           className='Our_collection_slider_images'
                         />
-                        <div className='text-black product_name_from_slider' style={{ textWrap: 'nowrap' }}>
+                        <div className='text-black product_name_from_slider' style={{ textWrap: 'nowrap' , textTransform: 'capitalize' }}>
                           {product.name}
                         </div>
                         <div className='d-flex justify-content-between w-75 pt-3'>
