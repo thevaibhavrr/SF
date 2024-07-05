@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../styles/Auth/login.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useFetcher, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { makeApi } from "../../api/callApi.tsx";
@@ -13,6 +13,14 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [Islogin, setIslogin] = useState(false);
 
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    console.log(token);
+    if (token) {
+      navigate("/product/all-products");
+    }
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -32,7 +40,6 @@ const Login = () => {
         password,
         email,
       });
-      console.log(response.data.user.country);
 
       localStorage.setItem("token", response.data.token);
       if (response.data.user.country === "IN") {
@@ -43,11 +50,11 @@ const Login = () => {
 
         localStorage.setItem("country", "International");
       }
-      toast.success(response.data.message);
 
       setIslogin(true);
       toast.success(response.data.message, {
         onClose: () => {
+          window.location.reload();
           navigate("/product/all-products");
         }
       })
