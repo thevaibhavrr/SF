@@ -7,6 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import SucessGIF from '../../../Images/order/Order Placed GIF.gif';
 import Primaryloader from '../../loaders/primaryloader.jsx';
 import { ToastContainer, toast } from "react-toastify";
+import { submitOrder } from '../../../utils/productFunction.js';
 
 function Checkout() {
     const navigation = useNavigate();
@@ -57,25 +58,27 @@ function Checkout() {
             toast("Please select payment method")
             return
         }
-        event.preventDefault();
+        event.preventDefault(); 
         const data = {
             shippingAddress: selectedAddress,
             paymentMethod: selectPaymentMethod,
             CartId: cartItem._id
         }
-        try {
-            setLoading(true);
-            const response = await makeApi("/api/create-second-order", "POST", data);
-            setOrderPlaced(true);
-            setTimeout(() => {
-                setOrderPlaced(false);
-                navigation("/product/all-products");
-            }, 5000);
-        } catch (error) {
-            console.error("Error fetching shipping addresses: ", error);
-        } finally {
-            setLoading(false);
-        }
+        submitOrder(data, setLoading, setOrderPlaced, navigation);
+
+        // try {
+        //     setLoading(true);
+        //     const response = await makeApi("/api/create-second-order", "POST", data);
+        //     setOrderPlaced(true);
+        //     setTimeout(() => {
+        //         setOrderPlaced(false);
+        //         navigation("/product/all-products");
+        //     }, 5000);
+        // } catch (error) {
+        //     console.error("Error fetching shipping addresses: ", error);
+        // } finally {
+        //     setLoading(false);
+        // }
     }
     const ManageCurrnetPage = (e) => {
         e.preventDefault()

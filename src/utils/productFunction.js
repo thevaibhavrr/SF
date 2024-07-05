@@ -1,97 +1,4 @@
-
-//   import { makeApi } from "../api/callApi.tsx";
-
-// export const fetchCart = async (setCartItems) => {
-//   try {
-//     const response = await makeApi("/api/my-cart", "GET");
-//     setCartItems(response.data.orderItems.map(item => ({
-//       productId: item.productId._id,
-//       quantity: item.quantity
-//     })));
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
-// export const fetchWishlist = async (setWishlistItems) => {
-//   try {
-//     const response = await makeApi("/api/get-my-wishlist", "GET");
-//     const wishlistIds = response.data.wishlist
-//       .filter(item => item.products !== null)
-//       .map(item => item.products._id);
-//     setWishlistItems(wishlistIds);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
-// export const addToCart = async (
-//   productId,
-//   setIsLogin,
-//   setShowPopup,
-//   fetchCart,
-//   setCartItems,
-//   setProductLoaders,
-// ) => {
-//   const token = localStorage.getItem("token");
-//   if (!token) {
-//     setIsLogin(false);
-//     setShowPopup(true);
-//     return;
-//   }
-
-//   try {
-//     setProductLoaders((prevState) => ({
-//       ...prevState,
-//       [productId]: true,
-//     }));
-
-//     const method = "POST";
-//     const endpoint = "/api/add-to-cart";
-//     await makeApi(endpoint, method, {
-//       productId,
-//       quantity: 1,
-//       shippingPrice: 0,
-//     });
-
-//     fetchCart(setCartItems);
-//   } catch (error) {
-//     console.log(error.response.data);
-//   } finally {
-//     setProductLoaders((prevState) => ({
-//       ...prevState,
-//       [productId]: false,
-//     }));
-//   }
-// };
-
-// export const removeFromCart = async (
-//   productId,
-//   setProductLoaders,
-//   setCartItems,
-//   fetchCart
-// ) => {
-//   try {
-//     setProductLoaders((prevState) => ({
-//       ...prevState,
-//       [productId]: true,
-//     }));
-//     const method = "POST";
-//     const endpoint = "/api/remove-from-cart";
-//     await makeApi(endpoint, method, { productId });
-
-//     fetchCart(setCartItems);
-//   } catch (error) {
-//     console.log(error);
-//   } finally {
-//     setProductLoaders((prevState) => ({
-//       ...prevState,
-//       [productId]: false,
-//     }));
-//   }
-// };
-
-import { makeApi } from "../api/callApi.tsx";
+  import { makeApi } from "../api/callApi.tsx";
 
 let cartCountListeners = [];
 
@@ -184,6 +91,23 @@ export const removeFromCart = async (
       ...prevState,
       [productId]: false,
     }));
+  }
+};
+
+export const submitOrder = async (data, setLoading, setOrderPlaced, navigation) => {
+  try {
+    setLoading(true);
+    const response = await makeApi("/api/create-second-order", "POST", data);
+    setOrderPlaced(true);
+    updateCartCount([]);
+    setTimeout(() => {
+      setOrderPlaced(false);
+      navigation("/product/all-products");
+    }, 5000);
+  } catch (error) {
+    console.error("Error creating order: ", error);
+  } finally {
+    setLoading(false);
   }
 };
 
