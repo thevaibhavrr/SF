@@ -35,15 +35,13 @@ const LoginPopup = ({ onClose }) => {
         localStorage.setItem("country", "Domestic");
       }
       if (response.data.user.country !== "IN") {
-        console.log("International");
-
         localStorage.setItem("country", "International");
       }
       toast.success(response.data.message);
       onClose();
       // refresh the page
       navigate(0, 0);
-        
+      window.location.reload();
     } catch (error) {
       toast.error(error.response.data.message);
       console.error("Error sending data:", error.response.data.message);

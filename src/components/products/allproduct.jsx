@@ -14,6 +14,7 @@ import { addToCart, removeFromCart, fetchCart, fetchWishlist } from '../../utils
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 function Allproduct({ search, category, minPrice, maxPrice }) {
+  
   const [products, setProducts] = useState([]);
   const [wishlistItems, setWishlistItems] = useState([]);
   const [cartItems, setCartItems] = useState([]);
@@ -26,7 +27,9 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
   const [productType, setProductType] = useState("");
   const [AddToWishlistLoader, setAddToWishlistLoader] = useState({});
   const [productLoaders, setProductLoaders] = useState({});
-  const ResultPerPage = 20;
+  const ResultPerPage = 50;
+
+
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -192,7 +195,7 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
                 ))}
               </div>
             )}
-            <div className="pagination">
+            {/* <div className="pagination">
               {Array.from({ length: totalPages }, (_, index) => index + 1).map(
                 (pageNumber) => (
                   <button
@@ -204,7 +207,7 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
                   </button>
                 )
               )}
-            </div>
+            </div> */}
           </div>
         )}
       </div>
