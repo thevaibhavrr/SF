@@ -111,6 +111,73 @@ export const submitOrder = async (data, setLoading, setOrderPlaced, navigation) 
   }
 };
 
+
+
+export const cartItemFetchCart = async (setCartItems, setCartProductList, setAllProductLoader, setIsCartEmpty) => {
+  try {
+    setAllProductLoader(true);
+    const response = await makeApi("/api/my-cart", "GET");
+    const cartItems = response.data.orderItems;
+    setCartItems(response.data);
+    setCartProductList(cartItems);  // Set the cart product list here
+    if (cartItems.length === 0) {
+      setIsCartEmpty(true);
+    }
+    updateCartCount(cartItems);
+  } catch (error) {
+    console.log(error);
+    if (error.response.data.message === "Cart not found") {
+      setIsCartEmpty(true);
+    }
+  } finally {
+    setAllProductLoader(false);
+  }
+};
+
+export const cartItemAddToCart = async (productId, setProductLoaders, fetchCart) => {
+  try {
+    setProductLoaders(prevState => ({
+      ...prevState,
+      [productId]: true
+    }));
+    const method = "POST";
+    const endpoint = "/api/add-to-cart";
+    await makeApi(endpoint, method, {
+      productId, 
+      "quantity": 1,
+      "shippingPrice": 0
+    });
+    fetchCart();
+  } catch (error) {
+    console.log(error);
+  } finally {
+    setProductLoaders(prevState => ({
+      ...prevState,
+      [productId]: false
+    }));
+  }
+};
+
+export const cartItemRemoveFromCart = async (productId, setProductLoaders, fetchCart) => {
+  try {
+    setProductLoaders(prevState => ({
+      ...prevState,
+      [productId]: true
+    }));
+    const method = "POST";
+    const endpoint = "/api/remove-from-cart";
+    await makeApi(endpoint, method, { productId });
+    fetchCart();
+  } catch (error) {
+    console.log(error);
+  } finally {
+    setProductLoaders(prevState => ({
+      ...prevState,
+      [productId]: false
+    }));
+  }
+};
+
 const updateCartCount = (cartItems) => {
   const cartCount = cartItems.reduce((count, item) => count + item.quantity, 0);
   cartCountListeners.forEach(listener => listener(cartCount));
