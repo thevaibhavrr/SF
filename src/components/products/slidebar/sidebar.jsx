@@ -112,9 +112,9 @@
 //                             </svg>
 //                         </div>
 //                     </div>
-                    
+
 //                 </div>
-                
+
 //                 <div className='w-100' >
 //                     <Allproduct search={search} category={category} minPrice={minPrice} maxPrice={maxPrice} />
 //                 </div>
@@ -163,9 +163,10 @@ const ProductSidebar = () => {
     };
 
     const handleMaxPriceChange = (e) => {
-        const newMaxPrice = Math.min(Number(e.target.value), 10000); // Ensure maxPrice does not exceed 10000
+        const newMaxPrice = Math.max(Number(e.target.value), minPrice); // Ensure maxPrice is not less than minPrice
         setMaxPrice(newMaxPrice);
     };
+
 
     const handleLogout = () => {
         localStorage.removeItem('token');
@@ -215,11 +216,11 @@ const ProductSidebar = () => {
                     {/* filter by price */}
                     <div className='product_sliderbar_options price_filter_sidebar_pc_sidebar'>
                         <div className='proudct_sidebar_heading d-flex flex-column'>Filter By Price:</div>
-                            <div className='d-flex gap-2 w-100 justify-content-center  sidebar_price_max_min_div' >
-                                <div>₹{minPrice}</div>
-                                <div>-</div>
-                                <div> ₹{maxPrice} </div>
-                            </div>
+                        <div className='d-flex gap-2 w-100 justify-content-center  sidebar_price_max_min_div' >
+                            <div>₹{minPrice}</div>
+                            <div>-</div>
+                            <div> ₹{maxPrice} </div>
+                        </div>
                         <div className='main_price_range_product_sidebar' >
                             <div>
                                 <span>Min Price</span>
@@ -228,13 +229,19 @@ const ProductSidebar = () => {
                             </div>
                             <div>
                                 <span>Max Price</span>
-                                <input type="range" min={0} max={10000} value={maxPrice} className='input-ranges input_for_max_price' onChange={handleMaxPriceChange} />
-                                {/* <div className='text-end' >₹{maxPrice}</div> */}
+                                <input
+                                    type="range"
+                                    min={0}
+                                    max={10000}
+                                    value={maxPrice}
+                                    className='input-ranges input_for_max_price'
+                                    onChange={handleMaxPriceChange}
+                                />
                             </div>
                         </div>
                     </div>
 
-                  {/* more */}
+                    {/* more */}
                     <div className='product_sliderbar_options more_icon_sidebar'>
                         <div className='proudct_sidebar_heading'> More:</div>
                         {/* drop down */}
@@ -244,9 +251,9 @@ const ProductSidebar = () => {
                             </svg>
                         </div>
                     </div>
-                    
+
                 </div>
-                
+
                 <div className='w-100' >
                     <Allproduct search={search} category={category} minPrice={minPrice} maxPrice={maxPrice} />
                 </div>

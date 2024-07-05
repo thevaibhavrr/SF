@@ -19,7 +19,7 @@ function ContectUs() {
         <Suspense fallback={<div> <Primaryloader /> </div>}>
         <ContactUsBanner/>
         <DropLine/>
-        <Mylocation/>
+        {/* <Mylocation/> */}
         </Suspense>
     </div>
   )

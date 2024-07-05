@@ -45,10 +45,10 @@
     transition: all 0.5s ease;
 }
 
-.main_swiper_slide_our_collection:hover{
+/* .main_swiper_slide_our_collection:hover{
     cursor: pointer;
     scale: 1.1;
-}
+} */
 
 .bestSaller_details{
     display: flex;
