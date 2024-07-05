@@ -4,6 +4,7 @@ import { makeApi } from "../../api/callApi.tsx";
 import "../../styles/User/orderdetails.css";
 import UserProfileSidebar from "./sidebar.jsx";
 import Primaryloader from "../loaders/primaryloader.jsx";
+import { formToJSON } from "axios";
 
 const OrderDetailsPage = () => {
     const { orderId } = useParams();
@@ -29,6 +30,9 @@ const OrderDetailsPage = () => {
         </div>;
     }
 
+    const formatNumber = (number) => {
+        return Math.round(number).toString();
+    };
     return (
         <>
             <div>
@@ -66,14 +70,14 @@ const OrderDetailsPage = () => {
                                     <h3>{item.productId.name}</h3>
                                     <p><strong>Price:</strong> ₹{item.singleProductPrice}</p>
                                     <p><strong>Quantity:</strong> {item.quantity}</p>
-                                    <p><strong>Total Price:</strong> ₹{item.totalPrice}</p>
+                                    <p><strong>Total Price:</strong> ₹ {formatNumber(item.totalPrice)}</p>
                                 </div>
                             </div>
                         ))}
-                        <p><strong>Total Price:</strong> ₹{orderDetails.CartId.totalPrice}</p>
+                        <p><strong>Total Price:</strong> ₹{formatNumber(orderDetails.CartId.totalPrice)} </p>
                         <p><strong>Tax Price:</strong> ₹{orderDetails.CartId.taxPrice}</p>
                         <p><strong>Shipping Price:</strong> ₹{orderDetails.CartId.shippingPrice}</p>
-                        <p><strong>Total Product Price:</strong> ₹{orderDetails.CartId.TotalProductPrice}</p>
+                        <p><strong>Total Product Price:</strong> ₹ {formatNumber(orderDetails.CartId.TotalProductPrice)} </p>
                         {/* <p><strong>Price After Adding Tax:</strong> ₹{orderDetails.CartId.priceAfterAddingTax}</p> */}
                     </div>
                 </div>
