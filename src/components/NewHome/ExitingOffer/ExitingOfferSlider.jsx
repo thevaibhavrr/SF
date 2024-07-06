@@ -9,7 +9,7 @@ import Spices from "../../../assets/img/NewHome/Spices- Banner.svg"
 import { useEffect } from 'react';
 import { makeApi } from '../../../api/callApi.tsx';
 function Banner() {
-  const [Banners, setImages] = useState([]);
+  const [Banner, setImages] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -22,7 +22,7 @@ function Banner() {
         };
         fetchData();
     }, []);
-  const Banner = [
+  const Banners = [
     { id: 1, bannerImage: Oil },
     { id: 2, bannerImage: Rice },
     { id: 3, bannerImage: Spices },
@@ -38,7 +38,7 @@ function Banner() {
   ];  
   const [swiperRef, setSwiperRef] = useState(null);
   const [activeIndex, setActiveIndex] = useState(2);
-  const [slidesPerView, setSlidesPerView] = useState(1.1);
+  const [slidesPerView, setSlidesPerView] = useState(1.7);
 
 
   const handleSlideChange = () => {
@@ -68,7 +68,7 @@ function Banner() {
               onSwiper={setSwiperRef}
               onSlideChange={handleSlideChange}
               slidesPerView={slidesPerView}
-              initialSlide={1.3}
+              initialSlide={1}
               centeredSlides={true}
               spaceBetween={20}
               loop={true}
@@ -85,6 +85,7 @@ function Banner() {
                         src={image.bannerImage}
                         alt={`ImagesOf ${index + 1}`}
                         className='w-100'
+                        style={{maxHeight:"500px"}}
                       />
                       {/* <div className='text-black' style={{ textWrap: 'nowrap' }}>
                         {image.BannerFor}

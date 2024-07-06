@@ -14,7 +14,7 @@ const AboutEndeavor = lazy(() => import("../components/aboutUs/aboutEndeavor"))
 function AboutUs() {
   return (
     <div>
-      <Scroll/>
+      {/* <Scroll/> */}
 
         <Suspense fallback={<div> <Primaryloader /> </div>}>
         <AboutBanner/>

@@ -156,6 +156,14 @@
 .heart_loader_all_product {
   /* width: 10px; */
 }
+@media (max-width:2560px) {
+  .product_div_all_product{
+    width: 325px;
+  }
+  .all_product_product_thumbnail{
+    
+  }
+}
 @media (max-width: 1480px) {
   .main_all_product_div {
     padding: 20px 20px;

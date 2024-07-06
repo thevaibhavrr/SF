@@ -40,7 +40,7 @@ function StayUpToDate() {
 
   return (
     <>
-      <ToastContainer />
+      <ToastContainer position="bottom-right" />
       <div className='uptodate_main_div mt-4'>
         {/* <div className='Main_Home_heading'>Stay up-to-date</div> */}
         <SeondrayHeading HeadingText="STAY UP-TO-DATE" />

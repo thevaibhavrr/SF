@@ -7,6 +7,17 @@ import mainIcon from "../../Images/Header/SK Foods Logo 3.png"
 function SmallNavbar() {
   const [showVerticalNavbar, setShowVerticalNavbar] = useState(false);
   const location = useLocation();
+  const [IsLogin, setIsLogin] = useState(false)
+  useEffect(() => {
+    const token = localStorage.getItem("token")
+
+    if (token) {
+        setIsLogin(true)
+    } else {
+        setIsLogin(false) 
+    }
+
+}, [localStorage.getItem("token")])
 
   useEffect(() => {
     setShowVerticalNavbar(false);
@@ -99,6 +110,7 @@ function SmallNavbar() {
                 </ul>
                 </div>
                     {/* login singup */}
+                  {!IsLogin &&
                 <div className="d-flex  justify-content-evenly" >
                   <Link to={"auth/login"} className="css-for-link-tag css-for-golden-color" >
                   <div className="d-flex gap-1" >
@@ -125,6 +137,7 @@ function SmallNavbar() {
                   </div>
                   </Link>
                 </div>
+                  }
               </div>
 
 

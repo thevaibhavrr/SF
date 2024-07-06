@@ -61,6 +61,11 @@
   top: -10px;
   right: -10px;
 }
+/* Highlight active link */
+.css-for-link-tag.active {
+  font-weight: bold;
+  color: var(--navy-blue-color); /* Add an appropriate active color */
+}
 
 /* .last_pcHeader_options{
   display: flex;

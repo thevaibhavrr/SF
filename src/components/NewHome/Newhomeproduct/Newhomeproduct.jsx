@@ -11,6 +11,7 @@ import RemoveIcon from "../../../Images/order/remove_icon_red.png";
 import HorizotalLoader from '../../loaders/horizotalLoader.jsx';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import ProductLloader from '../../loaders/productLoader.jsx';
+import SeondrayHeading from '../SeondrayHeading/SeondrayHeading.jsx';
 
 const NewHomeProducts = () => {
     const [products, setProducts] = useState([]);
@@ -127,7 +128,10 @@ const NewHomeProducts = () => {
     };
 
     return (
+        <>
+        <SeondrayHeading HeadingText="Best Sellers" />
         <div className="product_card_container_New_home py-5 my-5 ">
+
             {products.map((product) => (
                 <div key={product._id} className="product_card">
                     
@@ -140,7 +144,7 @@ const NewHomeProducts = () => {
                       
                         <div>
                             <LazyLoadImage effect="blur"
-                                    loading="lazy" src={product.thumbnail} alt={product.name} className="product_image" />
+                                    loading="lazy" src={product.thumbnail} alt={product.name} className="product_image new_home_product_product_images" />
                         </div>
                         </>
                     </div>
@@ -203,6 +207,7 @@ const NewHomeProducts = () => {
                 </div>
             ))}
         </div>
+        </>
     );
 };
 
