@@ -218,7 +218,6 @@
 // export default Allproduct;
 
 import React, { useEffect, useState } from 'react';
-import { hot } from 'react-hot-loader/root';
 import "../../styles/product/allproduct.css";
 import { IoIosHeart } from "react-icons/io";
 import { makeApi } from '../../api/callApi.tsx';
@@ -406,4 +405,4 @@ function Allproduct({ search, category, minPrice, maxPrice }) {
   );
 }
 
-export default hot(Allproduct);
+export default Allproduct;

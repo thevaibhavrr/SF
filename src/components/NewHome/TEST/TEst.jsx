@@ -74,16 +74,19 @@ import React, { useState, useEffect } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import './Carousel.css';
 import Banner01 from "../../../Images/Home/banner/Banner01.png"
-import Banner02 from "../../../Images/Home/banner/Banner02.svg"
-import Banner03 from "../../../Images/Home/banner/Banner03.svg"
-import Banner04 from "../../../Images/Home/banner/Banner04.svg"
-import Banner05 from "../../../Images/Home/banner/Banner05.svg"
+// import Banner02 from "../../../Images/Home/banner/Banner02.svg"
+// import Banner03 from "../../../Images/Home/banner/Banner03.svg"
+// import Banner04 from "../../../Images/Home/banner/Banner04.svg"
+// import Banner05 from "../../../Images/Home/banner/Banner05.svg"
 import MainImage from "../../../Images/Home/ourprodutImages/all_packs_images.png"
 
 
 
 const Carousel = ({  active: initialActive = 0 }) => {
-    const items = [Banner01, Banner02, Banner03, Banner04, Banner05, MainImage];
+    const items = [Banner01,
+        
+        // Banner02, Banner03, Banner04, Banner05, MainImage
+    ];
         const [active, setActive] = useState(initialActive);
         const [direction, setDirection] = useState('');
     
