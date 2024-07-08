@@ -1,8 +1,8 @@
 import React from 'react'
-import craftingFood1 from "../../../assets/img/NewHome/craftingFood1.svg"
-import craftingFood2 from "../../../assets/img/NewHome/craftingFood2.svg"
-import craftingFood3 from "../../../assets/img/NewHome/craftingFood3.svg"
-import craftingFood4 from "../../../assets/img/NewHome/craftingFood4.svg"
+import craftingFood1 from "../../../assets/img/NewHome/craftingFood1.png"
+import craftingFood2 from "../../../assets/img/NewHome/craftingFood2.png"
+import craftingFood3 from "../../../assets/img/NewHome/craftingFood3.png"
+import craftingFood4 from "../../../assets/img/NewHome/craftingFood4.png"
 import "../../../styles/NewHome/craftingFood.css"
 function CraftingFood() {
     const images = [craftingFood1, craftingFood2, craftingFood3, craftingFood4]
