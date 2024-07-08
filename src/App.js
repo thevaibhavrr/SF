@@ -3,11 +3,7 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import { lazy ,  Suspense  } from "react";
 import Primaryloader from "./components/loaders/primaryloader";
 import NewHome from "./pages/NewHome";
-import ProductCard from "./components/NewHome/Newhomeproduct/Newhomeproduct";
-import OurProduct from "./components/NewHome/TEST/TEst";
-import Carousel from "./components/NewHome/TEST/TEst";
-import DryFuitelist from "./components/NewHome/DryFuite/DryFuitelist";
-import { CartProvider } from "./utils/CartContext";
+// import { CartProvider } from "./utils/CartContext";
 
 
 const MainHeader = lazy(() => import("./components/Header/MainHeader"));
@@ -26,7 +22,7 @@ const OtpVerifiedForm = lazy(() => import("./components/Auth/otp"));
 
 function App() {
   return (
-    <CartProvider>
+    // <CartProvider>
     <div  >
       {!useLocation().pathname.includes("/user-password") && <MainHeader />}
 
@@ -66,7 +62,7 @@ function App() {
       </Suspense>
       <Footer />
     </div>
-    </CartProvider>
+    // </CartProvider>
 
   );
 }

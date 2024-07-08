@@ -25,7 +25,12 @@ function BannerCampain() {
         <div className='main_creator_banner'>
             <div id="carouselExampleIndicators" className="carousel slide carousel-fade" data-bs-ride="carousel">
                 <div className="carousel-indicators slider_number_desing_bottom">
+
+
+
+                    
                     {images.map((_, index) => (
+                        
                         <button
                             key={index}
                             type="button"

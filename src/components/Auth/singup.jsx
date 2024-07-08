@@ -24,7 +24,7 @@
 
 // export default CountrySelector;
 
-import React, { useEffect, useState, useMemo } from "react"
+import React, {  useState, useMemo } from "react"
 import countryList from 'react-select-country-list'
 import { makeApi } from "../../api/callApi.tsx"
 import { Link, useNavigate } from "react-router-dom"

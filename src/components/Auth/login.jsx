@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../../styles/Auth/login.css";
-import { Link, useFetcher, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { makeApi } from "../../api/callApi.tsx";
@@ -20,7 +20,7 @@ const Login = () => {
     if (token) {
       navigate("/product/all-products");
     }
-  }, []);
+  }, [navigate]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();

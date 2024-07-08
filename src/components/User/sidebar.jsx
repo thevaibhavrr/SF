@@ -51,7 +51,7 @@ const UserProfileSidebar = () => {
 				<div className="userProfile-sidebar">
 				<div className="userprofile-h1">
 						<img loading="lazy"
-							src={assets.userprofile_menu}
+							// src={assets.userprofile_menu}
 							alt=""
 							className="userprofiele-menu"
 							onClick={() => setExtended((prev) => !prev)}
