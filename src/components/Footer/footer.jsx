@@ -41,7 +41,7 @@ function Footer() {
                             <div>HOME</div>
                         </Link>
                         <Link to="/product/all-products" className='css-for-link-tag footer_text_golden_color' >
-                            <div>PRODUCTS</div>
+                            <div>E-store</div>
                         </Link>
                         <Link to="/about-us" className='css-for-link-tag footer_text_golden_color' >
                             <div>ABOUT US</div>
@@ -55,9 +55,7 @@ function Footer() {
                 <div className='footer_quick_links Contact_us_div_footer' >
                     <div className='footer_quick_links_heading contact_us_heading ' >Contact Us</div>
                     <div className='footer_quick_links_data' >
-                        <Link to={"/"} className='css-for-link-tag pcHeader_options' >
-                        <div>HOME</div>
-                        </Link>
+                       
                         <a href="tel:+91123456789" className='css-for-link-tag footer_text_golden_color'>
                             <div>+91 123456789</div>
                         </a>

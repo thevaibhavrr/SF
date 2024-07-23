@@ -28,11 +28,16 @@
   font-family: var(--Rhodium--Libre-font);
   font-weight: 600;
   cursor: pointer;
+  gap: 40px;
+
 }
 .address-radio {
   width: 20px;
+  cursor: pointer;
 }
 .address-label {
+  cursor: pointer;
+
   margin-left: 20px;
 }
 
@@ -99,6 +104,7 @@
     padding: 18px;
     width: 100%;
     margin-top: 18px;
+
   }
   .address-radio {
     width: 24px;

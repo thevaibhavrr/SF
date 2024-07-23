@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { makeApi } from '../../api/callApi.tsx';
-import UserProfileSidebar from './sidebar.jsx';
 import { Link, useParams } from 'react-router-dom';
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from 'react-router-dom';
+import "../../styles/Information/billingAdress.css";
+import Primaryloader from '../loaders/primaryloader.jsx';
+
 
 function EditAddress() {
     const navigate = useNavigate();
     const { addressId } = useParams();
 
-    const [shippingAddresses, setShippingAddresses] = useState();
     const [loading, setLoading] = useState(false);
     const [submitting, setSubmitting] = useState(false);
 
@@ -24,17 +25,67 @@ function EditAddress() {
         city: ""
     });
 
-    const fetchShippingAddresses = async () => {
+    const handleInputChange = async (e) => {
+        const { name, value } = e.target;
+
+        // Limit phone number input to maximum 10 digits
+        if (name === "phonenumber" && value.length > 10) {
+            return; // Do not update state if more than 10 digits
+        }
+
+        setFormData({
+            ...formData,
+            [name]: value
+        });
+
+        // Fetch details based on pincode
+        if (name === "pincode" && value.length === 6) {
+            await searchPin(value);
+        }
+    };
+
+    const searchPin = async (pin) => {
+        try {
+            setLoading(true);
+            const response = await fetch(`https://api.postalpincode.in/pincode/${pin}`);
+            const data = await response.json();
+
+            if (data && data.length > 0 && data[0].Status === 'Success') {
+                const addressDetails = data[0].PostOffice[0];
+                setFormData({
+                    ...formData,
+                    country: addressDetails.Country,
+                    state: addressDetails.State,
+                    city: addressDetails.District
+                });
+            } else {
+                toast.error('Invalid pincode');
+                setFormData({
+                    ...formData,
+                    country: '',
+                    state: '',
+                    city: ''
+                });
+            }
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const fetchShippingAddress = async () => {
         try {
             setLoading(true);
             const response = await makeApi(`/api/get-shiped-address-by-id/${addressId}`, "GET");
             setFormData(response.data.shipedaddress);
-            setLoading(false);
         } catch (error) {
-            console.error("Error fetching shipping addresses: ", error);
+            console.error("Error fetching shipping address:", error);
+            toast.error("Error fetching shipping address");
+        } finally {
             setLoading(false);
         }
-    }
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -44,33 +95,40 @@ function EditAddress() {
             if (response.data.success === true) {
                 toast.success("Address updated successfully", {
                     onClose: () => {
-                        navigate("/user/my-address")
+                        navigate("/user/my-address");
                     }
-                })
+                });
             }
         } catch (error) {
             console.error("Error updating address:", error);
-            toast.error(error.response.data.message);
+            toast.error(error.response.data.message || "Error updating address");
         } finally {
             setSubmitting(false);
         }
-    }
-
-    // actions
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
     };
 
     useEffect(() => {
-        fetchShippingAddresses();
+        fetchShippingAddress();
     }, []);
 
     return (
-        <div>
+        <>
+          {loading && (
+        <div style={{
+          height: "100vh",
+          width: "100vw",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          position: "fixed",
+          top: "0",
+          left: "0",
+          zIndex: "9999",
+          backgroundColor: "rgba(0, 0, 0, 0.8)"
+        }}>
+          <Primaryloader />
+        </div>
+      )}
             <ToastContainer autoClose={1000} />
             <div className='ms-5 mt-3'>
                 <Link to={"/user/my-address"}>
@@ -105,6 +163,7 @@ function EditAddress() {
                             placeholder="Phone Number"
                             value={formData.phonenumber}
                             onChange={handleInputChange}
+                            maxLength={10}
                         />
                         <textarea
                             name="address"
@@ -153,7 +212,7 @@ function EditAddress() {
                     </div>
                 </form>
             </div>
-        </div>
+        </>
     );
 }
 

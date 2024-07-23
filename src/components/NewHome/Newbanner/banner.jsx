@@ -26,9 +26,6 @@ function BannerCampain() {
             <div id="carouselExampleIndicators" className="carousel slide carousel-fade" data-bs-ride="carousel">
                 <div className="carousel-indicators slider_number_desing_bottom">
 
-
-
-                    
                     {images.map((_, index) => (
                         
                         <button

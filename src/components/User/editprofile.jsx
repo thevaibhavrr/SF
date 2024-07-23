@@ -7,23 +7,25 @@ import "react-toastify/dist/ReactToastify.css"
 import axios from "axios"
 import Primaryloader from "../loaders/primaryloader.jsx"
 import BackButton from "../backButton.jsx"
+import uploadToCloudinary from "../../utils/cloudinaryUpload.jsx"
 
 const EditUserProfile = () => {
     const navigate = useNavigate()
     const [AllProductLoader, setAllProductLoader] = useState(false);
     const [userUpdating, setUserUpdating] = useState(false)
     const [mobileNumberChanged, setMobileNumberChanged] = useState(false)
+  const [uploadProgress, setUploadProgress] = useState(0);
+
     const [editData, setEditData] = useState({
         firstName: "",
         lastName: "",
         gender: "",
-        dateofbirth: "",
+        dateofbirth: "", 
         // city: "",
         email: "",
         mobileNumber: "",
         userImage: "",
     })
-    console.log("---------------------", editData)
     // Fetch existing user details on component mount
     useEffect(() => {
         const fetchUserDetails = async () => {
@@ -101,30 +103,35 @@ const EditUserProfile = () => {
             // if (file.type.startsWith("image/")) {
             if (file) {
                 console.log(file)
-
-                const compressedFile = await file
-
-                const data = new FormData()
-                data.append("file", compressedFile)
-                data.append("upload_preset", "wnsxe2pa")
-
-                await axios
-                    .post(
-                        `https://api.cloudinary.com/v1_1/dzvsrft15/image/upload`,
-
-                        data
-                    )
-                    .then((response) => {
-                        if (response.status === 200) {
-                            const imageURL = response.data.url
-                            // setFormData({ ...formData, screenshot: imageURL });
-                            //  setUserProfile(imageURL);
-                            setEditData({
-                                ...editData,
-                                userImage: imageURL,
-                            })
-                        }
+        const uploadedImageUrl = await uploadToCloudinary(file, setUploadProgress);
+        setEditData({
+                        ...editData,
+                        userImage: uploadedImageUrl,
                     })
+                // const compressedFile = await uploadToCloudinary(file)
+                console.log("compressedFile-------------",uploadedImageUrl)
+
+                // const data = new FormData()
+                // data.append("file", compressedFile)
+                // data.append("upload_preset", "wnsxe2pa")
+
+                // await axios
+                //     .post(
+                //         `https://api.cloudinary.com/v1_1/dzvsrft15/image/upload`,
+
+                //         data
+                //     )
+                    // .then((response) => {
+                    //     if (response.status === 200) {
+                    //         const imageURL = response.data.url
+                    //         // setFormData({ ...formData, screenshot: imageURL });
+                    //         //  setUserProfile(imageURL);
+                    //         setEditData({
+                    //             ...editData,
+                    //             userImage: imageURL,
+                    //         })
+                    //     }
+                    // })
             }
         } catch (error) {
             console.log("image upload error", error)
